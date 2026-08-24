@@ -3,6 +3,7 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import aiConfig from "../../ai-config.json";
 
 const _filename = fileURLToPath(import.meta.url);
 const _dirname = path.dirname(_filename);
@@ -49,17 +50,9 @@ export default async (req: Request): Promise<Response> => {
       return new Response(JSON.stringify({ error: "Message vide." }), { status: 400 });
     }
 
-    // 3. Modèle et température (dynamiques via ai-config.json)
-    let aiModel = "gemini-3.5-flash-lite";
-    let aiTemperature = 0.4; // Valeur par défaut alignée avec ai-config.json
-    try {
-      const configContent = readContentFile("ai-config.json");
-      if (!configContent.startsWith("[Contenu")) {
-        const config = JSON.parse(configContent);
-        if (config.model) aiModel = config.model;
-        if (config.temperature !== undefined) aiTemperature = config.temperature;
-      }
-    } catch (e) { }
+    // 3. Modèle et température depuis ai-config.json (source unique de vérité)
+    const aiModel = aiConfig.model;
+    const aiTemperature = aiConfig.temperature;
 
     console.log(`[chat] Modèle: ${aiModel}, Température: ${aiTemperature}`);
 

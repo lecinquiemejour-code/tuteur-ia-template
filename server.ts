@@ -5,6 +5,7 @@ import { GoogleGenAI } from '@google/genai';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import aiConfig from './ai-config.json';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -84,24 +85,9 @@ async function startServer() {
       // Ajout du nouveau message
       contents.push({ role: 'user', parts: [{ text: message }] });
 
-      // Lecture dynamique de la configuration du modèle
-      let aiModel = "gemini-3.5-flash-lite"; // Valeur par défaut
-      let aiTemperature = 0.4; // Valeur par défaut alignée avec ai-config.json
-      try {
-        const configPath = path.resolve(__dirname, 'ai-config.json');
-        if (fs.existsSync(configPath)) {
-          const configData = fs.readFileSync(configPath, 'utf-8');
-          const config = JSON.parse(configData);
-          if (config.model) {
-            aiModel = config.model;
-          }
-          if (config.temperature !== undefined) {
-            aiTemperature = config.temperature;
-          }
-        }
-      } catch (e) {
-        console.error("[Server] Erreur lors de la lecture de ai-config.json:", e);
-      }
+      // Configuration du modèle depuis ai-config.json (source unique de vérité)
+      const aiModel = aiConfig.model;
+      const aiTemperature = aiConfig.temperature;
 
       console.log(`[Server] Modèle: ${aiModel}, Température: ${aiTemperature}`);
 
