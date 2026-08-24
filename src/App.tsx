@@ -31,11 +31,9 @@ type Message = {
   content: string;
 };
 
-const SUGGESTIONS = [
-  "Niveau Débutant",
-  "Niveau Intermédiaire",
-  "Niveau Avancé",
-];
+// Boutons de reponse rapide affiches sous le message d'accueil.
+// Ils se configurent dans tuteur.json ; liste vide = aucun bouton.
+const SUGGESTIONS: string[] = tuteur.suggestions ?? [];
 
 export default function App() {
   const [messages, setMessages] = useState<Message[]>([
@@ -407,7 +405,7 @@ export default function App() {
           <footer className="bg-white border-t border-gray-200 pt-2 pb-2 sm:pt-3 sm:pb-3 px-4 sm:px-6 print:hidden">
             <div className="max-w-4xl mx-auto">
               {/* Suggestions rapides (affichées uniquement au début) */}
-              {messages.length === 1 && (
+              {messages.length === 1 && SUGGESTIONS.length > 0 && (
                 <div className="flex flex-wrap gap-2 mb-4">
                   {SUGGESTIONS.map((suggestion, index) => (
                     <button

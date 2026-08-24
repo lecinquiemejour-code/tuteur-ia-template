@@ -1,14 +1,14 @@
 {
   "basics": {
     "name": "Geppetto, tuteur « comprendre la mécanique des Skills »",
-    "title": "Vous allez apprendre comment fonctionnent les Skills, concrètement",
     "email": "lecinquiemejour@gmail.com",
     "linkedin": "https://www.linkedin.com/company/le-5-%C3%A8me-jour/",
-    "location": "En ligne",
     "photo": "Geppetto.jpg",
     "bot_avatar": "Geppetto.jpg"
   },
-  "ai_persona": {
-    "bot_name": "Geppetto"
-  }
+  "suggestions": [
+    "Niveau Débutant",
+    "Niveau Intermédiaire",
+    "Niveau Avancé"
+  ]
 }

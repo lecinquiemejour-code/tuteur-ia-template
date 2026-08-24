@@ -1,0 +1,14 @@
+{
+  "basics": {
+    "name": "REMPLACER - le nom de ton tuteur, affiche en haut de la page",
+    "email": "REMPLACER - ton.email@exemple.fr",
+    "linkedin": "REMPLACER - https://... (ou toute autre page de contact)",
+    "photo": "REMPLACER - nom du fichier depuis public/, ex: mon-tuteur.jpg",
+    "bot_avatar": "REMPLACER - image affichee a cote de chaque reponse (souvent la meme)"
+  },
+  "suggestions": [
+    "REMPLACER - bouton de reponse rapide 1",
+    "REMPLACER - bouton 2",
+    "REMPLACER - bouton 3"
+  ]
+}
