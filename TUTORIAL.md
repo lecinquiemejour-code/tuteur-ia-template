@@ -523,4 +523,153 @@ et on passe à la préparation de tes outils !"
 
 ---
 
+<!--
+===============================================================
+ÉTAPE 4 — LA BOÎTE À OUTILS
+===============================================================
+Ne présente cette étape qu'après validation du CHECKPOINT Étape 3.
+Présente la stack avec pédagogie, puis vérifie les outils.
+===============================================================
+-->
+
+## 🧰 Étape 4 : Préparer ta boîte à outils
+
+Avant de télécharger le projet, prenons 2 minutes pour comprendre **de quoi il est fait** et **quels outils** on va utiliser. Pas de panique : tu n'as pas besoin de maîtriser tout ça — l'IA s'en charge. Mais savoir ce qu'il y a sous le capot, ça rassure !
+
+### 4.1 — Comprendre ton tuteur (la stack)
+
+Imagine que ton tuteur, c'est une **maison** 🏠. Comme pour une vraie maison, il y a plusieurs couches :
+
+**La structure (HTML)** — Ce sont les murs et le toit. HTML définit ce qu'il y a sur la page : un titre ici, un paragraphe là, un bouton là-bas. C'est le squelette de ton site.
+
+**La décoration (CSS + TailwindCSS)** — C'est la peinture, les meubles, la mise en page. CSS rend tout joli : les couleurs, les polices, les espacements. TailwindCSS est un kit de décoration pré-fabriqué qui accélère le travail.
+
+**L'électricité (JavaScript + React)** — C'est ce qui rend la maison *vivante*. Les animations, les boutons qui réagissent quand on clique, les schémas qui s'affichent au bon moment. React, c'est un framework (une méthode de construction) qui permet d'organiser tout ça de façon modulaire — comme des briques LEGO 🧱 qu'on assemble.
+
+**L'échafaudage de chantier (Vite + Express)** — Pendant que tu construis, tu as besoin de *voir* ta maison. Vite et Express créent un **serveur local** : une version privée de ton site, visible uniquement sur ton ordinateur. C'est ta prévisualisation en direct.
+
+**Le professeur assistant (API Google Gemini)** — Ton tuteur n'est pas magique : il utilise Gemini, l'intelligence artificielle de Google. Quand un apprenant pose une question, ton site envoie le message à Gemini **accompagné de tout ton cours**, et Gemini répond en s'appuyant dessus. C'est comme un assistant qui aurait relu ton programme juste avant de répondre, à chaque fois 🤖
+
+**L'adresse postale (Netlify)** — Une maison sans adresse, personne ne peut la trouver. Netlify **héberge** ton site et lui donne une URL publique (ex : `mon-tuteur.netlify.app`). Il se charge aussi de faire tourner le professeur assistant en production grâce aux **Netlify Functions** — un petit serveur dans le cloud.
+
+> [!TIP]
+> **En résumé** : tu vas personnaliser le *contenu* (ton cours, tes schémas), pas le *code*. C'est comme emménager dans une maison déjà construite : tu décores, tu ne touches pas à la plomberie !
+> Concrètement, tout ton travail tiendra dans six fichiers du dossier `src/content/`. Le reste du projet, tu n'auras jamais à l'ouvrir.
+
+### 4.2 — Les outils : ta boîte à outils
+
+Pour travailler sur ta maison, il te faut des **outils**. Tu ne les utiliseras pas directement — c'est l'IA qui les manipule pour toi — mais ils doivent être installés sur ton ordinateur.
+
+🔧 **Git** — *Le cahier de brouillon intelligent*
+Git garde en mémoire chaque version de ton travail. Si tu fais une erreur, tu peux revenir en arrière. Et surtout, Git permet de **télécharger** le projet depuis GitHub (Étape 5) et d'y **renvoyer** tes modifications quand tu publies (Étape 8).
+
+📦 **Node.js + npm** — *L'atelier et ses étagères de pièces*
+Node.js fait tourner JavaScript en dehors du navigateur (c'est-à-dire sur ton ordinateur). npm, c'est son **gestionnaire de pièces détachées** : il va chercher et installe automatiquement toutes les briques nécessaires (React, Vite, TailwindCSS, etc.) en une seule commande. Sans lui, impossible de prévisualiser ton site en local.
+
+> [!TIP]
+> **Bonne nouvelle :** npm est livré avec Node.js. En installant Node, tu obtiens npm gratuitement — pas besoin de l'installer séparément !
+
+📞 **GitHub CLI (gh)** — *Le téléphone direct vers GitHub*
+C'est un petit programme qui connecte ton ordinateur à ton compte GitHub. Sans lui, tu ne pourrais pas envoyer tes fichiers vers le cloud. Il simplifie la connexion : au lieu de taper un mot de passe, il ouvre ton navigateur pour te connecter en un clic.
+
+📄 **Poppler (pdftotext)** — *Le traducteur de PDF*
+Poppler est un outil qui sait « lire » les fichiers PDF et en extraire le texte brut. C'est grâce à lui que l'IA pourra lire le support de cours que tu as déposé dans `_ressources-cours/` et le transformer en programme, sans que tu aies besoin de tout recopier à la main. C'est l'outil qui fait gagner le plus de temps à l'Étape 6.
+
+### 4.3 — Installer et vérifier les outils
+
+On va vérifier si ces outils sont déjà installés sur ton ordinateur. Si ce n'est pas le cas, je peux les installer pour toi !
+
+- **Action** : Dis-moi **« Vérifie mes outils »** et je lance les vérifications automatiquement.
+
+> [!IMPORTANT]
+> **Configuration Git recommandée :** Après l'installation de Git, exécute cette commande une seule fois pour éviter les conflits de nommage de branche :
+> ```
+> git config --global init.defaultBranch main
+> ```
+> Cela garantit que tous tes futurs projets utiliseront `main` (la norme GitHub) au lieu de `master`.
+
+Si un outil manque, je vais essayer de l'installer automatiquement grâce à `winget` (le gestionnaire de paquets de Windows). C'est comme un app store en ligne de commande — rapide et propre.
+
+> [!NOTE]
+> **Comment ça marche ?** Je te montre la commande, tu me dis **« GO »**, et j'installe. Si `winget` n'est pas disponible sur ta machine, pas de panique — on a deux roues de secours !
+
+**Si l'installation automatique `winget` ne fonctionne pas (ou est bloquée), demande à l'IA d'utiliser l'une de ces 2 roues de secours :**
+
+#### 🛞 Roue de secours N°1 : Le script direct (Recommandé)
+Au lieu de passer par winget, dis à l'IA : *« Exécute la Roue de secours N°1 pour installer mes outils »*. L'IA exécutera alors ce bloc de code qui téléchargera directement les logiciels et affichera les barres d'installation à l'écran automatiquement :
+
+```powershell
+Write-Host "🚀 DÉMARRAGE DE L'INSTALLATION DIRECTE (SANS WINGET)" -ForegroundColor Cyan
+Write-Host "📦 1/4 - Node.js..."
+Invoke-WebRequest "https://nodejs.org/dist/v20.15.1/node-v20.15.1-x64.msi" -OutFile "$env:TEMP\node.msi"
+Start-Process msiexec.exe -ArgumentList "/i $env:TEMP\node.msi /passive /norestart" -Wait
+Write-Host "📦 2/4 - Git..."
+Invoke-WebRequest "https://github.com/git-for-windows/git/releases/download/v2.45.2.windows.1/Git-2.45.2-64-bit.exe" -OutFile "$env:TEMP\git.exe"
+Start-Process "$env:TEMP\git.exe" -ArgumentList "/SILENT /NORESTART" -Wait
+Write-Host "📦 3/4 - GitHub CLI..."
+Invoke-WebRequest "https://github.com/cli/cli/releases/download/v2.53.0/gh_2.53.0_windows_amd64.msi" -OutFile "$env:TEMP\gh.msi"
+Start-Process msiexec.exe -ArgumentList "/i $env:TEMP\gh.msi /passive /norestart" -Wait
+Write-Host "📦 4/4 - Poppler (Extraction PDF)..."
+Invoke-WebRequest "https://github.com/oschwartz10612/poppler-windows/releases/download/v24.02.0-0/Release-24.02.0-0.zip" -OutFile "$env:TEMP\poppler.zip"
+Write-Host "Décompression des fichiers Poppler en cours..."
+Expand-Archive -Path "$env:TEMP\poppler.zip" -DestinationPath "$env:USERPROFILE\Poppler" -Force
+$popplerBin = "$env:USERPROFILE\Poppler\poppler-24.02.0\Library\bin"
+$path = [Environment]::GetEnvironmentVariable("Path", "User")
+if ($path -notlike "*$popplerBin*") { [Environment]::SetEnvironmentVariable("Path", "$path;$popplerBin", "User") }
+Write-Host "✅ TOUT EST TERMINE ! Il faut ABSOLUMENT fermer cette fenetre et rouvrir le programme." -ForegroundColor Green
+```
+
+#### 🛞 Roue de secours N°2 : L'installation 100% manuelle
+Si ton entreprise bloque toute exécution de script, il ne te reste plus qu'à cliquer :
+
+| Outil | Lien | Quoi faire |
+|-------|------|------------|
+| **Git** | [git-scm.com/downloads](https://git-scm.com/downloads) | Clique sur « Windows », lance l'installateur, et fais Suivant jusqu'au bout. |
+| **Node.js** | [nodejs.org](https://nodejs.org/) | Prends le bouton **LTS** (version stable). Lance l'installeur. |
+| **GitHub CLI** | [cli.github.com](https://cli.github.com/) | Clique sur « Download for Windows », puis installe. |
+| **Poppler** | [Télécharger ZIP](https://github.com/oschwartz10612/poppler-windows/releases) | Extrais le `.zip` et demande à l'IA : *« Aide-moi à ajouter Poppler aux variables d'environnement ».* |
+
+> [!IMPORTANT]
+> **Après chaque installation** (automatique ou manuelle), il faut **fermer et rouvrir Antigravity** pour que l'outil soit reconnu. C'est comme redémarrer une machine après avoir branché un nouvel appareil.
+>
+> **⚠️ Pour reprendre le tutoriel là où tu en étais :**
+> 1. Rouvre Antigravity
+> 2. Clique sur l'icône d'historique 🕐 (en haut à droite, à côté du `+`)
+> 3. Retrouve et ouvre ta conversation précédente
+> 4. Dis simplement **« C'est installé ! »** — l'IA revérifiera tes outils et reprendra le tutoriel
+
+> [!NOTE]
+> 🍎 **Sur Mac ?** Installe d'abord [Homebrew](https://brew.sh) (le `winget` du Mac), puis :
+> ```
+> brew install git && brew install node && brew install gh && brew install poppler
+> ```
+
+<!-- [DIAGNOSTIC ÉTAPE 4 — GUIDE POUR L'IA]
+Si l'utilisateur est bloqué sur l'installation, diagnostique avec ce tableau :
+
+| Symptôme | Cause probable | Solution |
+|---|---|---|
+| `winget` non reconnu ou échoue | Windows trop ancien ou restrictions réseau | Proposer la **Roue de secours N°1** (exécuter le bloc PowerShell). Si ça bloque aussi, proposer la Roue N°2 (manuel). |
+| `git --version` ne marche pas après install | PATH non mis à jour | Fermer et rouvrir Antigravity (rappeler que c'est obligatoire) |
+| Version trop ancienne (Node < 18) | Installation précédente obsolète | Désinstaller l'ancienne version, réinstaller via les liens manuels |
+| Erreur de proxy ou timeout | Réseau d'entreprise avec proxy | Demander à l'utilisateur s'il est sur un réseau d'entreprise, suggérer un réseau personnel |
+| "Accès refusé" ou droits insuffisants | Pas les droits admin | Suggérer de faire un clic droit → "Exécuter en tant qu'administrateur" sur Antigravity |
+| `pdftotext` introuvable alors que les 3 autres marchent | Poppler installé mais pas dans le PATH | C'est le cas le plus frequent : Poppler n'a pas d'installeur, il s'ajoute au PATH a la main. Proposer d'executer la partie Poppler de la Roue de secours N°1 seule. |
+
+Si après 15 minutes l'installation est toujours bloquée, rassure l'utilisateur :
+"C'est un problème de configuration machine, pas de ta faute ! Contacte ton formateur ou reviens avec un autre ordinateur."
+
+Note : si SEUL pdftotext manque et que l'utilisateur est presse, le tutoriel reste
+faisable. Signale-lui simplement qu'a l'Etape 6 il devra copier-coller le texte de
+son cours dans le chat au lieu de laisser l'IA lire le PDF.
+-->
+
+<!-- [CHECKPOINT ÉTAPE 4]
+Vérifier que les 4 outils retournent un numéro de version.
+"Les 4 outils sont validés ✅ ?
+Dis-moi 'Tout est vert !' et on passe au téléchargement du projet ! 🚀"
+-->
+
+---
+
 <!-- LES ÉTAPES 1 À 9 SERONT AJOUTÉES ICI, UNE PAR UNE -->
