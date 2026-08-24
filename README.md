@@ -1,94 +1,134 @@
-# 🪵 Geppetto — Comprendre la mécanique des Skills
+# 🎓 Tuteur IA — le template
 
 <p align="center">
-  <img src="public/Geppetto.jpg" alt="Geppetto, tuteur pédagogique sur la mécanique des Skills de Claude" width="320">
+  <img src="public/Geppetto.jpg" alt="Geppetto, le tuteur livré en démonstration" width="280">
 </p>
 
-**Geppetto** est un chatbot tuteur, propulsé par l'IA Google Gemini, qui explique de façon simple et progressive **comment fonctionnent les Skills de Claude et la fenêtre de contexte**.
+**Crée ton propre tuteur pédagogique interactif** : un chatbot qui enseigne *ton* sujet, à *ton* public, avec *tes* schémas, hébergé en ligne à ton adresse.
 
-👀 **Exemple en ligne** : [geppetto-mecanique-des-skills.netlify.app](https://geppetto-mecanique-des-skills.netlify.app/)
+Tu n'écris pas de code. Tu remplaces six fichiers de contenu.
 
-## 🎯 Objectif pédagogique
+👀 **Voir ce que ça donne** : [geppetto-mecanique-des-skills.netlify.app](https://geppetto-mecanique-des-skills.netlify.app/) — un tuteur qui explique le fonctionnement des Skills de Claude. C'est le cours de démonstration livré avec ce template : tu le remplaceras par le tien.
 
-Vulgariser, pour un public curieux mais non spécialiste, la mécanique interne des Skills de Claude. Geppetto s'adapte au niveau de l'apprenant (Débutant · Intermédiaire · Avancé) et déroule un **cours structuré en 8 modules** (0 à 7) :
+---
 
-| Module | Sujet |
+## Ce que le template sait faire
+
+| | |
 |---|---|
-| 0 | À quoi servent les Skills, et pourquoi on les a inventés |
-| 1 | Qu'est-ce qu'un Skill ? (dossier + `SKILL.md`) |
-| 2 | Comment un Skill se déclenche (activation, auto vs manuel) |
-| 3 | Comment le modèle l'invoque (le *harness*) |
-| 4 | Vu de près : la chaîne de tokens (`tool_use` / `tool_result`) |
-| 5 | L'architecture en couches de la fenêtre de contexte |
-| 6 | Combien ça pèse (ordres de grandeur en tokens) |
-| 7 | Débordement & hygiène du contexte |
+| 🎚️ **S'adapter au niveau** | L'apprenant annonce où il en est, le tuteur ajuste ses explications |
+| 🖼️ **Illustrer** | Les schémas s'affichent au bon moment, agrandissables dans un volet latéral |
+| 📚 **Suivre un programme** | Le cours avance module par module, avec des pauses de vérification |
+| 🛡️ **Tenir son périmètre** | Il refuse les hors-sujet et résiste aux tentatives de manipulation |
+| 🖨️ **S'imprimer** | La conversation entière s'exporte en PDF |
+| 💸 **Coûter zéro** | Gemini, Netlify et GitHub suffisent en offre gratuite |
 
-Chaque notion est illustrée par un schéma SVG dédié.
+---
 
-## 🛠️ Stack technique
+## Deux façons de démarrer
+
+### 🐣 Tu débutes — le tutoriel guidé
+
+Tu n'as jamais utilisé Git, ni installé Node, ni déployé un site ? C'est prévu. Le fichier **[`TUTORIAL.md`](TUTORIAL.md)** est un tutoriel que tu fais lire à un assistant IA : il t'accompagne pas à pas, de l'installation des outils jusqu'à la mise en ligne, en te demandant ton feu vert à chaque étape.
+
+Tu n'écris aucune ligne de code. Tu réponds à des questions.
+
+### 🚀 Tu es à l'aise — démarrage rapide
+
+```bash
+# 1. Clique sur « Use this template » en haut de cette page, puis :
+git clone https://github.com/TON-COMPTE/TON-PROJET.git
+cd TON-PROJET
+
+# 2. Installe les dépendances
+npm install
+
+# 3. Crée ton fichier d'environnement et renseigne ta clé Gemini
+cp .env.example .env      # puis ouvre .env et remplis API_KEY
+
+# 4. Lance
+npm run dev               # http://localhost:3000
+```
+
+La clé API se crée sur [Google AI Studio](https://aistudio.google.com/) → *Get API key*.
+
+> 🔒 La clé n'est **jamais** exposée côté navigateur. Elle reste sur le serveur, qui relaie les appels.
+
+---
+
+## Adapter le tuteur à ton sujet
+
+Tout se joue dans **`src/content/`**. Six fichiers, aucun code.
+
+| Fichier | Ce que tu y mets |
+|---|---|
+| `programme.md` | **Ton cours**, module par module. C'est l'essentiel du travail. |
+| `tuteur.json` | Nom du tuteur, avatar, contact, boutons de réponse rapide |
+| `prompt-systeme.md` | Sa personnalité, son ton, son périmètre |
+| `accueil.md` | Le premier message que voit l'apprenant |
+| `ressources.md` | Les liens et documents qu'il peut recommander |
+| `illustrations.md` | Quelle image afficher, et à quel moment |
+
+Le dossier **[`examples/tuteur-vierge/`](examples/tuteur-vierge/)** contient ces six fichiers **vides et commentés**, avec une trame de module réutilisable. Copie-les par-dessus `src/content/` et remplis les cases — son README explique l'ordre conseillé.
+
+**Tes images** vont dans `public/assets/`, et tu les déclares dans `illustrations.md`. Le format SVG est recommandé : quelques kilo-octets, net à tout zoom, et une IA sait en générer.
+
+> ⚠️ Les fichiers de `src/content/` sont lus au démarrage du serveur. Après une modification, **relance `npm run dev`**.
+
+---
+
+## Mettre en ligne
+
+1. **Pousse** ton dépôt sur GitHub
+2. Sur [Netlify](https://www.netlify.com/) : *Add new site* → *Import an existing project* → choisis ton dépôt
+3. **Déclare ta clé** : *Site configuration* → *Environment variables* → `API_KEY`
+4. Déploie
+
+Le fichier `netlify.toml` contient déjà la configuration : commande de build, dossier publié, et l'inclusion de `src/content/` dans le bundle de la fonction serveur.
+
+Ensuite, chaque `git push` redéploie automatiquement.
+
+---
+
+## Structure du dépôt
+
+```
+src/content/          ← tes six fichiers de contenu
+public/               ← ce que le visiteur voit (avatar, schémas)
+  assets/             ← les illustrations du cours
+examples/
+  tuteur-vierge/      ← les gabarits à copier pour ton propre sujet
+  skill-mecanique-... ← le skill Claude du cours de démonstration
+src/App.tsx           ← l'interface
+server.ts             ← serveur de développement local
+netlify/functions/    ← la fonction serveur en production
+_ressources-cours/    ← dépose ici ta matière première (PDF, notes…)
+```
+
+Les autres documents : [`ROADMAP.md`](ROADMAP.md) (évolutions envisagées), [`SPEC_SECURITE.md`](SPEC_SECURITE.md) (les défenses en place), [`ABONNEMENTS_ET_LIMITES.md`](ABONNEMENTS_ET_LIMITES.md) (quotas et coûts), [`RESET-ENVIRONNEMENT.md`](RESET-ENVIRONNEMENT.md) (repartir de zéro).
+
+---
+
+## Sous le capot
 
 | Couche | Technologies |
 |---|---|
-| **Frontend** | React 19 · Vite 6 · TailwindCSS 4 |
-| **Serveur (dev local)** | Express (`server.ts`, lancé via `tsx`) |
-| **Backend (production)** | Netlify Functions (`netlify/functions/chat.ts`) |
-| **IA** | Google Gemini API ([`@google/genai`](https://www.npmjs.com/package/@google/genai)) |
+| **Interface** | React 19 · Vite 6 · TailwindCSS 4 |
+| **Serveur local** | Express (`server.ts`, lancé via `tsx`) |
+| **Serveur en production** | Netlify Functions (`netlify/functions/chat.ts`) |
+| **IA** | Google Gemini, modèle et température réglables dans `ai-config.json` |
 | **Hébergement** | Netlify |
 
-> 🔒 **Sécurité** : la clé API Gemini n'est **jamais** exposée côté client. Elle reste sur le serveur (variable d'environnement `API_KEY`), qui relaie les appels à l'API.
-
-## 🚀 Lancer le projet en local
-
-### Prérequis
-- [Node.js](https://nodejs.org/) (version 18 ou supérieure)
-- Une clé API Google Gemini → [aistudio.google.com](https://aistudio.google.com/) → *Get API key*
-
-### Étapes
-
-```bash
-# 1. Installer les dépendances
-npm install
-
-# 2. Créer le fichier d'environnement à partir de l'exemple
-cp .env.example .env
-```
-
-Puis ouvre `.env` et renseigne ta clé :
-
-```ini
-API_KEY="ta_cle_gemini_ici"
-```
-
-```bash
-# 3. Démarrer le serveur de développement
-npm run dev
-```
-
-👉 L'application est disponible sur **http://localhost:3000**
-
-> Le serveur Express sert à la fois le frontend (via le middleware Vite, avec rechargement à chaud) et l'API de chat sur la route `/api/chat`.
-> ⚠️ Toute modification de `server.ts`, des fichiers `src/content/*` ou de `ai-config.json` nécessite un **redémarrage** du serveur.
-
-## 📂 Personnaliser le contenu
-
-Tout le contenu du tuteur est centralisé dans `src/content/`, sans toucher au code :
-
-| Fichier | Rôle |
-|---|---|
-| `identity.json` | Identité du bot (nom, avatar, persona, anecdote « easter egg ») |
-| `instructions.md` | Le prompt système : règles, persona, périmètre, format des réponses |
-| `experiences.md` | Le programme du cours (curriculum des 8 modules) |
-| `portfolio.md` | Ressources pratiques & guides d'installation |
-
-Le choix du modèle Gemini et la température se règlent dans `ai-config.json` à la racine.
+---
 
 ## ⚖️ Licence
 
-Ce projet est distribué sous **double licence** :
-- **Open source / non commercial** → [GPL v3](https://www.gnu.org/licenses/gpl-3.0.html)
-- **Usage commercial** → Licence commerciale requise
+Double licence :
 
-📩 Pour toute demande d'usage commercial : lecinquiemejour@gmail.com
+- **Open source / non commercial** → [GPL v3](https://www.gnu.org/licenses/gpl-3.0.html)
+- **Usage commercial** → licence commerciale requise
+
+📩 Demandes d'usage commercial : lecinquiemejour@gmail.com
 
 ## ✍️ Auteur
 
