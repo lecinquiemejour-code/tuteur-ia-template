@@ -25,9 +25,9 @@ const identity = JSON.parse(lireContenu('tuteur.json'));
 
 // Remplacement dynamique des placeholders dans les instructions
 const processedInstructions = instructions
-  .replace(/{{USER_FULL_NAME}}/g, identity.basics.name)
-  .replace(/{{USER_EMAIL}}/g, identity.basics.email)
-  .replace(/{{USER_LINKEDIN_URL}}/g, identity.basics.linkedin);
+  .replace(/{{TUTEUR_NOM}}/g, identity.basics.name)
+  .replace(/{{TUTEUR_EMAIL}}/g, identity.basics.email)
+  .replace(/{{TUTEUR_LIEN}}/g, identity.basics.linkedin);
 
 const systemInstruction = `
 ${processedInstructions}

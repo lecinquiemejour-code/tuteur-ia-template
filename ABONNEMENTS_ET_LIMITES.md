@@ -1,4 +1,4 @@
-# Abonnements et limites — CV Interactif IA
+# Abonnements et limites — Tuteur IA
 
 > Dernière mise à jour : 2026-03-15
 
@@ -116,7 +116,7 @@ L'application gère les erreurs de quota de manière transparente pour l'utilisa
 | Scénario | Visiteurs/jour | Messages/jour | Coût |
 |----------|---------------|---------------|------|
 | **Faible** (usage personnel) | 1-10 | ~50 | **0 €** |
-| **Modéré** (partage CV) | 10-50 | ~250 | **0 €** |
+| **Modéré** (tuteur partagé) | 10-50 | ~250 | **0 €** |
 | **Élevé** (forte visibilité) | 50-100 | ~500 | **0 €** (limite RPD atteinte) |
 | **Très élevé** (viral) | 100+ | 500+ | Passage au plan payant Gemini nécessaire |
 

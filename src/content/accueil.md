@@ -1,4 +1,4 @@
-Bonjour 👋 Je suis **{{USER_FULL_NAME}}**, ton tuteur interactif.
+Bonjour 👋 Je suis **{{TUTEUR_NOM}}**, ton tuteur interactif.
 
 Mon rôle est de t'expliquer simplement, sans jargon inutile, ce qui se passe « sous le capot » lorsque Claude utilise ses compétences (*skills*) et gère sa *fenêtre de contexte*.
 

@@ -1,5 +1,5 @@
 # ============================================================
-# Script de DÉSINSTALLATION des outils pour le CV Interactif IA
+# Script de DÉSINSTALLATION des outils pour le Tuteur IA
 # ============================================================
 # Ce script désinstalle les 4 outils installés par install-outils.ps1 :
 # Git, Node.js (+ npm), GitHub CLI (gh) et Poppler (pdftotext)
@@ -15,7 +15,7 @@
 
 Write-Host ""
 Write-Host "========================================" -ForegroundColor Cyan
-Write-Host "  Désinstallation des outils CV IA" -ForegroundColor Cyan
+Write-Host "  Désinstallation des outils Tuteur IA" -ForegroundColor Cyan
 Write-Host "========================================" -ForegroundColor Cyan
 Write-Host ""
 Write-Host "Ce script va retirer les 4 outils du tutoriel" -ForegroundColor Yellow

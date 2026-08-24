@@ -1,5 +1,5 @@
 # ============================================================
-# Script d'installation des outils pour le CV Interactif IA
+# Script d'installation des outils pour le Tuteur IA
 # ============================================================
 # Ce script installe les 4 outils nécessaires au tutoriel :
 # Git, Node.js (+ npm), GitHub CLI (gh) et Poppler (pdftotext)
@@ -12,7 +12,7 @@
 
 Write-Host ""
 Write-Host "========================================" -ForegroundColor Cyan
-Write-Host "  Installation des outils CV IA" -ForegroundColor Cyan
+Write-Host "  Installation des outils Tuteur IA" -ForegroundColor Cyan
 Write-Host "========================================" -ForegroundColor Cyan
 Write-Host ""
 

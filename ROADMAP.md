@@ -1,4 +1,4 @@
-# 🗺️ Roadmap d'évolutions — CV-Lambda-Template
+# 🗺️ Roadmap d'évolutions — Tuteur-IA-Template
 
 > Roadmap validée le 24 mars 2026. 7 évolutions retenues sur 10.
 
@@ -87,7 +87,7 @@ Le template est 100% francophone (interface, instructions IA, messages d'erreur)
 ## Évolution #4 — Thème personnalisable + dark mode 🟡
 
 ### Problème
-Les couleurs (indigo/blanc/gris) sont codées en dur dans `App.tsx`. Tous les CV se ressemblent.
+Les couleurs (indigo/blanc/gris) sont codées en dur dans `App.tsx`. Tous les tuteurs se ressemblent.
 
 ### Solution
 Ajouter une section `"theme"` dans `identity.json` :

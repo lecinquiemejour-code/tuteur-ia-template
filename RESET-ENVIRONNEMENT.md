@@ -1,4 +1,4 @@
-## 🧹 Mémo — Remise à zéro de l'environnement pour le tutoriel CV IA
+## 🧹 Mémo — Remise à zéro de l'environnement pour le tutoriel Tuteur IA
 
 ### Objectif
 Remettre le poste d'un apprenant dans un état "vierge" pour qu'il puisse suivre le tutoriel depuis le début, comme s'il n'avait jamais installé les outils.
@@ -37,10 +37,10 @@ Aller dans **Paramètres Windows** → **Applications** → **Applications insta
 
 ### 3. Supprimer le projet existant
 
-- Supprimer le dossier de travail (ex : `C:\CVIA\` ou tout dossier contenant le clone du repo).
+- Supprimer le dossier de travail (ex : `C:\TUTEUR-IA\` ou tout dossier contenant le clone du repo).
 - Le dossier `node_modules/` peut être long à supprimer — utiliser si besoin :
   ```powershell
-  Remove-Item -Recurse -Force "C:\CVIA"
+  Remove-Item -Recurse -Force "C:\TUTEUR-IA"
   ```
 
 ---
@@ -57,9 +57,9 @@ Aller dans **Paramètres Windows** → **Applications** → **Applications insta
 
 ### 5. Préparer le redémarrage
 
-1. Créer un dossier `C:\CVIA\`
+1. Créer un dossier `C:\TUTEUR-IA\`
 2. Y placer uniquement le fichier `TUTORIAL.md` (téléchargé depuis le repo template GitHub)
-3. Ouvrir `C:\CVIA\` dans Antigravity
+3. Ouvrir `C:\TUTEUR-IA\` dans Antigravity
 4. Supprimer les **Rules** Antigravity existantes (`...` → Customizations → Rules → supprimer la Workspace rule)
 
 L'apprenant est prêt à taper **"Lance le tutoriel"** 🚀

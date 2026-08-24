@@ -8,10 +8,10 @@ import ReactMarkdown from 'react-markdown';
 import { Send, User, Bot, Loader2, Sparkles, ExternalLink, X, Mail, Linkedin, Printer } from 'lucide-react';
 import { sendMessageToAI } from './services/ai';
 import tuteur from './content/tuteur.json';
-import greetingRaw from './content/accueil.md?raw';
+import accueilRaw from './content/accueil.md?raw';
 
-// Remplace le placeholder {{USER_FULL_NAME}} par le vrai nom du JSON
-const greetingText = greetingRaw.replace(/\{\{USER_FULL_NAME\}\}/g, tuteur.basics.name);
+// Remplace le placeholder {{TUTEUR_NOM}} par le nom defini dans tuteur.json
+const accueilTexte = accueilRaw.replace(/\{\{TUTEUR_NOM\}\}/g, tuteur.basics.name);
 
 // Images servies depuis public/, noms configurés dans tuteur.json
 const profilePhoto = `/${tuteur.basics.photo}`;
@@ -42,7 +42,7 @@ export default function App() {
     {
       id: 'welcome',
       role: 'ai',
-      content: greetingText
+      content: accueilTexte
     }
   ]);
   const [input, setInput] = useState('');
@@ -125,6 +125,12 @@ export default function App() {
     const lowerText = text.toLowerCase();
     return !SUSPICIOUS_PATTERNS.some(pattern => lowerText.includes(pattern.toLowerCase()));
   };
+
+  // Le titre de l'onglet suit le nom defini dans tuteur.json,
+  // pour ne pas avoir a editer index.html en plus lors d'une adaptation.
+  useEffect(() => {
+    document.title = tuteur.basics.name;
+  }, []);
 
   // Scroll automatique vers le bas à chaque nouveau message
   useEffect(() => {

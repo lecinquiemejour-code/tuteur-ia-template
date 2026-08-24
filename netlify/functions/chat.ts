@@ -70,9 +70,9 @@ export default async (req: Request): Promise<Response> => {
     try {
       const identity = JSON.parse(identityContent);
       processedInstructions = instructions
-        .replace(/{{USER_FULL_NAME}}/g, identity.basics.name)
-        .replace(/{{USER_EMAIL}}/g, identity.basics.email)
-        .replace(/{{USER_LINKEDIN_URL}}/g, identity.basics.linkedin);
+        .replace(/{{TUTEUR_NOM}}/g, identity.basics.name)
+        .replace(/{{TUTEUR_EMAIL}}/g, identity.basics.email)
+        .replace(/{{TUTEUR_LIEN}}/g, identity.basics.linkedin);
     } catch (e) {
       console.error("[chat] Erreur de parsing de tuteur.json :", e);
     }
