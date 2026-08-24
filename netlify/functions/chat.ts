@@ -18,6 +18,10 @@ function readContentFile(filename: string): string {
     path.resolve(_dirname, "src", "content", filename),
     path.resolve(_dirname, "../src", "content", filename),
     path.resolve(_dirname, "../../src", "content", filename),
+    path.resolve(_dirname, filename),
+    path.resolve(_dirname, "..", filename),
+    path.resolve(_dirname, "../..", filename),
+    path.resolve(_dirname, "../../..", filename),
   ];
 
   for (const filePath of pathsToTry) {
@@ -46,10 +50,10 @@ export default async (req: Request): Promise<Response> => {
     }
 
     // 3. Modèle et température (dynamiques via ai-config.json)
-    let aiModel = "gemini-3.1-flash-lite";
-    let aiTemperature = 0.7; // Valeur par défaut
+    let aiModel = "gemini-3.5-flash-lite";
+    let aiTemperature = 0.4; // Valeur par défaut alignée avec ai-config.json
     try {
-      const configContent = readContentFile("../../../ai-config.json"); // Ajusté car ai-config.json est à la racine
+      const configContent = readContentFile("ai-config.json");
       if (!configContent.startsWith("[Contenu")) {
         const config = JSON.parse(configContent);
         if (config.model) aiModel = config.model;

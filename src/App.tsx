@@ -5,7 +5,7 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import ReactMarkdown from 'react-markdown';
-import { Send, User, Bot, Loader2, Sparkles, ExternalLink, X, Mail, Linkedin, Printer } from 'lucide-react';
+import { Send, User, Loader2, ExternalLink, X, Mail, Linkedin, Printer } from 'lucide-react';
 import { sendMessageToAI } from './services/ai';
 import tuteur from './content/tuteur.json';
 import accueilRaw from './content/accueil.md?raw';
@@ -242,7 +242,7 @@ export default function App() {
       <html lang="fr">
         <head>
           <meta charset="UTF-8">
-          <title>Tuteur interactif - {tuteur.basics.name}</title>
+          <title>Tuteur interactif - ${tuteur.basics.name}</title>
           <script src="https://cdn.tailwindcss.com"></script>
           <style>
             body { background-color: white !important; }
