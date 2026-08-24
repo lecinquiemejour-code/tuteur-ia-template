@@ -14,5 +14,3 @@ coverage/
 _ressources-cours/*
 !_ressources-cours/.gitkeep
 
-# Document de passation, hors template
-_PASSATION.md

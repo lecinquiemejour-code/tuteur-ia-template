@@ -25,37 +25,6 @@ Tu n'écris pas de code. Tu remplaces six fichiers de contenu.
 
 ---
 
-## Deux façons de démarrer
-
-### 🐣 Tu débutes — le tutoriel guidé
-
-Tu n'as jamais utilisé Git, ni installé Node, ni déployé un site ? C'est prévu. Le fichier **[`TUTORIAL.md`](TUTORIAL.md)** est un tutoriel que tu fais lire à un assistant IA : il t'accompagne pas à pas, de l'installation des outils jusqu'à la mise en ligne, en te demandant ton feu vert à chaque étape.
-
-Tu n'écris aucune ligne de code. Tu réponds à des questions.
-
-### 🚀 Tu es à l'aise — démarrage rapide
-
-```bash
-# 1. Clique sur « Use this template » en haut de cette page, puis :
-git clone https://github.com/TON-COMPTE/TON-PROJET.git
-cd TON-PROJET
-
-# 2. Installe les dépendances
-npm install
-
-# 3. Crée ton fichier d'environnement et renseigne ta clé Gemini
-cp .env.example .env      # puis ouvre .env et remplis API_KEY
-
-# 4. Lance
-npm run dev               # http://localhost:3000
-```
-
-La clé API se crée sur [Google AI Studio](https://aistudio.google.com/) → *Get API key*.
-
-> 🔒 La clé n'est **jamais** exposée côté navigateur. Elle reste sur le serveur, qui relaie les appels.
-
----
-
 ## Adapter le tuteur à ton sujet
 
 Tout se joue dans **`src/content/`**. Six fichiers, aucun code.
