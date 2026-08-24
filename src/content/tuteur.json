@@ -1,14 +1,14 @@
 {
   "basics": {
-    "name": "Geppetto, tuteur « comprendre la mécanique des Skills »",
+    "name": "Marceline, tutrice « réussir sa mayonnaise »",
     "email": "lecinquiemejour@gmail.com",
     "linkedin": "https://www.linkedin.com/company/le-5-%C3%A8me-jour/",
     "photo": "Geppetto.jpg",
     "bot_avatar": "Geppetto.jpg"
   },
   "suggestions": [
-    "Niveau Débutant",
-    "Niveau Intermédiaire",
-    "Niveau Avancé"
+    "Je débute complètement",
+    "J'ai déjà essayé, sans succès",
+    "Ma mayonnaise a tranché !"
   ]
 }

@@ -1,0 +1,48 @@
+<svg width="100%" viewBox="0 0 680 250" role="img" xmlns="http://www.w3.org/2000/svg">
+<title>Ce qui se passe dans le bol : de deux liquides séparés à une émulsion</title>
+<desc>À gauche, l'huile forme une couche au-dessus du jaune. À droite, après avoir été versée goutte à goutte et fouettée, elle est fractionnée en gouttelettes dispersées et séparées.</desc>
+<style>
+  text{font-family:'Segoe UI',Helvetica,Arial,sans-serif;fill:#3D3B36}
+  .ttl{font-size:14px;font-weight:600}
+  .lbl{font-size:12px;font-weight:600}
+  .ts{font-size:11px;fill:#6F6C63}
+  .bowl{fill:none;stroke:#9A978E;stroke-width:1.2}
+  .oil{fill:#F6DCCF;stroke:#DCA888;stroke-width:.8}
+  .yolk{fill:#ECEAE3;stroke:#CFCBC0;stroke-width:.8}
+  .arrow{stroke:#9A978E;stroke-width:1.2;fill:none}
+</style>
+
+<text class="ttl" x="20" y="26">Une émulsion, c'est de l'huile découpée en gouttelettes</text>
+
+<!-- BOL GAUCHE -->
+<clipPath id="cutL"><path d="M75 80 L245 80 L228 172 Q160 196 92 172 Z"/></clipPath>
+<g clip-path="url(#cutL)">
+  <rect class="yolk" x="70" y="130" width="180" height="70"/>
+  <rect class="oil" x="70" y="76" width="180" height="54"/>
+</g>
+<path class="bowl" d="M75 80 L245 80 L228 172 Q160 196 92 172 Z"/>
+<text class="lbl" x="160" y="212" text-anchor="middle">Sans fouetter</text>
+<text class="ts"  x="160" y="230" text-anchor="middle">l'huile flotte en une seule masse</text>
+
+<!-- FLECHE -->
+<line class="arrow" x1="278" y1="128" x2="398" y2="128"/>
+<path class="arrow" d="M390 122 L400 128 L390 134"/>
+<text class="ts" x="338" y="112" text-anchor="middle">on verse goutte à goutte</text>
+<text class="ts" x="338" y="152" text-anchor="middle">et on fouette</text>
+
+<!-- BOL DROIT -->
+<clipPath id="cutR"><path d="M435 80 L605 80 L588 172 Q520 196 452 172 Z"/></clipPath>
+<g clip-path="url(#cutR)">
+  <rect class="yolk" x="430" y="76" width="180" height="124"/>
+  <g class="oil">
+    <circle cx="466" cy="100" r="7"/><circle cx="492" cy="118" r="6"/><circle cx="520" cy="97"  r="8"/>
+    <circle cx="551" cy="115" r="6"/><circle cx="577" cy="99"  r="7"/><circle cx="470" cy="136" r="6"/>
+    <circle cx="503" cy="146" r="8"/><circle cx="534" cy="134" r="6"/><circle cx="565" cy="145" r="7"/>
+    <circle cx="590" cy="126" r="6"/><circle cx="519" cy="168" r="6"/><circle cx="551" cy="165" r="5"/>
+    <circle cx="487" cy="168" r="5"/>
+  </g>
+</g>
+<path class="bowl" d="M435 80 L605 80 L588 172 Q520 196 452 172 Z"/>
+<text class="lbl" x="520" y="212" text-anchor="middle">Émulsion réussie</text>
+<text class="ts"  x="520" y="230" text-anchor="middle">des milliers de gouttelettes qui se gênent</text>
+</svg>

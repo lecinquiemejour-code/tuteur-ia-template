@@ -1,0 +1,72 @@
+<svg width="100%" viewBox="0 0 680 268" role="img" xmlns="http://www.w3.org/2000/svg">
+<title>La règle de la température : les ingrédients doivent être au même niveau</title>
+<desc>À gauche, un jaune sorti du réfrigérateur à 4 degrés et une huile à 20 degrés : l'écart de température empêche l'émulsion de prendre. À droite, les deux ingrédients à 20 degrés : l'émulsion prend.</desc>
+<style>
+  text{font-family:'Segoe UI',Helvetica,Arial,sans-serif;fill:#3D3B36}
+  .ttl{font-size:14px;font-weight:600}
+  .hd{font-size:12px;font-weight:600}
+  .ts{font-size:11px;fill:#6F6C63}
+  .tmp{font-size:13px;font-weight:600}
+  .card{fill:#FFFFFF;stroke:#CFCBC0;stroke-width:.9}
+  .tube{fill:#ECEAE3;stroke:#9A978E;stroke-width:.8}
+  .cold{fill:#C9D6DE}
+  .warm{fill:#DCA888}
+  .bad{fill:#F4F2EC;stroke:#CFCBC0;stroke-width:.8}
+  .good{fill:#F6DCCF;stroke:#DCA888;stroke-width:.8}
+  .op{font-size:20px;font-weight:600;fill:#9A978E}
+</style>
+
+<text class="ttl" x="20" y="26">Tout doit être à la même température, sinon l'émulsion peine</text>
+
+<!-- ================= GAUCHE ================= -->
+<rect class="card" x="34" y="50" width="112" height="106" rx="6"/>
+<rect class="tube" x="55" y="66" width="9" height="36" rx="4.5"/>
+<rect class="cold" x="56.5" y="92" width="6" height="10"/>
+<circle class="cold" cx="59.5" cy="108" r="7"/>
+<circle cx="59.5" cy="108" r="7" fill="none" stroke="#9A978E" stroke-width=".8"/>
+<text class="tmp" x="80" y="90">4 °C</text>
+<text class="hd"  x="90" y="130" text-anchor="middle">Jaune d'œuf</text>
+<text class="ts"  x="90" y="146" text-anchor="middle">sorti du frigo</text>
+
+<text class="op" x="172" y="110" text-anchor="middle">≠</text>
+
+<rect class="card" x="198" y="50" width="112" height="106" rx="6"/>
+<rect class="tube" x="219" y="66" width="9" height="36" rx="4.5"/>
+<rect class="warm" x="220.5" y="78" width="6" height="24"/>
+<circle class="warm" cx="223.5" cy="108" r="7"/>
+<circle cx="223.5" cy="108" r="7" fill="none" stroke="#9A978E" stroke-width=".8"/>
+<text class="tmp" x="244" y="90">20 °C</text>
+<text class="hd"  x="254" y="130" text-anchor="middle">Huile</text>
+<text class="ts"  x="254" y="146" text-anchor="middle">ambiante</text>
+
+<rect class="bad" x="34" y="176" width="276" height="58" rx="6"/>
+<text class="hd" x="172" y="200" text-anchor="middle">L'émulsion peine, ou ne prend pas</text>
+<text class="ts" x="172" y="220" text-anchor="middle">le froid ralentit la lécithine et épaissit l'huile</text>
+
+<!-- ================= DROITE ================= -->
+<rect class="card" x="370" y="50" width="112" height="106" rx="6"/>
+<rect class="tube" x="391" y="66" width="9" height="36" rx="4.5"/>
+<rect class="warm" x="392.5" y="78" width="6" height="24"/>
+<circle class="warm" cx="395.5" cy="108" r="7"/>
+<circle cx="395.5" cy="108" r="7" fill="none" stroke="#9A978E" stroke-width=".8"/>
+<text class="tmp" x="416" y="90">20 °C</text>
+<text class="hd"  x="426" y="130" text-anchor="middle">Jaune d'œuf</text>
+<text class="ts"  x="426" y="146" text-anchor="middle">sorti 30 min avant</text>
+
+<text class="op" x="508" y="110" text-anchor="middle">=</text>
+
+<rect class="card" x="534" y="50" width="112" height="106" rx="6"/>
+<rect class="tube" x="555" y="66" width="9" height="36" rx="4.5"/>
+<rect class="warm" x="556.5" y="78" width="6" height="24"/>
+<circle class="warm" cx="559.5" cy="108" r="7"/>
+<circle cx="559.5" cy="108" r="7" fill="none" stroke="#9A978E" stroke-width=".8"/>
+<text class="tmp" x="580" y="90">20 °C</text>
+<text class="hd"  x="590" y="130" text-anchor="middle">Huile</text>
+<text class="ts"  x="590" y="146" text-anchor="middle">ambiante</text>
+
+<rect class="good" x="370" y="176" width="276" height="58" rx="6"/>
+<text class="hd" x="508" y="200" text-anchor="middle">L'émulsion prend</text>
+<text class="ts" x="508" y="220" text-anchor="middle">c'est le geste le plus rentable, et le plus oublié</text>
+
+<text class="ts" x="340" y="256" text-anchor="middle">Peu importe la température exacte : c'est l'écart entre les deux qui pose problème.</text>
+</svg>

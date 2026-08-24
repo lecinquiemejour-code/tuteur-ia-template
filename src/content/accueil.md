@@ -1,13 +1,13 @@
-Bonjour 👋 Je suis **{{TUTEUR_NOM}}**, ton tuteur interactif.
+Bonjour 👋 Je suis **{{TUTEUR_NOM}}**.
 
-Mon rôle est de t'expliquer simplement, sans jargon inutile, ce qui se passe « sous le capot » lorsque Claude utilise ses compétences (*skills*) et gère sa *fenêtre de contexte*.
+La mayonnaise a une réputation de plat capricieux. C'est faux : elle obéit à trois règles précises, et dès qu'on les connaît, elle réussit à tous les coups.
 
-Je m'appuie sur des analogies et des schémas, et j'avance à ton rythme.
+Je t'explique le pourquoi avant le comment, avec des schémas, et j'avance à ton rythme.
 
-> **📊 Pour commencer, quel est ton niveau sur ce sujet ?**
-> 
-> *   **Débutant** : Tu découvres le sujet, tu veux des analogies simples et pas de jargon technique.
-> *   **Intermédiaire** : Tu connais déjà l'IA et tu veux comprendre l'usage concret des skills.
-> *   **Avancé** : Tu veux entrer dans les détails bas niveau (tokens de contrôle, architecture, etc.).
+> **🥚 Pour commencer, où en es-tu ?**
+>
+> *   **Je débute complètement** : tu n'en as jamais fait, on part de zéro.
+> *   **J'ai déjà essayé, sans succès** : on va comprendre ce qui a coincé.
+> *   **Ma mayonnaise a tranché !** : urgence, on file au rattrapage.
 
-*Sélectionne ton niveau parmi les suggestions rapides ci-dessous ou écris-le moi directement !*
+*Choisis ci-dessous ou dis-le-moi directement !*

@@ -1,24 +1,17 @@
-## RESSOURCES PRATIQUES & EXERCICES
+## RESSOURCES PRATIQUES
 
-Retrouvez ici les guides d'installation officiels du skill ainsi que des exercices pratiques pour tester vos connaissances.
-
----
-
-### Guide d'installation rapide (claude.ai)
-**[Dépôt Officiel GitHub](https://github.com/lecinquiemejour-code/mecanique-des-skills)**
-
-1. **Téléchargez** le fichier ZIP du dépôt (en cliquant sur `Code` → `Download ZIP` sur GitHub).
-2. **Ouvrez Claude** et allez dans *Customize (Personnaliser)* → *Compétences (Skills)* → *Create skill* → *Upload a skill*.
-3. **Téléversez** l'archive ZIP (ou le fichier `.skill` qui n'est qu'un ZIP renommé).
-4. **Activez** le skill en basculant l'interrupteur général sur **ON**.
-*   *Note de sécurité* : Ne téléversez que des skills provenant de sources de confiance car ils peuvent exécuter des commandes dans ton environnement.
+Deux ressources pour aller plus loin, une fois le cours terminé.
 
 ---
 
-### Installation avancée (Claude Code & API)
-**[Documentation technique](https://github.com/lecinquiemejour-code/mecanique-des-skills#dans-claude-code)**
+### Comprendre les émulsions en cuisine
+**[Hervé This, la gastronomie moléculaire](https://www.inrae.fr/)**
 
-*   **Claude Code** : Vous pouvez installer le skill localement avec la commande :
-    `git clone https://github.com/lecinquiemejour-code/mecanique-des-skills.git ~/.claude/skills/mecanique-des-skills`
-*   **Via l'API Claude** : En utilisant l'endpoint des skills `/v1/skills` pour charger le dossier directement.
-*   **Intérêt** : C'est le principe de portabilité des Agent Skills : *on écrit une fois, on exécute partout*.
+Les travaux d'Hervé This à l'INRAE ont démonté un grand nombre de croyances culinaires, dont plusieurs concernant la mayonnaise. À lire si le « pourquoi » t'a plu autant que le « comment ».
+
+---
+
+### Aller plus loin : les sauces filles
+**[Les dérivés de la mayonnaise](https://fr.wikipedia.org/wiki/Mayonnaise)**
+
+Une fois la mayonnaise maîtrisée, l'aïoli, la rouille, la sauce tartare et la gribiche ne sont plus que des variations. Le mécanisme est identique, seuls les aromates changent.
