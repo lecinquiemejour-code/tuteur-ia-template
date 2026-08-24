@@ -105,7 +105,7 @@ netlify/functions/    ← la fonction serveur en production
 _ressources-cours/    ← dépose ici ta matière première (PDF, notes…)
 ```
 
-Les autres documents : [`ROADMAP.md`](ROADMAP.md) (évolutions envisagées), [`SPEC_SECURITE.md`](SPEC_SECURITE.md) (les défenses en place), [`ABONNEMENTS_ET_LIMITES.md`](ABONNEMENTS_ET_LIMITES.md) (quotas et coûts), [`RESET-ENVIRONNEMENT.md`](RESET-ENVIRONNEMENT.md) (repartir de zéro).
+Les autres documents : [`ROADMAP.md`](ROADMAP.md) (évolutions envisagées), [`ABONNEMENTS_ET_LIMITES.md`](ABONNEMENTS_ET_LIMITES.md) (quotas et coûts), [`RESET-ENVIRONNEMENT.md`](RESET-ENVIRONNEMENT.md) (repartir de zéro).
 
 ---
 
