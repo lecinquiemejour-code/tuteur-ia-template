@@ -896,4 +896,174 @@ fichier dont depend toute la qualite du tuteur. Un module bacle ici produira
 des reponses vagues pendant toute la vie du projet.
 -->
 
+---
+
+### 6.3 — Donner un visage à ton tuteur (`tuteur.json`)
+
+Ton programme est écrit. Ton tuteur a maintenant besoin d'une identité.
+
+Ce fichier tient en quelques lignes et contient tout ce que le visiteur voit en haut de la page :
+
+| Réglage | Ce que c'est |
+|---|---|
+| `name` | Le nom de ton tuteur, affiché en titre et dans l'onglet du navigateur |
+| `email` | Ton contact, que le tuteur peut donner |
+| `linkedin` | Ton lien professionnel, ou toute autre page de contact |
+| `photo` | L'image affichée en haut de la page |
+| `bot_avatar` | L'image affichée à côté de chaque réponse (souvent la même) |
+| `suggestions` | Les boutons de réponse rapide sous le message d'accueil |
+
+- **Action** : dis-moi comment tu veux appeler ton tuteur, je m'en occupe.
+
+**Pour son image :**
+
+- **Action** : glisse ton fichier dans le dossier **`public/`** (ex : `public/mon-tuteur.jpg`).
+- **Action** : dis-moi le nom exact du fichier, et je mets à jour `photo` et `bot_avatar`.
+
+> [!IMPORTANT]
+> **La règle d'or :** tout ce que le visiteur doit voir va dans **`public/`**. Pense à `public/` comme la **vitrine** de ton site, et à `src/` comme l'**arrière-boutique**.
+> Peu importe l'extension — `.jpg`, `.png`, `.webp` fonctionnent toutes.
+
+> [!TIP]
+> **L'image est affichée en rond.** Évite un visuel dont les bords portent de l'information : ils seront rognés. Une photo, un dessin, un logo, une illustration générée par IA, tout fonctionne.
+
+---
+
+### 6.4 — Régler son caractère (`prompt-systeme.md`)
+
+Ce fichier définit **comment** ton tuteur enseigne, là où `programme.md` définit **ce qu'**il enseigne.
+
+Il est découpé en zones :
+
+- 🔒 **Les zones verrouillées** contiennent les règles de sécurité et de format. Elles protègent ton tuteur contre les visiteurs qui essaieraient de le détourner. On n'y touche pas.
+- ✏️ **Les zones à personnaliser** contiennent son identité, son ton, sa pédagogie et son périmètre.
+
+Ce qu'on va y régler ensemble :
+
+**Son identité et sa mission** — qui il est, pour qui, et avec quelle intention.
+
+**Son ton** — bienveillant et encourageant ? direct et efficace ? exigeant ? Un tuteur pour des lycéens et un tuteur pour des ingénieurs ne parlent pas pareil.
+
+**Ses niveaux** — le template propose trois niveaux (Débutant, Intermédiaire, Avancé). Tu peux les renommer, les réduire à deux, ou supprimer complètement le mécanisme si ton public est homogène.
+
+**Son périmètre** — la liste des sujets qu'il accepte de traiter. Elle doit refléter les modules de ton programme.
+
+> [!IMPORTANT]
+> **Ne supprime pas les règles de sécurité.** Elles empêchent un visiteur mal intentionné de faire dire n'importe quoi à ton tuteur — ce qui, sur un outil que tu montres à des apprenants ou à des clients, se paie cher. Elles sont génériques : elles fonctionnent quel que soit ton sujet.
+
+---
+
+### 6.5 — Sa première phrase (`accueil.md`)
+
+C'est le seul message que l'apprenant voit **avant** d'écrire quoi que ce soit. Il fixe le ton et pose la première question.
+
+Le message d'accueil du template suit une structure qui marche bien :
+
+1. Qui je suis, en une phrase
+2. De quoi on va parler, et pourquoi ça vaut le détour
+3. Comment je travaille (une phrase sur ta méthode)
+4. **Une question d'entrée**, avec deux ou trois options
+
+> [!IMPORTANT]
+> **Les boutons doivent correspondre aux options.** Les boutons de réponse rapide viennent de `suggestions` dans `tuteur.json`. Si ton message d'accueil propose « Débutant / Confirmé » mais que les boutons disent « Niveau 1 / Niveau 2 », l'apprenant hésite dès la première seconde. Je vérifie systématiquement la cohérence entre les deux.
+
+---
+
+### 6.6 — Ses ressources (`ressources.md`)
+
+Les liens et documents que ton tuteur pourra recommander — **et uniquement ceux-là**. Il ne connaît pas le web, il ne connaît que ce fichier.
+
+- Documentation officielle, articles de référence, exercices
+- Un document à télécharger : dépose-le dans `public/` et donne son adresse sous la forme `/mon-document.pdf`
+
+> [!TIP]
+> **Rien à mettre ?** Une seule ligne suffit : « Aucune ressource externe pour ce cours. » Ton tuteur fonctionnera normalement.
+
+---
+
+### 6.7 — Ses schémas (`illustrations.md`)
+
+Un bon schéma vaut trois paragraphes. Ton tuteur peut en afficher au bon moment, agrandissables d'un clic dans un volet latéral.
+
+Ça se fait en **deux gestes, et il faut les deux** :
+
+1. **Déposer** le fichier image dans `public/assets/`
+2. **Le déclarer** dans `illustrations.md`, en précisant à quel module il correspond
+
+> [!WARNING]
+> **Une image déposée mais non déclarée ne s'affichera jamais.** C'est le piège le plus courant du projet : le fichier est bien là, tout semble correct, et pourtant rien n'apparaît. Le tuteur n'affiche que ce qui figure dans le catalogue.
+
+> [!TIP]
+> **Tu n'as pas de schémas ?** Deux options :
+> - **Demande-moi de les créer.** Le format SVG est du texte : je peux en générer directement à partir de ton contenu, et les retoucher autant de fois que nécessaire. Un schéma simple et lisible vaut mieux qu'une belle image floue.
+> - **Laisse le catalogue vide.** Ton tuteur fonctionnera très bien sans illustrations.
+
+---
+
+### 6.8 — Le rituel du « GO »
+
+Pour chaque modification, je vais :
+
+1. T'expliquer ce que je compte faire, et pourquoi
+2. Attendre ton **« GO »** pour exécuter
+3. Te montrer le résultat
+
+Ce rituel n'est pas une formalité : c'est ce qui fait que tu restes le pilote. Tu peux dire non, demander une autre approche, ou revenir en arrière à tout moment.
+
+---
+
+### 6.9 — Validation finale de tes contenus
+
+Avant de passer à la prévisualisation, nous allons vérifier ensemble que tout est complet et correct.
+
+Je vais te montrer successivement le contenu des six fichiers, dans cet ordre :
+
+1. `programme.md` — ton cours
+2. `tuteur.json` — son identité
+3. `prompt-systeme.md` — son caractère et son périmètre
+4. `accueil.md` — sa première phrase
+5. `ressources.md` — ses ressources
+6. `illustrations.md` — ses schémas
+
+C'est le moment idéal pour repérer une information oubliée ou mal interprétée pendant l'extraction.
+
+---
+
+### 6.10 — Tester ton tuteur en local
+
+- **Action** : dis-moi **« Lance la prévisualisation »** et je démarre le serveur local pour toi.
+- **Action** : ouvre ton navigateur (Chrome, Firefox…) et va sur 👉 **[http://localhost:3000](http://localhost:3000)**
+- **Résultat** : ton tuteur s'affiche dans ton vrai navigateur, et si tu m'as donné ta clé API, il répond déjà.
+
+**Ce qu'il faut vérifier :**
+
+| À tester | Ce que tu dois voir |
+|---|---|
+| Le nom et l'image en haut | Ceux que tu as choisis, pas ceux de la démonstration |
+| Les boutons sous l'accueil | Ceux de ton `tuteur.json` |
+| Clique sur un bouton | Le tuteur répond et affiche le sommaire de tes modules |
+| Pose une question de ton cours | Il répond à partir de ton programme |
+| Pose une question hors sujet | Il refuse poliment et te ramène au programme |
+| Demande une notion illustrée | Le schéma s'affiche |
+
+> [!TIP]
+> **Pourquoi un vrai navigateur ?** Le navigateur intégré d'Antigravity peut avoir des comportements différents. En utilisant Chrome ou Firefox, tu vois ton tuteur exactement comme tes futurs apprenants le verront.
+
+> [!WARNING]
+> **Une modification qui n'apparaît pas ?** Les fichiers de `src/content/` sont lus **au démarrage du serveur**. Après chaque modification, il faut l'arrêter et le relancer. Si tu changes un module et que le tuteur continue de réciter l'ancien, c'est presque toujours ça — dis-moi « Relance le serveur » et je m'en occupe.
+
+<!-- [CHECKPOINT ÉTAPE 6]
+Question a poser a l'utilisateur avant de passer a l'Etape 7 :
+"Tes six fichiers de contenu sont valides, et ton tuteur repond correctement
+dans ton navigateur ? ✅
+Dis-moi 'Tout est pret !' et on passe a la relecture 👀"
+
+Ne valide pas ce checkpoint si l'utilisateur n'a pas reellement ouvert
+localhost:3000 dans son navigateur et teste au moins une question. C'est le
+premier contact avec le resultat : le sauter reporte tous les problemes a
+l'etape de mise en ligne, ou ils sont bien plus penibles a diagnostiquer.
+-->
+
+---
+
 <!-- LES ÉTAPES 1 À 9 SERONT AJOUTÉES ICI, UNE PAR UNE -->
