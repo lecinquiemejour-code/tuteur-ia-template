@@ -308,4 +308,75 @@ Dis-moi 'C'est prêt !' et on passe à la récupération du projet !"
 
 ---
 
+<!--
+================================================================
+ÉTAPE 2 — CRÉATION DU DÉPÔT DEPUIS LE TEMPLATE
+================================================================
+Ne présente cette étape qu'après validation du CHECKPOINT Étape 1.
+Guide l'utilisateur clic par clic, avec patience.
+================================================================
+-->
+
+## 📋 Étape 2 : Créer ton propre projet (depuis le Template)
+
+On va créer **ton propre projet** sur GitHub à partir d'un modèle prêt à l'emploi.
+
+---
+
+### 📝 Comprendre le template (30 secondes)
+
+Imagine un **modèle Word** pour une lettre de motivation 📄. Tu ouvres le modèle, tu fais « Enregistrer sous… » avec ton propre nom, et tu obtiens **ton** document à toi. Le modèle original reste intact, et ton document est **100 % indépendant**.
+
+Sur GitHub, c'est exactement la même chose :
+
+- Le **template** est le modèle de départ. Tu ne le modifies pas.
+- Ton **nouveau dépôt** est ta copie personnelle, rangée dans TON compte GitHub.
+
+Et ce que tu récupères n'est pas une coquille vide : c'est un projet qui **fonctionne déjà**. Si tu le lançais tel quel, tu obtiendrais Geppetto, le tuteur de démonstration qui enseigne la mécanique des Skills de Claude. À l'Étape 6, tu remplaceras son contenu par le tien.
+
+### Créer ton projet pas à pas
+
+1. **Action** : ouvre ton navigateur et va sur cette page :
+   👉 [github.com/lecinquiemejour-code/tuteur-ia-template](https://github.com/lecinquiemejour-code/tuteur-ia-template)
+
+2. **Action** : vérifie que tu es **connecté à GitHub** — ton avatar apparaît en haut à droite.
+   - Si tu ne l'es pas, clique sur **Sign in** en haut à droite.
+
+3. **Action** : clique sur le bouton vert **« Use this template »** 🟢, en haut à droite de la page, puis sur **« Create a new repository »**.
+
+4. **Action** : sur la page qui s'affiche :
+   - **Repository name** : un nom qui décrit ton tuteur, par exemple `tuteur-photosynthese` ou `tuteur-droit-du-travail`
+   - **Description** : tu peux laisser vide
+   - Coche **Private** — ton code reste privé, seul le site déployé sera public
+   - Laisse **« Include all branches »** décoché
+   - Clique sur le bouton vert **« Create repository »**
+
+5. **Résultat attendu** : tu arrives sur la page de TON nouveau dépôt. Vérifie l'URL en haut de ton navigateur :
+   ```
+   github.com/TON-PSEUDO/tuteur-mon-sujet
+   ```
+   Tu devrais voir tous les fichiers du template déjà présents : `README.md`, `TUTORIAL.md`, le dossier `src/`, le dossier `public/`…
+
+> [!TIP]
+> **Comment savoir si ça a marché ?** Tu vois TON pseudo dans l'URL, et les fichiers sont là. C'est ton projet à toi ! 🎉
+
+> [!NOTE]
+> **Pourquoi « Use this template » plutôt que « Fork » ?**
+> Un *fork* garde un lien de parenté avec le projet d'origine et hérite de tout son historique. Un template t'en donne une copie propre, avec un historique vierge qui démarre à toi. C'est bien ce que tu veux pour un projet qui devient le tien.
+
+> [!IMPORTANT]
+> **Note bien l'URL de ton dépôt**, tu en auras besoin à l'Étape 5 pour récupérer les fichiers sur ton ordinateur. Le plus simple : laisse cet onglet ouvert.
+
+<!-- [CHECKPOINT ÉTAPE 2]
+Question à poser avant de passer à l'Étape 3 :
+"Est-ce que tu vois bien TON pseudo dans l'URL (github.com/TON-PSEUDO/tuteur-mon-sujet) ?
+Et est-ce que les fichiers (README.md, TUTORIAL.md, le dossier src/...) apparaissent sur la page ? 📁
+Dis-moi 'C'est bon !' et on passe à la configuration de tes règles !"
+→ Si non, guide-le : verifier la connexion GitHub, puis refaire la creation depuis le template.
+→ Si le bouton "Use this template" n'apparait pas, c'est presque toujours qu'il n'est
+  pas connecte a GitHub. Fais-le verifier en premier.
+-->
+
+---
+
 <!-- LES ÉTAPES 1 À 9 SERONT AJOUTÉES ICI, UNE PAR UNE -->
