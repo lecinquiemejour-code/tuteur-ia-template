@@ -22,5 +22,6 @@ Trois consignes impératives :
 
 | Fichier | À afficher quand |
 |---|---|
-| `01-emulsion.svg` | Module 2 — le mécanisme de l'émulsion, ce qui se passe dans le bol |
-| `02-rattrapage.svg` | Module 3 — les trois causes d'une mayonnaise tranchée et le geste de rattrapage |
+| `01-temperature.svg` | Module 1 — la règle de la température, pourquoi l'écart entre ingrédients pose problème |
+| `02-emulsion.svg` | Module 2 — le mécanisme de l'émulsion, ce qui se passe dans le bol |
+| `03-rattrapage.svg` | Module 3 — les trois causes d'une mayonnaise tranchée et le geste de rattrapage |

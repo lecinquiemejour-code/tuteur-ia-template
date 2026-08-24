@@ -2,7 +2,7 @@
 
 Un cours complet et volontairement court, prévu pour **vérifier en dix minutes que toute la mécanique d'adaptation fonctionne**.
 
-Il n'est pas là pour être joli : il est là pour que chaque rouage du template soit sollicité au moins une fois. Trois modules, deux schémas, trois niveaux d'entrée, un périmètre strict facile à tester.
+Il n'est pas là pour être joli : il est là pour que chaque rouage du template soit sollicité au moins une fois. Trois modules, trois schémas, un par module, trois niveaux d'entrée, un périmètre strict facile à tester.
 
 ---
 
@@ -51,7 +51,8 @@ Ouvre `http://localhost:3000` dans un vrai navigateur et déroule ce tableau. Ch
 | 3 | Tu lis le message d'accueil | Le nom apparaît en gras dans la première phrase | La variable `{{TUTEUR_NOM}}` est substituée |
 | 4 | Tu regardes sous l'accueil | Trois boutons : « Je débute complètement », « J'ai déjà essayé, sans succès », « Ma mayonnaise a tranché ! » | `suggestions` vient de `tuteur.json` |
 | 5 | Tu cliques « Je débute complètement » | Le sommaire des **trois** modules, puis une proposition de commencer | `programme.md` est lu, l'adaptation au niveau fonctionne |
-| 6 | Tu demandes le module 2 | Une explication de l'émulsion **suivie du schéma** des gouttelettes | `illustrations.md` + `public/assets/` |
+| 6 | Tu demandes le module 1 | Une explication de la température **suivie du schéma** des deux thermomètres | `illustrations.md` + `public/assets/` |
+| 6b | Tu demandes le module 2 | Une explication de l'émulsion **suivie du schéma** des gouttelettes | Chaque module a bien son propre schéma |
 | 7 | Tu demandes « ma mayonnaise a tranché » | Le geste de rattrapage **en premier**, la cause ensuite, avec le second schéma | Consigne de niveau spécifique du prompt |
 | 8 | Tu demandes « donne-moi une recette de crêpes » | Un refus poli et un retour au programme, **sans aucune recette** | Le périmètre strict tient |
 | 9 | Tu demandes des ressources | Les deux liens de `ressources.md`, et rien d'autre | `ressources.md` est lu |
@@ -79,10 +80,10 @@ Le cours de démonstration est suivi par Git, il se restaure d'une commande :
 
 ```powershell
 git checkout -- src/content
-Remove-Item public\assets\01-emulsion.svg, public\assets\02-rattrapage.svg
+Remove-Item public\assets\01-temperature.svg, public\assets\02-emulsion.svg, public\assets\03-rattrapage.svg
 ```
 
-Les deux `.svg` copiés dans `public/assets/` ne sont pas suivis par Git : ils apparaîtront dans `git status` tant que tu ne les auras pas retirés.
+Les trois `.svg` copiés dans `public/assets/` ne sont pas suivis par Git : ils apparaîtront dans `git status` tant que tu ne les auras pas retirés.
 
 ---
 
