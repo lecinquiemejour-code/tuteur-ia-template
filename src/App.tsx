@@ -5,7 +5,7 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import ReactMarkdown from 'react-markdown';
-import { Send, User, Bot, Loader2, Sparkles, ExternalLink, X, Mail, Linkedin, Printer, Download } from 'lucide-react';
+import { Send, User, Bot, Loader2, Sparkles, ExternalLink, X, Mail, Linkedin, Printer } from 'lucide-react';
 import { sendMessageToAI } from './services/ai';
 import tuteur from './content/tuteur.json';
 import greetingRaw from './content/accueil.md?raw';
@@ -13,10 +13,9 @@ import greetingRaw from './content/accueil.md?raw';
 // Remplace le placeholder {{USER_FULL_NAME}} par le vrai nom du JSON
 const greetingText = greetingRaw.replace(/\{\{USER_FULL_NAME\}\}/g, tuteur.basics.name);
 
-// Photos et PDF servis depuis public/, noms configurés dans identity.json
+// Images servies depuis public/, noms configurés dans tuteur.json
 const profilePhoto = `/${tuteur.basics.photo}`;
 const botAvatar = `/${tuteur.basics.bot_avatar}`;
-const ressourceLink = `/${tuteur.basics.ressource_a_telecharger}`;
 
 const BotAvatar = () => (
   <div className="flex-shrink-0 flex items-center justify-center w-10 h-10 rounded-full bg-white border border-gray-200 shadow-sm overflow-hidden p-[2px]">
@@ -214,18 +213,6 @@ export default function App() {
     }
   };
 
-  const handleDownload = (e: React.MouseEvent) => {
-    // Cette fonction force le téléchargement en créant un lien temporaire
-    // Cela évite que le navigateur n'ouvre simplement le PDF dans un nouvel onglet
-    e.preventDefault();
-    const link = document.createElement('a');
-    link.href = ressourceLink;
-    link.setAttribute('download', tuteur.basics.ressource_a_telecharger);
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  };
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     handleSend(input);
@@ -321,15 +308,6 @@ export default function App() {
           <span className="text-xs text-gray-400 font-mono py-1 px-2 bg-gray-50 rounded-md border border-gray-100 print:hidden">
             {APP_VERSION}
           </span>
-          <a
-            href={ressourceLink}
-            onClick={handleDownload}
-            className="p-2 text-gray-500 hover:text-indigo-600 hover:bg-indigo-50 rounded-full transition-colors cursor-pointer print:hidden"
-            title="Télécharger le Skill (.zip)"
-            aria-label="Télécharger le Skill"
-          >
-            <Download className="w-6 h-6" />
-          </a>
           <button
             onClick={handlePrint}
             className="p-2 text-gray-500 hover:text-indigo-600 hover:bg-indigo-50 rounded-full transition-colors cursor-pointer print:hidden"
