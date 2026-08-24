@@ -1172,4 +1172,195 @@ et on passe a la mise en ligne."
 
 ---
 
-<!-- LES ÉTAPES 1 À 9 SERONT AJOUTÉES ICI, UNE PAR UNE -->
+<!--
+================================================================
+ÉTAPE 8 — LE DÉPLOIEMENT
+================================================================
+Ne présente cette étape qu'après validation du CHECKPOINT Étape 7.
+Avant tout `git push`, vérifie l'authentification avec `gh auth status`.
+Si non connecté, guide l'utilisateur avec `gh auth login` (protocole
+HTTPS, navigateur).
+Le dépôt existe déjà (créé à l'Étape 2). Fais simplement `git add .`,
+`git commit` et `git push`.
+Après le déploiement Netlify, DEMANDE À L'UTILISATEUR de vérifier
+LUI-MÊME dans son navigateur que les images ET le tuteur fonctionnent
+sur le site en ligne. Ne vérifie PAS toi-même avec le navigateur intégré.
+================================================================
+-->
+
+## 🌍 Étape 8 : Mise au monde (Le Déploiement)
+
+Ton tuteur est prêt sur ton ordinateur. Il doit maintenant être accessible à tes apprenants, où qu'ils soient.
+
+### 8.0 — Vérifier ta connexion à GitHub
+
+Avant de publier quoi que ce soit, on s'assure que ton ordinateur est autorisé à envoyer du code vers GitHub.
+
+- **Action** : je vérifie automatiquement si tu es connecté. Si ce n'est pas le cas, je lance la procédure de connexion et je te guide pas à pas.
+
+> [!NOTE]
+> C'est une étape unique. Une fois connecté, tu n'auras plus à le refaire.
+
+### 8.1 — Rappel : ta clé API pour Netlify
+
+Tu as créé ta clé API à l'Étape 6.0 et elle fonctionne déjà en local. Pour que ton tuteur réponde aussi **en ligne**, il faudra la renseigner dans Netlify (voir l'étape 8.3, point 4).
+
+> [!TIP]
+> **Tu ne retrouves plus ta clé ?** Retourne sur [Google AI Studio](https://aistudio.google.com/) → **Get API key** pour la retrouver ou en créer une nouvelle.
+
+> [!WARNING]
+> **⚠️ Clé gratuite → clé payante : c'est le moment !**
+>
+> Ton tuteur va être utilisé par de **vrais apprenants**. Rappelle-toi le tableau de l'Étape 6.0 :
+> - En **gratuit** : lenteurs possibles aux heures de pointe, et Google peut lire les conversations
+> - En **payant** (quelques centimes par mois) : rapide, fiable, données privées
+>
+> Ce second point mérite réflexion si tes apprenants posent des questions qui les exposent — un élève en difficulté écrit parfois des choses personnelles à un tuteur.
+>
+> **Comment faire ?** Va sur [Google AI Studio](https://aistudio.google.com/) → paramètres de facturation → associe une carte bancaire (Pay-as-you-go). Ta clé API reste la même, seul le mode de facturation change.
+
+### 8.2 — Publier ton code sur GitHub
+
+Ton code est déjà lié à ton dépôt GitHub (celui créé à l'Étape 2). Il suffit d'envoyer tes modifications.
+
+- **Action** : dis-moi **« Pousse mon code ! »** et j'envoie tout vers GitHub.
+- **Résultat** : ton tuteur personnalisé est visible sur `github.com/TON-PSEUDO/tuteur-mon-sujet`. Garde cette adresse, on en a besoin juste après !
+
+### 8.3 — Mettre en ligne sur Netlify
+
+C'est le moment magique : ton tuteur devient accessible au monde entier 🌍
+
+1. **Action** : va sur ton compte [Netlify](https://app.netlify.com/) et connecte-toi.
+2. **Action** : clique sur **Add new site** → **Import an existing project** → **GitHub**.
+3. **Action** : Netlify te montre tes dépôts GitHub. **Sélectionne celui qu'on vient de créer** (ex : `tuteur-photosynthese`).
+   - ⚠️ Si tu ne le vois pas, clique sur *« Configure the Netlify app on GitHub »* pour l'autoriser.
+4. **Action** : sur la page de configuration, ajoute la **variable d'environnement** :
+   - Clique sur **Add environment variables** → **New variable**
+   - **Key** : `API_KEY`
+   - **Value** : [colle ta clé API Google AI Studio]
+5. **Action** : clique sur **Deploy site**.
+6. **Résultat 🎉** : après 1 à 2 minutes, Netlify te donne une URL. **Ton tuteur est en ligne !**
+
+> [!TIP]
+> **Vérification post-déploiement :** ouvre ton site **dans un vrai navigateur** et vérifie ces 3 points :
+> 1. 📸 L'**image** de ton tuteur s'affiche
+> 2. 🤖 Il **répond** (pose-lui une question de ton cours !)
+> 3. 🖼️ Les **schémas** apparaissent (demande-lui une notion illustrée)
+
+> [!IMPORTANT]
+> **Dépôt privé = bonne pratique 🔒** Ton site est public grâce à Netlify, mais ton **code source** n'a pas besoin d'être visible. Si ton dépôt GitHub est encore public :
+> 1. Va sur la page de ton dépôt → **Settings**
+> 2. Descends dans la section **Danger Zone**
+> 3. Clique sur **Change visibility** → choisis **Private**
+> Netlify continuera de fonctionner normalement, il garde son accès.
+
+<!-- [DÉPANNAGE POST-DÉPLOIEMENT — GUIDE POUR L'IA]
+Si la vérification post-déploiement échoue, diagnostique avec ce tableau :
+
+| Symptôme | Cause probable | Solution |
+|---|---|---|
+| 📸 Image cassée (icône brisée) | Fichier pas dans `public/` ou nom incorrect dans `tuteur.json` | Vérifier que le fichier est bien dans `public/` et que `photo` et `bot_avatar` correspondent exactement, extension comprise |
+| 🤖 Le tuteur ne répond pas | Variable `API_KEY` absente ou mal nommée dans Netlify | Netlify → Site settings → Environment variables → vérifier que la clé s'appelle exactement `API_KEY` |
+| 🖼️ Les schémas ne s'affichent pas | Fichiers absents de `public/assets/` ou non déclarés dans `illustrations.md` | Vérifier les DEUX : le fichier existe, ET il figure dans le catalogue |
+| Le tuteur récite l'ancien cours | Le déploiement date d'avant la dernière modification | Vérifier que le `git push` a bien eu lieu, puis Netlify → Deploys |
+| Le build Netlify échoue | Erreur dans les Netlify Functions ou dépendance manquante | Netlify → Deploys → cliquer sur le deploy en erreur → lire le log |
+
+Rassure toujours l'utilisateur : ces erreurs sont classiques et se corrigent en quelques clics.
+-->
+
+<!-- [CHECKPOINT ÉTAPE 8]
+Message à afficher après le déploiement réussi :
+"🎉 Ton tuteur est EN LIGNE ! Bravo !
+Avant de fêter ça, prenons 2 minutes pour découvrir comment le faire évoluer.
+Dis-moi 'On continue !' et je te présente la boucle vertueuse."
+-->
+
+---
+
+<!--
+================================================================
+ÉTAPE 9 — LA BOUCLE VERTUEUSE (PDCA)
+================================================================
+Ne présente cette étape qu'après validation du CHECKPOINT Étape 8.
+C'est l'étape finale. Accompagne avec enthousiasme !
+================================================================
+-->
+
+## 🔄 Étape 9 : La boucle vertueuse (le PDCA)
+
+Ton tuteur est en ligne — bravo ! 🎉 Mais ce n'est que le début.
+
+Un cours, ça vit. Tu vas découvrir des questions auxquelles il ne sait pas répondre, des explications qui ne passent pas, des notions à ajouter. C'est normal, et c'est même une bonne nouvelle : **tu vas apprendre de tes apprenants.**
+
+Bonne nouvelle numéro deux : tu as déjà tout ce qu'il faut. Les **RULES** (Étape 3) sont ton contrat de confiance avec l'IA, et le **PDCA** est ta méthode pour améliorer ton tuteur en continu.
+
+### 9.1 — Le PDCA, c'est quoi ?
+
+Le PDCA (Plan-Do-Check-Act) est une méthode d'amélioration continue inventée par Deming. En VibeCoding, chaque amélioration suit ce cycle :
+
+| Phase | Toi | L'IA |
+|-------|-----|------|
+| **P (Plan)** | Tu as une idée : *« Je veux ajouter un module sur les exceptions »* | — |
+| **D (Do)** | Tu me décris ce que tu veux | Je rédige, tu valides avec **« GO »** |
+| **C (Check)** | Tu vérifies en prévisualisation | Je pousse vers GitHub → Netlify met à jour (30-60 s) |
+| **A (Act)** | C'est bon ? → suite ! Pas parfait ? → on ajuste ! | Je corrige |
+
+### 9.2 — La boucle propre au tuteur : écouter les questions
+
+C'est la différence avec un site classique. Ton tuteur te renvoie de l'information sur ton propre cours.
+
+Quand un apprenant lui pose une question et qu'il répond *« je n'ai pas cette information dans le programme »*, ce n'est pas un échec du tuteur : **c'est un trou dans ton cours qui vient de se signaler tout seul.** Chaque refus est une suggestion d'amélioration.
+
+- **Action** : quand tu repères une question récurrente, dis-moi :
+  > *« Ajoute dans le module 3 une section sur [notion] : les apprenants la demandent souvent. »*
+
+Au bout de quelques semaines, ton cours couvre ce que les gens veulent vraiment savoir, et non ce que tu croyais qu'ils voulaient savoir.
+
+### 9.3 — Le réflexe de non-régression
+
+Après chaque mise à jour poussée en ligne, prends 30 secondes pour vérifier :
+
+1. 📸 L'**image** s'affiche
+2. 🤖 Le tuteur **répond**
+3. 🖼️ Les **schémas** apparaissent
+
+C'est la **non-régression** : s'assurer que ce qui marchait avant marche encore après. Si un des trois points est cassé, dis-le-moi — c'est généralement corrigé en deux minutes.
+
+### 9.4 — Exemples concrets
+
+Voici ce que tu peux faire à tout moment avec cette méthode :
+
+- **Corriger le contenu** : une erreur, une reformulation, un exemple plus parlant
+- **Enrichir le programme** : un module supplémentaire, un piège fréquent, une analogie
+- **Ajuster la pédagogie** : rendre le ton plus direct, raccourcir les réponses, ajouter un niveau
+- **Ajouter un schéma** : une notion qui reste abstraite mérite souvent une image
+
+> [!TIP]
+> **Magique ? Non, logique !**
+> Chaque fois que tu valides un changement, je « pousse » les fichiers vers GitHub, et Netlify reconstruit le site automatiquement. Ton tuteur ne sera jamais obsolète.
+
+> [!NOTE]
+> **Envie d'approfondir ?** Le document [Le cycle PDCA VibeCoding](Le%20cycle%20PDCA%20VibeCoding.md) détaille cette méthodologie et ses origines.
+
+<!-- [CHECKPOINT FINAL]
+Message de félicitations à afficher à l'utilisateur :
+"🎉 FÉLICITATIONS ! Tu as réussi !
+Tu as maintenant un tuteur pédagogique intelligent, accessible en ligne.
+Tu peux partager son URL avec tes apprenants dès maintenant.
+
+🔄 Et souviens-toi : je reste dans ton ordinateur, prêt à t'aider pour n'importe quelle
+modification. Un module à ajouter ? Une explication à revoir ? Dis-moi juste ce que tu
+veux changer, et on le fait ensemble en 2 minutes. 💪
+
+Bons cours !"
+-->
+
+---
+
+## 🎉 Félicitations !
+
+Tu as réussi. Tu as maintenant un tuteur pédagogique interactif, capable d'enseigner ton sujet à qui veut l'apprendre, à toute heure, à son rythme.
+
+Et tu as appris quelque chose en chemin : que collaborer avec une IA, ce n'est pas lui demander de faire à ta place, c'est lui dire ce que tu veux, vérifier, et recommencer.
+
+**N'oublie pas** : je reste dans ton ordinateur, prêt à t'aider pour la moindre modification. Bons cours ! 🎓
