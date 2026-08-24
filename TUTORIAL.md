@@ -28,8 +28,14 @@ s'adaptant au niveau de l'apprenant et en affichant des schémas au bon moment.
 Le template est livré avec un cours de démonstration (la mécanique des Skills
 de Claude) que l'utilisateur remplacera par le sien à l'Étape 6.
 
-Il n'a PAS besoin d'avoir un cours déjà écrit. Une idée de sujet suffit :
-tu l'aideras à le structurer.
+Scénario principal : l'utilisateur PART D'UN COURS EXISTANT (support PDF, notes,
+diaporama) qu'il dépose dans `_ressources-cours/` à l'Étape 1. À l'Étape 6, tu
+l'extrais avec pdftotext et tu pré-remplis `programme.md` en le découpant en
+modules. C'est l'exact équivalent de l'extraction d'un CV PDF.
+
+Scénario de repli seulement : s'il n'a vraiment aucun support, construis le
+programme avec lui en conversation. Ne prends jamais ce chemin sans avoir
+d'abord demandé s'il a quelque chose, même incomplet.
 
 ## GUIDAGE PÉDAGOGIQUE — Étapes 2 (Template), 3 (Rules), 4 (Outils) & 5 (Clone)
 
@@ -149,10 +155,12 @@ Les questions sont définies dans chaque étape avec le marqueur [CHECKPOINT].
 - S'il ne trouve pas un bouton → demande-lui de décrire ce qu'il voit à l'écran.
 - Si "ça ne marche pas" → demande "qu'est-ce qui s'affiche exactement ?"
 - S'il semble découragé → rassure-le : "C'est tout à fait normal à cette étape !"
-- S'il n'a pas d'idée de sujet à l'Étape 6 → ne le laisse pas bloqué. Pose-lui trois
-  questions : qu'est-ce que tu sais bien faire ? à qui tu l'expliques souvent ?
-  qu'est-ce qui te fait répéter la même explication ? Un bon sujet de tuteur naît
-  presque toujours d'une explication qu'on donne déjà régulièrement.
+- S'il arrive sans support de cours à l'Étape 6 → demande d'abord s'il n'a vraiment
+  RIEN : un mémo, un mail d'explication, des slides, un plan griffonné, une trame de
+  formation suffisent. Si c'est confirmé, construis le programme en conversation à
+  partir de trois questions : qu'est-ce que tu sais bien faire ? à qui tu l'expliques
+  souvent ? qu'est-ce qui te fait répéter la même explication ? Préviens-le que ce
+  chemin est plus long que de partir d'un support existant.
 
 ================================================================
 FIN DES INSTRUCTIONS DE RÔLE
@@ -181,8 +189,9 @@ FIN DES INSTRUCTIONS DE RÔLE
 > 5. ✅ **Google AI Studio** accessible (même compte Google) → tu y créeras ta **clé API**, le code secret qui permettra à ton tuteur de répondre — [aistudio.google.com](https://aistudio.google.com/)
 
 > [!NOTE]
-> **Tu n'as pas besoin d'avoir déjà écrit un cours.**
-> Une idée de sujet suffit. À l'Étape 6, je t'aiderai à le découper en modules et à rédiger le contenu. Si tu as déjà des supports (PDF, notes, diaporama), c'est un gain de temps, pas une obligation.
+> **Prépare ton cours existant.**
+> Ce tutoriel part de ce que tu as déjà : un support de cours, un diaporama, des notes, un mémo que tu envoies souvent. En PDF de préférence. À l'Étape 6, je le lis et je le découpe en modules pour toi, tu n'as pas à repartir d'une page blanche.
+> Rien d'écrit nulle part ? On pourra construire le programme ensemble en discutant, mais ce sera plus long.
 
 > [!WARNING]
 > **Ce tutoriel est conçu pour Windows.** Les commandes et chemins sont adaptés à Windows 10/11.
@@ -218,10 +227,84 @@ FIN DES INSTRUCTIONS DE RÔLE
 3. 🧭 **Étape 3** : Donner ses instructions à l'IA (les RULES)
 4. 🧰 **Étape 4** : Préparer ta boîte à outils
 5. 📥 **Étape 5** : Télécharger les fichiers (le Clone)
-6. 🎨 **Étape 6** : Concevoir et écrire ton cours
+6. 🎨 **Étape 6** : Transformer ton cours en tuteur
 7. 🔍 **Étape 7** : Relecture & affinage
 8. 🌍 **Étape 8** : Mise en ligne (le Déploiement)
 9. 🔄 **Étape 9** : La boucle vertueuse (le PDCA)
+
+---
+
+<!--
+================================================================
+ÉTAPE 1 — VÉRIFICATION DE L'ESPACE DE TRAVAIL
+================================================================
+Présente uniquement cette étape au démarrage du tutoriel.
+À la fin, pose le CHECKPOINT avant de passer à l'Étape 2.
+================================================================
+-->
+
+## 🛠️ Étape 1 : Vérifier ton espace de travail et rassembler ta matière
+
+Tu es dans Antigravity, sur ton dossier `TUTEUR-IA/` — parfait, on est au bon endroit ! Vérifions que tout est en place avant d'aller chercher le projet.
+
+### 1.1 — Vérifie la structure de TUTEUR-IA/
+
+> [!CAUTION]
+> **⚠️ Dossier synchronisé = problèmes garantis !**
+> Si ton dossier Documents est synchronisé par **OneDrive**, **Dropbox** ou **Google Drive**, `npm install` va planter.
+> **Solution :** crée ton dossier `TUTEUR-IA/` directement à la racine de ton disque : `C:\TUTEUR-IA`
+> (et ouvre CE dossier dans Antigravity, pas celui dans Documents).
+
+Ton dossier `TUTEUR-IA/` doit ressembler à ça :
+
+```
+C:\TUTEUR-IA/
+├── TUTORIAL.md              ← tu me lis ici, c'est bon ✅
+└── _ressources-cours/       ← à créer si pas encore fait
+```
+
+- **Action** : si le dossier `_ressources-cours/` n'existe pas encore, crée-le maintenant dans `TUTEUR-IA/`.
+
+### 1.2 — Rassemble ta matière dans `_ressources-cours/`
+
+C'est le moment de sortir ce que tu as déjà.
+
+**Ton tuteur ne partira pas d'une page blanche : il partira de ton cours.** À l'Étape 6, je lirai ce que tu déposes ici et je le découperai en modules pour toi. Plus tu mets de matière maintenant, moins tu écriras plus tard.
+
+Glisse dans ce dossier tout ce que tu as sous la main :
+
+| Ce que tu déposes | Exemple de nom | Ce que ça deviendra |
+|---|---|---|
+| **Ton cours ou ton support** (PDF) | `mon-cours.pdf` | `programme.md`, le cœur du tuteur |
+| Ton diaporama, exporté en PDF | `slides.pdf` | Complète le programme |
+| Tes notes, mémos, FAQ | `notes.txt` | Enrichit les modules et les pièges fréquents |
+| L'image de ton tuteur | `avatar.jpg` | Sa tête, en haut de page et à côté de ses réponses |
+| Tes schémas existants | `schema-1.png`, `schema-2.svg`… | Les illustrations affichées pendant le cours |
+| Tes liens utiles | `liens.txt` | `ressources.md` |
+
+> [!IMPORTANT]
+> **Le PDF est le format roi.** Je sais en extraire le texte directement, sans que tu aies à copier-coller quoi que ce soit.
+> Ton cours est dans **Word ou PowerPoint** ? Ouvre-le, puis *Fichier → Enregistrer sous → PDF*. Trente secondes, et je pourrai le lire.
+> Il est dans un **mail, un wiki, un Google Doc** ? Copie-colle le texte dans un fichier `.txt` déposé ici, ça suffit largement.
+
+> [!TIP]
+> **Pas de panique si tu n'as pas tout !** Tu pourras compléter plus tard.
+> L'essentiel pour démarrer : **ton support de cours** et **une image pour ton tuteur**.
+> Pour l'image, une photo, un dessin, un logo ou même une illustration générée par IA font l'affaire. Elle sera affichée en rond, donc évite un visuel dont les bords comptent.
+
+> [!NOTE]
+> **Et si ton cours n'est écrit nulle part ?**
+> Ça arrive : tu maîtrises un sujet que tu expliques à l'oral depuis des années sans l'avoir jamais couché sur le papier. Dis-le-moi, on construira le programme ensemble en discutant à l'Étape 6.
+> Mais cherche bien avant : un mémo, un mail d'explication envoyé trois fois, un plan griffonné, une trame de formation… tout ça compte. Partir d'un support existant fait gagner beaucoup de temps.
+
+<!-- [CHECKPOINT ÉTAPE 1]
+Poser cette question avant de passer à l'Étape 2 :
+"Tu as bien le dossier _ressources-cours dans TUTEUR-IA/, et tu y as glissé ton support de cours et une image pour ton tuteur au minimum ? 📁
+Dis-moi 'C'est prêt !' et on passe à la récupération du projet !"
+→ Si non, guide-le pour créer le dossier et y déposer ses fichiers.
+→ S'il annonce n'avoir aucun support écrit, ne bloque pas : note-le, dis-lui qu'on
+  construira le programme ensemble à l'Étape 6, et continue.
+-->
 
 ---
 
