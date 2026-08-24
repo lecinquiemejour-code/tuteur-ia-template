@@ -6,7 +6,25 @@ Il n'est pas là pour être joli : il est là pour que chaque rouage du template
 
 ---
 
-## Installation
+## Deux façons de s'en servir
+
+### 🎯 Test complet — le vrai parcours (recommandé)
+
+`source/mayonnaise-support-de-cours.pdf` est le **cours brut**, rédigé de façon linéaire comme un vrai polycopié de formation : pas de modules, pas de trame, juste six sections qui s'enchaînent. C'est exactement ce qu'un formateur déposerait.
+
+```powershell
+Copy-Item examples\cours-test\source\mayonnaise-support-de-cours.pdf _ressources-cours\
+```
+
+Puis dis à ton assistant : *« Mon cours est dans `_ressources-cours/mayonnaise-support-de-cours.pdf`, peux-tu le lire ? »* et laisse-le dérouler l'Étape 6 du tutoriel.
+
+**C'est le seul test qui valide la chaîne complète** : extraction `pdftotext`, découpage en modules, rédaction des six fichiers. Les fichiers déjà présents dans ce dossier te servent alors de **résultat de référence** : compare, et tu sauras si le découpage tient la route.
+
+> 💡 Le PDF contient volontairement plus de matière que les trois modules de référence — une section « pour aller plus loin », un encadré sur les idées reçues, un tableau d'ingrédients. Un vrai cours digresse. L'assistant doit trier, pas tout recopier.
+
+### ⚡ Test rapide — installer le résultat directement
+
+Si tu veux seulement vérifier que le moteur fonctionne, sans passer par l'extraction, installe les fichiers déjà prêts.
 
 Depuis la racine du projet, en PowerShell :
 
