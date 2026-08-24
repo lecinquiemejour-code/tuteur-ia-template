@@ -672,4 +672,88 @@ Dis-moi 'Tout est vert !' et on passe au téléchargement du projet ! 🚀"
 
 ---
 
+<!--
+===============================================================
+ÉTAPE 5 — LE CLONE
+===============================================================
+Ne présente cette étape qu'après validation du CHECKPOINT Étape 4.
+Rappel : le dossier TUTEUR-IA/ n'est pas vide. Utilise TOUJOURS la
+procédure git init + remote add + pull décrite en tête de fichier,
+jamais git clone.
+===============================================================
+-->
+
+## 📥 Étape 5 : Télécharger les fichiers (Le Clone)
+
+Ton projet existe maintenant sur GitHub (« dans le cloud » ☁️), mais les fichiers ne sont pas encore sur ton ordinateur. Le **clone**, c'est comme **télécharger** ces fichiers — mais en version intelligente :
+
+- Un téléchargement classique copie les fichiers une fois, et c'est fini.
+- Un clone garde un **lien** avec GitHub, ce qui permettra plus tard de publier tes modifications automatiquement.
+
+### 5.1 — Récupérer l'adresse de ton dépôt
+
+1. **Action** : sur la page de TON dépôt (celui créé à l'Étape 2, avec ton pseudo dans l'URL), clique sur le bouton vert **« <> Code »**.
+2. **Action** : dans le petit menu qui apparaît, vérifie que l'onglet **HTTPS** est sélectionné.
+3. **Action** : copie l'adresse qui s'affiche (bouton 📋 à droite). Elle ressemble à :
+   ```
+   https://github.com/TON-PSEUDO/tuteur-mon-sujet.git
+   ```
+4. **Action** : colle cette adresse dans le chat, en me disant :
+   > *« Voici l'adresse de mon dépôt : [colle l'adresse] »*
+
+### Ce que je vais faire pour toi
+
+Je vais exécuter une série de commandes qui :
+
+- **Initialisent** Git dans ton dossier `TUTEUR-IA/`
+- **Téléchargent** tous les fichiers de ton dépôt depuis GitHub
+- **Gardent le lien** avec ton compte GitHub pour les futures mises à jour
+
+> [!NOTE]
+> **Ton dossier n'est pas vide, et c'est normal !** Tu y as déjà placé `TUTORIAL.md` et le dossier `_ressources-cours/` avec ta matière.
+> Le dossier `_ressources-cours/` ne sera pas touché : il n'existe pas dans le dépôt, donc rien ne peut entrer en conflit avec lui.
+> Pour `TUTORIAL.md`, c'est différent : il existe des deux côtés. Je vais donc le renommer temporairement le temps du téléchargement, puis supprimer le backup — c'est une manœuvre classique pour éviter un conflit. Rien ne sera perdu, et le fichier que tu es en train de lire sera simplement remplacé par sa copie du dépôt, qui est identique.
+
+> [!NOTE]
+> **Première connexion à GitHub depuis Antigravity ?** Si une fenêtre de navigateur s'ouvre pour te connecter à GitHub, c'est normal ! C'est une étape unique.
+
+Je te montrerai les commandes exactes avant de les exécuter, et j'attendrai ton **« GO »** 😉
+
+<!-- [CHECKPOINT ÉTAPE 5]
+Une fois le clone terminé, poser cette question :
+"Est-ce que tu vois les nouveaux fichiers apparaître dans la colonne de gauche —
+le dossier src/, le dossier public/, README.md... ? 📁
+Dis-moi 'Je les vois !' et on installe les pièces détachées du projet."
+
+Si l'utilisateur ne voit rien : lui faire rafraichir l'explorateur de fichiers, et
+verifier avec `git status` que le pull a bien abouti.
+-->
+
+### 5.2 — Installer les pièces détachées (`npm install`)
+
+Tes fichiers sont là, mais le projet a besoin de **pièces détachées** pour fonctionner — ce sont les composants React, Vite, et tous les outils qui font tourner ton site. C'est comme si tu avais reçu ta maison en kit : il faut encore déballer les caisses de matériaux.
+
+- **Action** : dis-moi **« Installe les dépendances »** et je lance la commande `npm install` pour toi.
+- **Résultat attendu** : un nouveau dossier `node_modules/` apparaît. C'est l'étagère remplie de pièces — tu n'auras jamais besoin d'y toucher.
+
+> [!NOTE]
+> Cette étape peut prendre 1 à 2 minutes (téléchargement depuis Internet). C'est normal si tu vois beaucoup de texte défiler !
+
+> [!TIP]
+> **Le dossier `node_modules/` va peser lourd** — plusieurs centaines de mégaoctets, pour des milliers de fichiers. C'est normal, et il ne partira jamais sur GitHub : le projet est configuré pour l'ignorer. C'est aussi pour ça qu'il ne faut pas travailler dans un dossier synchronisé par OneDrive ou Dropbox, qui essaierait de synchroniser tout ça en continu.
+
+<!-- [CHECKPOINT ÉTAPE 5.2]
+Poser cette question après npm install :
+"Le dossier node_modules/ est apparu dans la colonne de gauche ? 📦
+Dis-moi 'C'est installé !' et on passe à l'activation de ton tuteur puis à son contenu !"
+
+Si npm install echoue :
+- "EPERM" ou "operation not permitted" -> dossier synchronise (OneDrive/Dropbox) ou
+  antivirus actif. C'est la cause la plus frequente.
+- "ENOENT" -> npm n'est pas reconnu, l'editeur n'a pas ete redemarre apres
+  l'installation de Node.
+-->
+
+---
+
 <!-- LES ÉTAPES 1 À 9 SERONT AJOUTÉES ICI, UNE PAR UNE -->
