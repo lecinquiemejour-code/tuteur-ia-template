@@ -1,0 +1,58 @@
+<svg width="100%" viewBox="0 0 680 512" role="img" xmlns="http://www.w3.org/2000/svg">
+<title>Architecture en couches de la fenêtre de contexte</title>
+<desc>Huit couches empilées, de la plus stable (prompt système) à la plus vivante (conversation), colorées par source.</desc>
+<style>
+  text{font-family:'Segoe UI',Helvetica,Arial,sans-serif}
+  .th{font-size:14px;font-weight:600}.ts{font-size:12px}
+  .gray-fill{fill:#ECEAE3;stroke:#CFCBC0}
+  .teal-fill{fill:#D8ECE6;stroke:#9CC6BB}
+  .coral-fill{fill:#F6DCCF;stroke:#DCA888}
+  .gray-tx{fill:#3A382F}.teal-tx{fill:#1F4D43}.coral-tx{fill:#7A3B22}.muted{fill:#6F6C63}
+  .leader{stroke:#B8B5AC;stroke-width:.75;stroke-dasharray:3 2;fill:none}
+  .br{fill:none;stroke:#B8B5AC;stroke-width:.75}
+</style>
+
+<rect class="gray-fill" x="60" y="30" width="410" height="46" rx="8" stroke-width="0.6"/>
+<text class="th gray-tx" x="76" y="49" dominant-baseline="central">Prompt système</text>
+<text class="ts muted" x="76" y="64" dominant-baseline="central">Qui je suis, règles, date du jour</text>
+
+<rect class="gray-fill" x="60" y="84" width="410" height="46" rx="8" stroke-width="0.6"/>
+<text class="th gray-tx" x="76" y="103" dominant-baseline="central">Définitions d'outils</text>
+<text class="ts muted" x="76" y="118" dominant-baseline="central">Ce que je peux appeler</text>
+
+<rect class="gray-fill" x="60" y="138" width="410" height="46" rx="8" stroke-width="0.6"/>
+<text class="th gray-tx" x="76" y="157" dominant-baseline="central">En-têtes de skills</text>
+<text class="ts muted" x="76" y="172" dominant-baseline="central">name + description + chemin</text>
+
+<rect class="gray-fill" x="60" y="192" width="410" height="46" rx="8" stroke-width="0.6"/>
+<text class="th gray-tx" x="76" y="211" dominant-baseline="central">En-têtes de connecteurs MCP</text>
+<text class="ts muted" x="76" y="226" dominant-baseline="central">Services externes branchés</text>
+
+<rect class="teal-fill" x="60" y="246" width="410" height="46" rx="8" stroke-width="0.6"/>
+<text class="th teal-tx" x="76" y="265" dominant-baseline="central">Mémoire</text>
+<text class="ts teal-tx" x="76" y="280" dominant-baseline="central">Faits résumés des échanges passés</text>
+
+<rect class="teal-fill" x="60" y="300" width="410" height="46" rx="8" stroke-width="0.6"/>
+<text class="th teal-tx" x="76" y="319" dominant-baseline="central">Instructions personnalisées</text>
+<text class="ts teal-tx" x="76" y="334" dominant-baseline="central">Préférences + style d'écriture</text>
+
+<rect class="teal-fill" x="60" y="354" width="410" height="46" rx="8" stroke-width="0.6" style="stroke-dasharray:4 3"/>
+<text class="th teal-tx" x="76" y="373" dominant-baseline="central">Instructions de projet</text>
+<text class="ts teal-tx" x="76" y="388" dominant-baseline="central">Présente seulement dans un projet</text>
+
+<rect class="coral-fill" x="60" y="408" width="410" height="46" rx="8" stroke-width="0.6"/>
+<text class="th coral-tx" x="76" y="427" dominant-baseline="central">Conversation en cours</text>
+<text class="ts coral-tx" x="76" y="442" dominant-baseline="central">Messages, fichiers, appels d'outils</text>
+
+<path class="br" d="M482 140 L476 140 L476 236 L482 236"/>
+<text class="ts muted" x="488" y="192" dominant-baseline="central">Chargé à la demande</text>
+<line class="leader" x1="470" y1="431" x2="486" y2="431"/>
+<text class="ts muted" x="490" y="431" dominant-baseline="central">Grossit à chaque tour</text>
+
+<rect class="gray-fill" x="60" y="478" width="14" height="14" rx="3" stroke-width="0.6"/>
+<text class="ts muted" x="80" y="485" dominant-baseline="central">Système &amp; plateforme</text>
+<rect class="teal-fill" x="248" y="478" width="14" height="14" rx="3" stroke-width="0.6"/>
+<text class="ts muted" x="268" y="485" dominant-baseline="central">Tes réglages</text>
+<rect class="coral-fill" x="372" y="478" width="14" height="14" rx="3" stroke-width="0.6"/>
+<text class="ts muted" x="392" y="485" dominant-baseline="central">Conversation live</text>
+</svg>

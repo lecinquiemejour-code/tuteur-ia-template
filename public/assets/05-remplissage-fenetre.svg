@@ -1,0 +1,21 @@
+<svg width="100%" viewBox="0 0 680 155" role="img" xmlns="http://www.w3.org/2000/svg">
+<title>Taux de remplissage de la fenêtre de 500000 tokens</title>
+<desc>Une barre de 500000 tokens ; une session complète occupe environ 8 pour cent, laissant 92 pour cent libres.</desc>
+<style>
+  text{font-family:'Segoe UI',Helvetica,Arial,sans-serif}
+  .ts{font-size:12px}
+  .gray-fill{fill:#ECEAE3;stroke:#CFCBC0}
+  .coral-fill{fill:#F6DCCF;stroke:#DCA888}
+  .muted{fill:#6F6C63}
+  .leader{stroke:#B8B5AC;stroke-width:.75;stroke-dasharray:3 2;fill:none}
+  .frame{fill:none;stroke:#9A978E}
+</style>
+<rect class="gray-fill" x="60" y="70" width="27" height="44" stroke-width="0.6"/>
+<rect class="coral-fill" x="87" y="70" width="19" height="44" stroke-width="0.6"/>
+<rect class="frame" x="60" y="70" width="560" height="44" rx="6" stroke-width="0.6"/>
+<line class="leader" x1="83" y1="68" x2="120" y2="50"/>
+<text class="ts muted" x="124" y="48" dominant-baseline="central">~41 000 tokens utilisés (~8 %)</text>
+<text class="ts muted" x="365" y="92" text-anchor="middle" dominant-baseline="central">Espace libre ≈ 92 %</text>
+<text class="ts muted" x="60" y="132" text-anchor="middle" dominant-baseline="central">0</text>
+<text class="ts muted" x="620" y="132" text-anchor="end" dominant-baseline="central">Plafond : 500 000 tokens</text>
+</svg>

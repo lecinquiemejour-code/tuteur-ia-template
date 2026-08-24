@@ -1,0 +1,47 @@
+<svg width="100%" viewBox="0 0 680 490" role="img" xmlns="http://www.w3.org/2000/svg">
+<title>Composition des tokens utilisés, à l'échelle</title>
+<desc>Colonne empilée : le socle système plus outils domine à environ 24000 tokens, la conversation suit à environ 12000, les autres couches sont de fins liserés.</desc>
+<style>
+  text{font-family:'Segoe UI',Helvetica,Arial,sans-serif}
+  .th{font-size:14px;font-weight:600}.ts{font-size:12px}
+  .gray-fill{fill:#ECEAE3;stroke:#CFCBC0}
+  .teal-fill{fill:#D8ECE6;stroke:#9CC6BB}
+  .coral-fill{fill:#F6DCCF;stroke:#DCA888}
+  .gray-tx{fill:#3A382F}.teal-tx{fill:#1F4D43}.coral-tx{fill:#7A3B22}.muted{fill:#6F6C63}
+  .leader{stroke:#B8B5AC;stroke-width:.75;stroke-dasharray:3 2;fill:none}
+</style>
+
+<rect class="gray-fill" x="70" y="30" width="210" height="221" stroke-width="0.6"/>
+<text class="th gray-tx" x="175" y="124" text-anchor="middle">Système + outils</text>
+<text class="ts muted" x="175" y="144" text-anchor="middle">~24 000 tokens</text>
+<text class="ts muted" x="175" y="160" text-anchor="middle">(mesuré — fuite 2025)</text>
+
+<rect class="gray-fill" x="70" y="251" width="210" height="18" stroke-width="0.6"/>
+<rect class="gray-fill" x="70" y="269" width="210" height="18" stroke-width="0.6"/>
+<rect class="teal-fill" x="70" y="287" width="210" height="16" stroke-width="0.6"/>
+<rect class="teal-fill" x="70" y="303" width="210" height="16" stroke-width="0.6"/>
+<rect class="teal-fill" x="70" y="319" width="210" height="16" stroke-width="0.6"/>
+
+<rect class="coral-fill" x="70" y="335" width="210" height="110" stroke-width="0.6"/>
+<text class="th coral-tx" x="175" y="372" text-anchor="middle">Conversation</text>
+<text class="ts coral-tx" x="175" y="390" text-anchor="middle">~12 000 tokens</text>
+<text class="ts coral-tx" x="175" y="408" text-anchor="middle">SKILL.md + guide + dialogue</text>
+
+<line class="leader" x1="280" y1="260" x2="298" y2="252"/>
+<text class="ts muted" x="302" y="252" dominant-baseline="central">En-têtes de skills — ~2 000</text>
+<line class="leader" x1="280" y1="278" x2="298" y2="274"/>
+<text class="ts muted" x="302" y="274" dominant-baseline="central">En-têtes MCP — ~2 000</text>
+<line class="leader" x1="280" y1="295" x2="298" y2="296"/>
+<text class="ts muted" x="302" y="296" dominant-baseline="central">Mémoire — ~350</text>
+<line class="leader" x1="280" y1="311" x2="298" y2="318"/>
+<text class="ts muted" x="302" y="318" dominant-baseline="central">Instructions personnalisées — ~200</text>
+<line class="leader" x1="280" y1="327" x2="298" y2="340"/>
+<text class="ts muted" x="302" y="340" dominant-baseline="central">Instructions de projet — ~800</text>
+
+<rect class="gray-fill" x="70" y="460" width="14" height="14" rx="3" stroke-width="0.6"/>
+<text class="ts muted" x="90" y="467" dominant-baseline="central">Système &amp; plateforme</text>
+<rect class="teal-fill" x="262" y="460" width="14" height="14" rx="3" stroke-width="0.6"/>
+<text class="ts muted" x="282" y="467" dominant-baseline="central">Tes réglages</text>
+<rect class="coral-fill" x="392" y="460" width="14" height="14" rx="3" stroke-width="0.6"/>
+<text class="ts muted" x="412" y="467" dominant-baseline="central">Conversation live</text>
+</svg>

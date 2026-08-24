@@ -1,0 +1,48 @@
+<svg width="100%" viewBox="0 0 680 400" role="img" xmlns="http://www.w3.org/2000/svg">
+<title>Structure d'un skill</title>
+<desc>Un dossier de skill contient un fichier SKILL.md obligatoire, composé d'un frontmatter (name + description) et d'un corps Markdown, plus des ressources optionnelles.</desc>
+<style>
+  text{font-family:'Segoe UI',Helvetica,Arial,sans-serif}
+  .th{font-size:14px;font-weight:600}
+  .ts{font-size:12px}
+  .gray-fill{fill:#ECEAE3;stroke:#CFCBC0}
+  .teal-fill{fill:#D8ECE6;stroke:#9CC6BB}
+  .coral-fill{fill:#F6DCCF;stroke:#DCA888}
+  .gray-tx{fill:#3A382F}.teal-tx{fill:#1F4D43}.muted{fill:#6F6C63}
+  .opt{fill:#F4F3EF;stroke:#CFCBC0;stroke-dasharray:4 3}
+  .link{stroke:#B8B5AC;stroke-width:1;fill:none}
+</style>
+
+<rect class="gray-fill" x="240" y="22" width="200" height="44" rx="6" stroke-width="0.8"/>
+<text class="th gray-tx" x="340" y="40" text-anchor="middle">mon-skill/</text>
+<text class="ts muted" x="340" y="56" text-anchor="middle">le dossier du skill</text>
+
+<path class="link" d="M340 66 L340 82 M210 82 L510 82 M210 82 L210 104 M510 82 L510 100"/>
+
+<rect class="gray-fill" x="60" y="104" width="300" height="214" rx="8" stroke-width="1.4"/>
+<text class="th gray-tx" x="74" y="126">SKILL.md</text>
+<text class="ts muted" x="148" y="126">— obligatoire</text>
+
+<rect class="teal-fill" x="78" y="142" width="264" height="80" rx="6" stroke-width="0.8"/>
+<text class="th teal-tx" x="92" y="164">Frontmatter (YAML)</text>
+<text class="ts teal-tx" x="92" y="186">name</text>
+<text class="ts teal-tx" x="92" y="204">description ★</text>
+
+<rect class="gray-fill" x="78" y="234" width="264" height="68" rx="6" stroke-width="0.8"/>
+<text class="th gray-tx" x="92" y="258">Corps (Markdown)</text>
+<text class="ts muted" x="92" y="278">le mode d'emploi, lu une fois déclenché</text>
+
+<text class="ts muted" x="510" y="98" text-anchor="middle">Ressources optionnelles</text>
+<rect class="opt" x="410" y="106" width="200" height="44" rx="6" stroke-width="0.8"/>
+<text class="th gray-tx" x="424" y="126">references/</text>
+<text class="ts muted" x="424" y="142">docs chargées au besoin</text>
+<rect class="opt" x="410" y="160" width="200" height="44" rx="6" stroke-width="0.8"/>
+<text class="th gray-tx" x="424" y="180">scripts/</text>
+<text class="ts muted" x="424" y="196">code exécutable</text>
+<rect class="opt" x="410" y="214" width="200" height="44" rx="6" stroke-width="0.8"/>
+<text class="th gray-tx" x="424" y="234">assets/</text>
+<text class="ts muted" x="424" y="250">gabarits, images…</text>
+
+<text class="ts muted" x="60" y="346">★ Seule la description est lue en permanence — c'est elle qui décide du déclenchement.</text>
+<text class="ts muted" x="60" y="372">Le corps et les ressources ne sont chargés qu'à la demande (chargement progressif).</text>
+</svg>

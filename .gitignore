@@ -1,0 +1,15 @@
+node_modules/
+build/
+dist/
+coverage/
+.DS_Store
+*.log
+.env*
+!.env.example
+
+# Local Netlify folder
+.netlify
+
+# Matiere premiere de l apprenant (supports de cours, images, etc.)
+_ressources-cours/*
+!_ressources-cours/.gitkeep

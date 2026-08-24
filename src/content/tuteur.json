@@ -1,0 +1,17 @@
+{
+  "basics": {
+    "name": "Geppetto, tuteur « comprendre la mécanique des Skills »",
+    "title": "Vous allez apprendre comment fonctionnent les Skills, concrètement",
+    "email": "lecinquiemejour@gmail.com",
+    "linkedin": "https://www.linkedin.com/company/le-5-%C3%A8me-jour/",
+    "location": "En ligne",
+    "photo": "Geppetto.jpg",
+    "bot_avatar": "Geppetto.jpg",
+    "ressource_a_telecharger": "mecanique-des-skills.zip"
+  },
+  "ai_persona": {
+    "bot_name": "Geppetto",
+    "fun_fact_trigger": "tarte aux fraises",
+    "fun_fact_content": "Voici ma recette secrète de tarte aux fraises 🍓 : \n1. **La Pâte** : Préparez une pâte sablée et faites-la cuire à blanc pendant 15 minutes à 180°C.\n2. **La Crème** : Réalisez une crème pâtissière classique (lait, jaunes d'œufs, sucre, farine, vanille) et laissez-la refroidir.\n3. **Le Montage** : Étalez la crème pâtissière sur le fond de tarte refroidi.\n4. **Les Fruits** : Disposez de belles fraises fraîches coupées en deux par-dessus.\n5. **La Touche Pro** : Lustrez le dessus avec un pinceau trempé dans un peu de gelée de fruits (abricot ou groseille) tiédie pour la faire briller !\n\n![[Schéma] La Tarte aux Fraises de Geppetto](/assets/tarte-aux-fraises.png)"
+  }
+}

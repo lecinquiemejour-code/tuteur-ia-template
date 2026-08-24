@@ -1,0 +1,58 @@
+<svg width="100%" viewBox="0 0 700 280" role="img" xmlns="http://www.w3.org/2000/svg">
+<title>Frise des tokens : chargement d'un skill</title>
+<desc>Séquence de blocs de tokens du flux : liste système, message utilisateur, bloc tool_use émis par le modèle, pause pendant que le harness lit le fichier, bloc tool_result qui injecte le skill, puis reprise.</desc>
+<style>
+  text{font-family:'Segoe UI',Helvetica,Arial,sans-serif}
+  .th{font-size:13px;font-weight:600}
+  .ts{font-size:11px}
+  .tk{font-size:10px;font-family:'Courier New',monospace}
+  .gray-fill{fill:#ECEAE3;stroke:#CFCBC0}
+  .teal-fill{fill:#D8ECE6;stroke:#9CC6BB}
+  .coral-fill{fill:#F6DCCF;stroke:#DCA888}
+  .gray-tx{fill:#3A382F}.teal-tx{fill:#1F4D43}.coral-tx{fill:#7A3B22}.muted{fill:#6F6C63}
+  .pause{fill:#F4F3EF;stroke:#B8B5AC;stroke-dasharray:4 3}
+  .axis{stroke:#B8B5AC;stroke-width:1;fill:none}
+</style>
+<defs>
+  <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M2 1L8 5L2 9" fill="none" stroke="#B8B5AC" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </marker>
+  <marker id="arrC" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M2 1L8 5L2 9" fill="none" stroke="#D85A30" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </marker>
+</defs>
+
+<text class="ts muted" x="24" y="28">Frontières = tokens de contrôle génériques (identiques pour tous les outils).</text>
+
+<text class="tk muted" x="298" y="86" text-anchor="middle">&lt;|tool_use_start|&gt; … &lt;|tool_use_end|&gt;</text>
+<text class="tk muted" x="507" y="86" text-anchor="middle">&lt;|tool_result_start|&gt; … _end|&gt;</text>
+
+<rect class="gray-fill" x="24" y="96" width="126" height="64" rx="6" stroke-width="0.8"/>
+<text class="th gray-tx" x="87" y="122" text-anchor="middle">système</text>
+<text class="ts muted" x="87" y="140" text-anchor="middle">liste des skills</text>
+
+<rect class="coral-fill" x="158" y="96" width="66" height="64" rx="6" stroke-width="0.8"/>
+<text class="th coral-tx" x="191" y="132" text-anchor="middle">user</text>
+
+<rect class="teal-fill" x="232" y="96" width="132" height="64" rx="6" stroke-width="0.8"/>
+<text class="th teal-tx" x="298" y="122" text-anchor="middle">tool_use</text>
+<text class="ts teal-tx" x="298" y="140" text-anchor="middle">lire SKILL.md</text>
+
+<rect class="pause" x="372" y="104" width="48" height="48" rx="6" stroke-width="0.8"/>
+<text class="ts muted" x="396" y="132" text-anchor="middle">pause</text>
+
+<rect class="gray-fill" x="428" y="96" width="158" height="64" rx="6" stroke-width="0.8"/>
+<text class="th gray-tx" x="507" y="122" text-anchor="middle">tool_result</text>
+<text class="ts muted" x="507" y="140" text-anchor="middle">corps du SKILL.md</text>
+
+<rect class="coral-fill" x="594" y="96" width="92" height="64" rx="6" stroke-width="0.8"/>
+<text class="th coral-tx" x="640" y="122" text-anchor="middle">assistant</text>
+<text class="ts coral-tx" x="640" y="140" text-anchor="middle">applique</text>
+
+<text class="ts muted" x="396" y="200" text-anchor="middle">le harness lit le fichier</text>
+<line class="axis" x1="507" y1="160" x2="507" y2="214" stroke="#D85A30" marker-end="url(#arrC)"/>
+<text class="ts coral-tx" x="507" y="232" text-anchor="middle">★ le skill entre en contexte ici</text>
+
+<line class="axis" x1="24" y1="256" x2="686" y2="256" marker-end="url(#arr)"/>
+<text class="ts muted" x="355" y="272" text-anchor="middle">temps →</text>
+</svg>
