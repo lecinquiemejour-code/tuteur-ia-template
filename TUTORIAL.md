@@ -1257,6 +1257,11 @@ C'est le moment magique : ton tuteur devient accessible au monde entier 🌍
 6. **Résultat 🎉** : après 1 à 2 minutes, Netlify te donne une URL. **Ton tuteur est en ligne !**
 
 > [!TIP]
+> **💡 Variable ajoutée après coup ou erreur 504 / tuteur muet ?**
+> Si tu as ajouté ou modifié la variable `API_KEY` après avoir cliqué sur Deploy, Netlify ne l'injecte pas automatiquement dans la version déjà compilée.
+> Il suffit de relancer la publication : va dans l'onglet **Deploys** → clique sur **Trigger deploy** ➡️ **Clear cache and deploy site**. En 30 secondes, la clé est prise en compte !
+
+> [!TIP]
 > **Vérification post-déploiement :** ouvre ton site **dans un vrai navigateur** et vérifie ces 3 points :
 > 1. 📸 L'**image** de ton tuteur s'affiche
 > 2. 🤖 Il **répond** (pose-lui une question de ton cours !)
@@ -1275,7 +1280,7 @@ Si la vérification post-déploiement échoue, diagnostique avec ce tableau :
 | Symptôme | Cause probable | Solution |
 |---|---|---|
 | 📸 Image cassée (icône brisée) | Fichier pas dans `public/` ou nom incorrect dans `tuteur.json` | Vérifier que le fichier est bien dans `public/` et que `photo` et `bot_avatar` correspondent exactement, extension comprise |
-| 🤖 Le tuteur ne répond pas | Variable `API_KEY` absente ou mal nommée dans Netlify | Netlify → Site settings → Environment variables → vérifier que la clé s'appelle exactement `API_KEY` |
+| 🤖 Le tuteur ne répond pas (ou erreur 504 / timeout) | Variable `API_KEY` absente, mal nommée ou ajoutée après le build | (1) Vérifier dans Site configuration → Environment variables que la clé s'appelle exactement `API_KEY`. (2) Relancer : Deploys → Trigger deploy → Clear cache and deploy site. |
 | 🖼️ Les schémas ne s'affichent pas | Fichiers absents de `public/assets/` ou non déclarés dans `illustrations.md` | Vérifier les DEUX : le fichier existe, ET il figure dans le catalogue |
 | Le tuteur récite l'ancien cours | Le déploiement date d'avant la dernière modification | Vérifier que le `git push` a bien eu lieu, puis Netlify → Deploys |
 | Le build Netlify échoue | Erreur dans les Netlify Functions ou dépendance manquante | Netlify → Deploys → cliquer sur le deploy en erreur → lire le log |

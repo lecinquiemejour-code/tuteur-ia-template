@@ -69,6 +69,7 @@ Trois variables sont substituées à l'assemblage, depuis `tuteur.json` :
 |---|---|---|
 | **Serveur non redémarré** | Une modification de `src/content/` n'apparaît pas | Ces fichiers sont lus **au démarrage** du serveur, pas à chaud |
 | **Image non déclarée** | Un schéma déposé dans `public/assets/` ne s'affiche jamais | Il faut AUSSI l'ajouter au catalogue `illustrations.md` |
+| **Variable Netlify non injectée** | Erreur HTTP 504 / tuteur muet en ligne | La variable `API_KEY` a été ajoutée post-build sans relancer : `Deploys ➡️ Trigger deploy ➡️ Clear cache` |
 | **Assemblage divergent** | Le tuteur se comporte différemment en local et en ligne | `server.ts` et `chat.ts` n'ont pas été modifiés tous les deux |
 | **Deux SDK Gemini** | — | `server.ts` utilise `@google/genai`, `chat.ts` utilise `@google/generative-ai`. C'est ainsi, ne pas unifier sans demande explicite. |
 | **Faux positifs du filtre** | Un message légitime est bloqué | `SUSPICIOUS_PATTERNS` filtre par sous-chaîne : `ACT AS` bloque « cont**act as**sistant » |
