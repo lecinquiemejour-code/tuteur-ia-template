@@ -472,7 +472,22 @@ d'assistant tutoriel interactif qui y est décrit. Guide l'utilisateur étape pa
 > [!IMPORTANT]
 > **La règle 2c est celle qui protège ton travail.** Le jour où tu demanderas « ajoute un module sur tel sujet », une IA sans garde-fou pourrait décider de modifier `App.tsx` pour afficher ce module. Or ton cours n'a jamais besoin de toucher au code : tout se passe dans `src/content/`. Cette règle garde la frontière nette.
 
-### 3.3 — Vérifier que les RULES sont actives
+### 3.3 — Tu n'utilises pas Antigravity ?
+
+Les mêmes règles sont **déjà dans ton projet**, dans le fichier `AGENTS.md` à la racine. Tu les récupéreras à l'Étape 5, en même temps que le reste des fichiers.
+
+| Ton outil | Ce qu'il lit | Ce que tu as à faire |
+|---|---|---|
+| **Antigravity** | Les *Global rules* que tu viens de coller | Rien de plus |
+| **Codex** | `AGENTS.md`, automatiquement | Rien, le fichier est déjà là |
+| **Claude Code** | `CLAUDE.md`, qui renvoie vers `AGENTS.md` | Rien, les deux fichiers sont déjà là |
+
+`AGENTS.md` va d'ailleurs plus loin que les règles : il décrit aussi l'architecture du projet et ses pièges connus. Si un jour tu changes d'outil, ou si tu fais intervenir quelqu'un d'autre sur ton tuteur, c'est le fichier à lui montrer en premier.
+
+> [!NOTE]
+> **En cas de divergence, `AGENTS.md` fait foi.** Les règles apparaissent à deux endroits — ici pour que tu puisses les coller avant même d'avoir téléchargé le projet, et dans `AGENTS.md` pour les outils qui le lisent tout seuls. Si tu en modifies une, modifie-la aux deux endroits.
+
+### 3.4 — Vérifier que les RULES sont actives
 
 Comment savoir si l'IA a bien reçu tes instructions ? On va lui demander de **lire le fichier** et de te le reformuler !
 

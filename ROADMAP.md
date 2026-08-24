@@ -1,6 +1,7 @@
 # 🗺️ Roadmap d'évolutions — Tuteur-IA-Template
 
-> Roadmap validée le 24 mars 2026. 7 évolutions retenues sur 10.
+> Roadmap héritée du template d'origine, 7 évolutions retenues sur 10.
+> L'évolution #5 a été réalisée depuis. Les six autres restent ouvertes.
 
 ---
 
@@ -22,7 +23,7 @@
 | 2 | Page diagnostic IA (`/api/health`) | 🟡 Moyen | 📋 À faire |
 | 3 | Mode multi-langue | 🟡 Moyen | 📋 À faire |
 | 4 | Thème personnalisable + dark mode | 🟡 Moyen | 📋 À faire |
-| 5 | Suggestions dynamiques dans `identity.json` | 🟢 Facile | 📋 À faire |
+| 5 | Suggestions dynamiques dans `tuteur.json` | 🟢 Facile | ✅ **Fait** |
 | 7 | Persistance localStorage + bouton Effacer | 🟢 Facile | 📋 À faire |
 | 9 | Limitation 50 messages/session (`ai-config.json`) | 🟢 Facile | 📋 À faire |
 
@@ -72,14 +73,14 @@ Retourne un JSON clair avec le statut, le modèle utilisé et la latence.
 Le template est 100% francophone (interface, instructions IA, messages d'erreur). Un utilisateur non-francophone doit tout réécrire.
 
 ### Solution
-- Ajouter `"language": "fr"` dans `identity.json`
+- Ajouter `"language": "fr"` dans `tuteur.json`
 - Externaliser les textes d'interface dans un dictionnaire i18n
-- Adapter `instructions.md` avec un placeholder `{{LANGUAGE}}`
+- Adapter `prompt-systeme.md` avec un placeholder `{{LANGUAGE}}`
 
 ### Fichiers impactés
-- `src/content/identity.json`
+- `src/content/tuteur.json`
 - `src/App.tsx`
-- `src/content/instructions.md`
+- `src/content/prompt-systeme.md`
 - Nouveau fichier dictionnaire i18n
 
 ---
@@ -90,7 +91,7 @@ Le template est 100% francophone (interface, instructions IA, messages d'erreur)
 Les couleurs (indigo/blanc/gris) sont codées en dur dans `App.tsx`. Tous les tuteurs se ressemblent.
 
 ### Solution
-Ajouter une section `"theme"` dans `identity.json` :
+Ajouter une section `"theme"` dans `tuteur.json` :
 ```json
 {
   "theme": {
@@ -102,27 +103,28 @@ Ajouter une section `"theme"` dans `identity.json` :
 Injection via CSS custom properties (`--color-primary`).
 
 ### Fichiers impactés
-- `src/content/identity.json`
+- `src/content/tuteur.json`
 - `src/App.tsx`
 - `src/index.css`
 
 ---
 
-## Évolution #5 — Suggestions dynamiques 🟢
+## ✅ Évolution #5 — Suggestions dynamiques 🟢 — RÉALISÉE
 
-### Problème
-Les suggestions ("Bonjour", "Dernières expériences"…) sont codées en dur dans `App.tsx`. Elles ne reflètent pas le métier de chaque utilisateur.
+### Problème (résolu)
+Les suggestions étaient codées en dur dans `App.tsx`. Elles ne reflétaient donc pas le sujet de chaque tuteur.
 
-### Solution
-Déplacer dans `identity.json` :
+### Solution appliquée
+La liste vient désormais de `tuteur.json` :
 ```json
 {
-  "suggestions": ["Bonjour", "Vos missions", "Stack technique", "Projets"]
+  "suggestions": ["Niveau Débutant", "Niveau Intermédiaire", "Niveau Avancé"]
 }
 ```
+Une liste vide fait disparaître les boutons proprement.
 
-### Fichiers impactés
-- `src/content/identity.json`
+### Fichiers concernés
+- `src/content/tuteur.json`
 - `src/App.tsx`
 
 ---

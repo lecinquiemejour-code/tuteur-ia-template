@@ -46,7 +46,7 @@ export default async (req: Request): Promise<Response> => {
     }
 
     // 3. Modèle et température (dynamiques via ai-config.json)
-    let aiModel = "gemini-3.1-flash-lite-preview";
+    let aiModel = "gemini-3.1-flash-lite";
     let aiTemperature = 0.7; // Valeur par défaut
     try {
       const configContent = readContentFile("../../../ai-config.json"); // Ajusté car ai-config.json est à la racine

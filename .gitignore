@@ -13,3 +13,6 @@ coverage/
 # Matiere premiere de l apprenant (supports de cours, images, etc.)
 _ressources-cours/*
 !_ressources-cours/.gitkeep
+
+# Document de passation, hors template
+_PASSATION.md

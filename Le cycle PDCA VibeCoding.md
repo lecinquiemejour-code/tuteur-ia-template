@@ -20,8 +20,6 @@ La représentation visuelle du PDCA en forme de roue est particulièrement parla
 
 ---
 
-![image.png](image.png)
-
 ## **Introduction : Le VibeCoding et l'amélioration continue**
 
 Le VibeCoding se caractérise par une boucle de feedback particulièrement rapide entre l'intention, l'implémentation par l'IA, l'essai et la validation ou correction. Cette rapidité d'itération, qui constitue l'un des atouts majeurs de cette approche, peut cependant manquer de structure si elle n'est pas formalisée.

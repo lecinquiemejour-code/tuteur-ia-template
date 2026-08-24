@@ -103,7 +103,11 @@ src/App.tsx           ← l'interface
 server.ts             ← serveur de développement local
 netlify/functions/    ← la fonction serveur en production
 _ressources-cours/    ← dépose ici ta matière première (PDF, notes…)
+AGENTS.md             ← consignes pour les assistants IA (architecture, pièges, règles)
+CLAUDE.md             ← pointe vers AGENTS.md
 ```
+
+> 🤖 **Tu travailles avec un assistant IA ?** [`AGENTS.md`](AGENTS.md) lui donne tout ce qu'il faut savoir : l'architecture, la frontière entre contenu et moteur, les pièges connus et les règles de conduite. Codex le lit automatiquement, Claude Code y accède via [`CLAUDE.md`](CLAUDE.md), et pour Antigravity la procédure est décrite à l'Étape 3 du tutoriel.
 
 Les autres documents : [`ROADMAP.md`](ROADMAP.md) (évolutions envisagées), [`ABONNEMENTS_ET_LIMITES.md`](ABONNEMENTS_ET_LIMITES.md) (quotas et coûts), [`RESET-ENVIRONNEMENT.md`](RESET-ENVIRONNEMENT.md) (repartir de zéro).
 
