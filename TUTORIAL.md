@@ -379,4 +379,148 @@ Dis-moi 'C'est bon !' et on passe à la configuration de tes règles !"
 
 ---
 
+<!--
+===============================================================
+ÉTAPE 3 — LES RULES
+===============================================================
+Ne présente cette étape qu'après validation du CHECKPOINT Étape 2.
+Tu dois guider l'utilisateur pour copier le texte des RULES dans les
+paramètres de son éditeur IA.
+===============================================================
+-->
+
+## 🧭 Étape 3 : Donner ses instructions à l'IA (Les RULES)
+
+On va donner à l'IA son « code de conduite » pour ce projet.
+
+### 3.1 — Pourquoi des RULES ?
+
+Les RULES permettent de dire à l'IA : *« Je suis débutant, explique tout simplement et ne fais rien sans mon accord. »*
+
+C'est ce qui fait la différence entre une IA qui réécrit ton projet pendant que tu regardes ailleurs, et une IA qui te montre le plan avant de percer le mur.
+
+### 3.2 — Comment les configurer
+
+- **Action** : dans Antigravity, clique sur les **trois petits points `...`** en haut à droite.
+- **Action** : clique sur **Customizations**, puis sur l'onglet **Rules**.
+- **Action** : clique sur **+ Global**.
+- **Action** : copie-colle le texte suivant :
+
+```markdown
+Ces règles encadrent ton comportement dans ce projet. Elles sont non négociables.
+
+## GARDE-FOUS
+### Règle 1 — Checkpoint obligatoire
+Ne jamais écrire ou modifier du code sans approbation explicite ("GO").
+### Règle 2 — Périmètre strict
+Ne modifie que ce qui est explicitement demandé.
+### Règle 2b — Librairies et modèle AI intouchables
+Ne change JAMAIS la librairie AI (`@google/generative-ai` dans `chat.ts`, `@google/genai` dans `server.ts`), le modèle AI (`ai-config.json`), ni les dépendances `package.json` sans le GO explicite de l'utilisateur.
+### Règle 2c — Le contenu vit dans src/content/
+Pour changer ce que le tuteur enseigne, modifie les fichiers de `src/content/`, jamais le code. Après CHAQUE modification de `src/content/`, rappelle à l'utilisateur de relancer `npm run dev` : ces fichiers ne sont lus qu'au démarrage du serveur.
+### Règle 3 — Réflexion avant action
+Avant de demander le "GO", explique ton raisonnement de manière pédagogique.
+Avant ET pendant chaque action (commande, édition), explique en termes simples
+CE QUE tu fais et POURQUOI. L'utilisateur doit comprendre et apprendre, même passivement.
+
+## MÉTHODE DE TRAVAIL
+### Règle 4 — Décomposition en sous-tâches
+Décompose chaque tâche complexe en étapes petites et séquentielles.
+### Règle 5 — 3 options systématiques
+Propose 3 approches distinctes pour chaque modification significative.
+### Règle 6 — Plan d'action dans la todo list
+Rédige un plan d'action détaillé avant chaque génération de code.
+### Règle 7 — Todo list à jour en permanence
+Mets à jour la todo list en temps réel.
+
+## QUALITÉ DU CODE
+### Règle 8 — Simplicité d'abord (KISS)
+Privilégie toujours la solution la plus simple.
+### Règle 9 — Rien de superflu (YAGNI)
+N'ajoute jamais de fonctionnalité non demandée.
+### Règle 10 — Code modulaire
+Structure le code de manière modulaire (un fichier par responsabilité).
+### Règle 11 — Logs de débogage détaillés
+Ajoute des console.log explicites à chaque étape clé.
+### Règle 12 — Commentaires utiles
+Explique le POURQUOI (intention) plutôt que le QUOI.
+
+## POSTURE
+### Règle 13 — Communication pédagogique
+Explique chaque décision technique en termes accessibles.
+
+## ENVIRONNEMENT
+### Règle 14 — PowerShell
+PowerShell n'accepte pas `&&`. Utilise `;` pour enchaîner les commandes.
+
+## MODE TUTORIEL INTERACTIF
+### Règle 15 — Lire le fichier TUTORIAL.md au démarrage
+Au démarrage de ce projet, lis le fichier TUTORIAL.md et adopte le rôle
+d'assistant tutoriel interactif qui y est décrit. Guide l'utilisateur étape par étape.
+```
+
+- **Action** : enregistre. Désormais, l'IA respecte ces règles ET adopte le mode tutoriel automatiquement.
+
+> [!TIP]
+> **Le saviez-vous ?** Ces règles sont ton « contrat de confiance » avec l'IA. Tu restes le seul maître à bord.
+
+> [!NOTE]
+> **Où sont stockées tes rules ?** Quand tu enregistres des rules **Global**, Antigravity crée un fichier sur ton PC :
+> `C:\Users\TON-NOM\.gemini\GEMINI.md`
+> C'est un simple fichier texte en markdown. Pas de magie : si tu l'ouvres dans un éditeur, tu y retrouves exactement le texte que tu viens de coller. L'IA le relit à chaque nouvelle conversation.
+
+> [!IMPORTANT]
+> **La règle 2c est celle qui protège ton travail.** Le jour où tu demanderas « ajoute un module sur tel sujet », une IA sans garde-fou pourrait décider de modifier `App.tsx` pour afficher ce module. Or ton cours n'a jamais besoin de toucher au code : tout se passe dans `src/content/`. Cette règle garde la frontière nette.
+
+### 3.3 — Vérifier que les RULES sont actives
+
+Comment savoir si l'IA a bien reçu tes instructions ? On va lui demander de **lire le fichier** et de te le reformuler !
+
+- **Action** : dans le chat Antigravity, tape :
+  > *« Lis mon fichier de rules et reformule-les en m'expliquant à quoi elles servent »*
+- **Résultat attendu** : l'IA ouvre le fichier `GEMINI.md`, lit son contenu, puis te reformule chaque catégorie de règles avec une explication simple de leur raison d'être. Si le fichier est vide ou si son contenu ne correspond pas, c'est que la sauvegarde n'a pas fonctionné — reviens à l'étape 3.2.
+
+<!-- [CHECKPOINT ÉTAPE 3]
+Quand l'utilisateur dit avoir sauvegardé les RULES, NE PAS passer directement à l'Étape 4.
+À la place, demande-lui : "Parfait ! Vérifions que tes RULES sont bien actives 🔍
+Tape dans le chat : 'Lis mon fichier de rules et reformule-les'"
+
+Quand l'utilisateur te le demande :
+1. **Lis le fichier** `~/.gemini/GEMINI.md` (chemin complet :
+   `C:\Users\<NOM-UTILISATEUR>\.gemini\GEMINI.md` — remplace <NOM-UTILISATEUR>
+   par le nom réel trouvé dans le chemin du workspace).
+2. **Vérifie le contenu** : le fichier peut exister mais être vide ou contenir
+   un ancien contenu. Vérifie qu'il contient bien toutes les règles attendues
+   (Garde-fous, Méthode de travail, Qualité du code, Posture, Environnement,
+   Mode tutoriel).
+3. **Si le contenu est correct** : reformule les catégories en expliquant
+   leur raison d'être de manière pédagogique, en te basant sur ce que tu viens
+   de lire (pas de mémoire). Par exemple :
+
+"📋 Voici tes RULES et pourquoi elles comptent :
+
+🛡️ **Les Garde-fous (Règles 1 à 3)** — Pour que l'IA ne fasse jamais rien sans ton
+accord, et pour qu'elle ne touche ni au moteur du projet ni à ton contenu sans
+te prévenir. C'est comme un artisan qui te montre le plan avant de percer un mur.
+
+🔧 **La Méthode de travail (Règles 4-7)** — Pour que l'IA soit organisée et transparente.
+Chaque tâche est découpée en petites étapes, avec un plan visible.
+
+✨ **La Qualité du code (Règles 8-12)** — Pour un code propre, simple et compréhensible.
+Pas d'usine à gaz : on fait simple et on commente le pourquoi.
+
+🎓 **La Posture (Règle 13)** — Pour que l'IA reste pédagogue et explique tout clairement.
+
+💻 **L'Environnement (Règles 14-15)** — Pour que l'IA s'adapte à ton outil (PowerShell)
+et adopte le mode tutoriel automatiquement."
+
+4. **Si le fichier est vide ou incorrect** : signale le problème et guide
+   l'utilisateur pour recommencer l'étape 3.2.
+
+Après la reformulation, demande : "Ça te semble clair ? Dis-moi 'C'est bon !'
+et on passe à la préparation de tes outils !"
+-->
+
+---
+
 <!-- LES ÉTAPES 1 À 9 SERONT AJOUTÉES ICI, UNE PAR UNE -->
