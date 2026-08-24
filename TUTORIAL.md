@@ -28,8 +28,8 @@ s'adaptant au niveau de l'apprenant et en affichant des schémas au bon moment.
 Le template est livré avec un cours de démonstration (la mécanique des Skills
 de Claude) que l'utilisateur remplacera par le sien à l'Étape 6.
 
-Scénario principal : l'utilisateur PART D'UN COURS EXISTANT (support PDF, notes,
-diaporama) qu'il dépose dans `_ressources-cours/` à l'Étape 1. À l'Étape 6, tu
+Scénario principal : l'utilisateur PART D'UN COURS EXISTANT (cours écrit, support
+de cours, notes) qu'il dépose dans `_ressources-cours/` à l'Étape 1. À l'Étape 6, tu
 l'extrais avec pdftotext et tu pré-remplis `programme.md` en le découpant en
 modules. C'est l'exact équivalent de l'extraction d'un CV PDF.
 
@@ -156,7 +156,7 @@ Les questions sont définies dans chaque étape avec le marqueur [CHECKPOINT].
 - Si "ça ne marche pas" → demande "qu'est-ce qui s'affiche exactement ?"
 - S'il semble découragé → rassure-le : "C'est tout à fait normal à cette étape !"
 - S'il arrive sans support de cours à l'Étape 6 → demande d'abord s'il n'a vraiment
-  RIEN : un mémo, un mail d'explication, des slides, un plan griffonné, une trame de
+  RIEN : un mémo, un mail d'explication, un support de cours, un plan griffonné, une trame de
   formation suffisent. Si c'est confirmé, construis le programme en conversation à
   partir de trois questions : qu'est-ce que tu sais bien faire ? à qui tu l'expliques
   souvent ? qu'est-ce qui te fait répéter la même explication ? Préviens-le que ce
@@ -190,7 +190,7 @@ FIN DES INSTRUCTIONS DE RÔLE
 
 > [!NOTE]
 > **Prépare ton cours existant.**
-> Ce tutoriel part de ce que tu as déjà : un support de cours, un diaporama, des notes, un mémo que tu envoies souvent. En PDF de préférence. À l'Étape 6, je le lis et je le découpe en modules pour toi, tu n'as pas à repartir d'une page blanche.
+> Ce tutoriel part de ce que tu as déjà : un cours écrit, un support de cours, des notes, un mémo que tu envoies souvent. En PDF de préférence. À l'Étape 6, je le lis et je le découpe en modules pour toi, tu n'as pas à repartir d'une page blanche.
 > Rien d'écrit nulle part ? On pourra construire le programme ensemble en discutant, mais ce sera plus long.
 
 > [!WARNING]
@@ -275,8 +275,8 @@ Glisse dans ce dossier tout ce que tu as sous la main :
 
 | Ce que tu déposes | Exemple de nom | Ce que ça deviendra |
 |---|---|---|
-| **Ton cours ou ton support** (PDF) | `mon-cours.pdf` | `programme.md`, le cœur du tuteur |
-| Ton diaporama, exporté en PDF | `slides.pdf` | Complète le programme |
+| **Ton cours écrit** (PDF) | `mon-cours.pdf` | `programme.md`, le cœur du tuteur |
+| Ton support de cours, exporté en PDF | `support-de-cours.pdf` | Complète le programme |
 | Tes notes, mémos, FAQ | `notes.txt` | Enrichit les modules et les pièges fréquents |
 | L'image de ton tuteur | `avatar.jpg` | Sa tête, en haut de page et à côté de ses réponses |
 | Tes schémas existants | `schema-1.png`, `schema-2.svg`… | Les illustrations affichées pendant le cours |
