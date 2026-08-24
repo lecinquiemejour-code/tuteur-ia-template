@@ -25,6 +25,26 @@ Tu n'écris pas de code. Tu remplaces six fichiers de contenu.
 
 ---
 
+## 🎓 Comment démarrer : le tutoriel interactif guidé
+
+L'intégralité de la création de ton tuteur est pilotée par un tutoriel interactif intégré : **[`TUTORIAL.md`](TUTORIAL.md)**.
+
+### Le principe
+Tu ne touches à aucune ligne de code. Ton assistant IA joue le rôle de formateur personnel et déroule les 9 étapes avec toi :
+- 🛠️ **Boîte à outils** : vérification et installation assistée des outils nécessaires
+- 📝 **Contenu sur-mesure** : découpage de ton propre cours (à partir de tes notes, PDF ou slides)
+- 🎨 **Identité du tuteur** : personnalisation du nom, du ton et de l'avatar
+- 🚀 **Mise en ligne** : déploiement gratuit sur Netlify
+
+### Pour lancer l'aventure :
+1. Duplique ce dépôt via le bouton vert **« Use this template »** (en haut de cette page) → *Create a new repository*.
+2. Ouvre ton nouveau dépôt dans ton éditeur IA favori (Antigravity, Cursor, Claude Code, Windsurf...).
+3. Écris simplement à ton assistant :
+
+> 💬 *« Lis le fichier TUTORIAL.md et guide-moi pas à pas pour créer mon tuteur IA. »*
+
+---
+
 ## Adapter le tuteur à ton sujet
 
 Tout se joue dans **`src/content/`**. Six fichiers, aucun code.
