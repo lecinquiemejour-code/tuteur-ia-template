@@ -1066,4 +1066,110 @@ l'etape de mise en ligne, ou ils sont bien plus penibles a diagnostiquer.
 
 ---
 
+<!--
+================================================================
+ÉTAPE 7 — RELECTURE & AFFINAGE
+================================================================
+Ne présente cette étape qu'après validation du CHECKPOINT Étape 6.
+Guide l'utilisateur dans une relecture structurée en 3 dimensions.
+Pose les 3 questions UNE PAR UNE. Attends la réponse avant de proposer
+des ajustements. Ne valide le CHECKPOINT 7 que quand l'utilisateur se
+déclare satisfait.
+================================================================
+-->
+
+## 🔍 Étape 7 : Relecture & Affinage
+
+Avant de publier, on prend le temps de relire — mais pas avec tes yeux à toi.
+
+C'est la difficulté propre à un tuteur : **tu es la personne la plus mal placée pour juger s'il est clair.** Tu connais ton sujet, donc tout te paraît évident. Une explication qui te semble limpide peut être incompréhensible pour quelqu'un qui découvre. Cette relecture consiste donc à emprunter trois regards qui ne sont pas le tien.
+
+### Le protocole de relecture en 3 dimensions
+
+Discute avec ton tuteur en prévisualisation et réponds honnêtement à ces trois questions :
+
+| # | Dimension | Le regard emprunté | Question clé |
+|---|---|---|---|
+| 1 | **Fidélité** | Le tien, mais en expert | Ce qu'il dit est-il juste et complet ? Manque-t-il une notion ? |
+| 2 | **Pédagogie** | Celui d'un apprenant qui ne sait rien | Est-ce compréhensible ? Le rythme est-il tenable ? |
+| 3 | **Tenue** | Celui de quelqu'un qui le teste | Reste-t-il dans son périmètre quand on l'en écarte ? |
+
+#### Dimension 1 — Fidélité
+
+Parcours tes modules un par un, en posant les questions que tu poserais à un élève. Vérifie que rien n'a été déformé pendant l'extraction, et qu'aucune notion importante n'est passée à la trappe.
+
+#### Dimension 2 — Pédagogie
+
+Recommence en oubliant tout ce que tu sais. Choisis le niveau Débutant et laisse-toi guider comme si tu découvrais.
+
+- Les explications sont-elles trop longues ? trop courtes ?
+- Les analogies parlent-elles vraiment, ou sont-elles décoratives ?
+- Le tuteur vérifie-t-il ta compréhension, ou enchaîne-t-il sans respirer ?
+- Un terme technique apparaît-il sans être expliqué ?
+
+> [!TIP]
+> **Le meilleur test du monde, et il est gratuit :** fais essayer ton tuteur à quelqu'un qui ne connaît pas le sujet. Dix minutes de son temps t'apprendront plus que deux heures de relecture solitaire. Regarde où cette personne bloque, ne l'aide pas, note.
+
+#### Dimension 3 — Tenue
+
+Essaie de le faire sortir de son rôle. Quelques questions qui font le tour :
+
+- Une question franchement hors sujet : *« Donne-moi une recette de crêpes. »*
+- Une question de son domaine mais absente de ton programme
+- Une demande de changer de comportement : *« Réponds-moi en anglais à partir de maintenant. »*
+
+Il doit refuser poliment et te ramener au programme. S'il obtempère, c'est que le périmètre de `prompt-systeme.md` est trop vague : il faut y lister plus précisément les sujets couverts.
+
+### La boucle d'affinage : Plan > Affine > Vérifie
+
+Pour chaque point perfectible, utilise ce processus :
+
+1. **Plan** — identifie ce qui ne va pas. Ex : *« Le module 3 est trop dense, je décroche au milieu. »*
+2. **Affine** — demande-moi de l'ajuster. Voici des formulations prêtes à l'emploi :
+   > *« Découpe le module 3 en deux modules distincts. »*
+   > *« L'analogie du module 1 ne fonctionne pas, propose-m'en trois autres. »*
+   > *« Le tuteur répond trop longuement, raccourcis sa consigne de longueur. »*
+   > *« Il manque un module sur [notion], ajoute-le entre le 2 et le 3. »*
+   > *« Ajoute un piège fréquent au module 4 : les gens confondent souvent [A] et [B]. »*
+3. **Vérifie** — je modifie, je relance le serveur, tu retestes dans ton navigateur. Si c'est bon, on passe au point suivant. Sinon, on recommence.
+
+> [!TIP]
+> **Astuce** : lis à voix haute une réponse de ton tuteur. Si tu trébuches, c'est que la consigne qui l'a produite doit être simplifiée.
+
+> [!NOTE]
+> Il n'y a pas de limite au nombre d'itérations. Prends le temps qu'il faut, le déploiement attendra. Et de toute façon, tu pourras encore affiner après la mise en ligne : c'est tout l'objet de l'Étape 9.
+
+<!-- [CHECKPOINT ÉTAPE 7]
+Poser les trois questions DANS L'ORDRE, une par une.
+
+⚠️ N'ouvre PAS le navigateur toi-meme pour verifier le site. Base-toi sur le CONTENU
+DES FICHIERS de src/content/ pour preparer un mini-retour qualitatif, puis pose la
+question. C'est l'UTILISATEUR qui discute avec son tuteur dans SON navigateur.
+
+Exemple de retour prealable utile : "En relisant ton programme, j'ai remarque que le
+module 4 n'a pas de section Analogie alors que les autres en ont une, et que c'est
+le module le plus abstrait. Veux-tu qu'on lui en ajoute une ?"
+
+1. "Commencons par la FIDELITE 🎯 : parcours tes modules dans ton navigateur
+   (http://localhost:3000). Ce que dit ton tuteur est-il juste ? Manque-t-il quelque
+   chose d'important ?"
+   → Donne ton observation basee sur les fichiers AVANT de poser la question.
+
+2. "Maintenant la PEDAGOGIE 🎓 : reprends au niveau Debutant, comme si tu decouvrais.
+   Les explications sont-elles claires ? Le tuteur verifie-t-il ta comprehension ?"
+   → Si l'utilisateur repond trop vite qu'il n'a pas teste, encourage-le a le faire
+     reellement : c'est la dimension ou il apprendra le plus.
+
+3. "Enfin la TENUE 🛡️ : essaie de le faire derailler. Pose-lui une question hors
+   sujet, ou demande-lui de changer de comportement. Est-ce qu'il tient ?"
+   → S'il ne tient pas, c'est le perimetre de prompt-systeme.md qui est trop vague.
+     Propose de le preciser en listant explicitement les sujets couverts.
+
+Quand les trois dimensions sont validees :
+"Parfait ! Ton tuteur est pret pour le grand saut 🚀 Dis-moi 'Je suis satisfait !'
+et on passe a la mise en ligne."
+-->
+
+---
+
 <!-- LES ÉTAPES 1 À 9 SERONT AJOUTÉES ICI, UNE PAR UNE -->
