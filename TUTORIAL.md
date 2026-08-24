@@ -756,4 +756,144 @@ Si npm install echoue :
 
 ---
 
+<!--
+================================================================
+ÉTAPE 6 — TRANSFORMER LE COURS EN TUTEUR
+================================================================
+Ne présente cette étape qu'après validation du CHECKPOINT Étape 5.
+
+C'est l'étape la plus longue et la plus importante. Découpe-la :
+6.0 clé API · 6.1 extraction · 6.2 programme.md · puis la suite.
+
+Règles propres à cette étape :
+- Quand l'utilisateur parle de son cours, propose l'extraction PDF EN PREMIER.
+- Si l'utilisateur donne sa clé API, installe-la directement dans .env.
+- Ne rédige JAMAIS le contenu d'un module sans avoir fait valider le plan
+  d'ensemble (la liste des modules) au préalable.
+- N'invente jamais de contenu pédagogique que le support ne contient pas.
+  Si une section te semble manquante, signale-la et demande.
+================================================================
+-->
+
+## 🎨 Étape 6 : Transformer ton cours en tuteur
+
+C'est ici que l'aventure devient concrète. **Tu n'as pas besoin d'ouvrir les fichiers toi-même — je le fais pour toi.**
+
+À la fin de cette étape, ton tuteur enseignera ton sujet, avec tes mots, sur ton ordinateur.
+
+---
+
+### 6.0 — Activer le cerveau de ton tuteur (la clé API)
+
+Avant tout, activons le **cerveau**. Comme ça, dès que tu testeras ton tuteur en prévisualisation, il répondra déjà !
+
+La clé API est un code secret qui permet à ton site de communiquer avec l'intelligence artificielle de Google.
+
+**Créer ta clé sur Google AI Studio :**
+
+- **Action** : va sur [Google AI Studio](https://aistudio.google.com/) et connecte-toi avec ton compte Google.
+- **Action** : dans le menu à gauche, clique sur **Get API key**, puis sur **Create API key**.
+- **Action** : copie précieusement ce long code — c'est ta clé, garde-la secrète.
+
+> [!IMPORTANT]
+> **Ta clé API est secrète.** Ne la partage jamais publiquement : pas dans un message, pas sur GitHub. Le projet est configuré pour qu'elle ne parte jamais sur GitHub, mais la prudence commence par toi.
+
+**Installer la clé dans ton projet :**
+
+- **Action** : dans le chat, dis-moi :
+  > *« Voici ma clé API Google : [colle ta clé]. Peux-tu l'installer dans le projet ? »*
+- **Résultat** : j'ajoute ta clé dans le fichier `.env` du projet — ton tuteur sera actif dès la prévisualisation locale. 🤖
+
+> [!WARNING]
+> **🆓 Gratuit vs 💳 Payant — ce qu'il faut savoir sur ta clé API :**
+>
+> La clé que tu viens de créer est **gratuite**. C'est parfait pour construire et tester ton tuteur. Mais cette version gratuite a **deux limites importantes** :
+>
+> | | 🆓 Gratuit | 💳 Payant (Pay-as-you-go) |
+> |---|---|---|
+> | **Confidentialité** | Google peut utiliser les conversations pour entraîner ses modèles | Tes données restent **privées** |
+> | **Fiabilité** | Lenteurs et erreurs possibles aux heures de pointe | Toujours rapide et fiable |
+> | **Coût** | 0 € | Quelques centimes à 1-2 €/mois max |
+>
+> **👉 En résumé** : reste en gratuit pour construire. Quand tu publieras ton tuteur devant de vrais apprenants, pense à activer la facturation dans [Google AI Studio](https://aistudio.google.com/). Le coût est dérisoire et la différence est notable.
+> Les quotas précis sont détaillés dans `ABONNEMENTS_ET_LIMITES.md`.
+
+---
+
+### 6.1 — L'astuce « gain de temps » ⚡ : je lis ton cours
+
+Tu as déposé ta matière dans `_ressources-cours/` à l'Étape 1. C'est le moment de s'en servir.
+
+- **Action** : dis-moi simplement :
+  > *« Mon cours est dans `_ressources-cours/mon-cours.pdf`, peux-tu le lire ? »*
+- **Résultat** : j'utilise l'outil `pdftotext` (installé à l'Étape 4) pour en extraire le texte, je le lis en entier, et je te propose un découpage en modules.
+
+Tu as plusieurs fichiers — un document rédigé **et** des slides ? Donne-les-moi tous les deux. Les slides me donneront ton plan, le document me donnera la matière. C'est la combinaison idéale.
+
+> [!TIP]
+> **Tu n'as rien en PDF ?** Deux solutions :
+> - Ton cours est dans Word ou PowerPoint : *Fichier → Enregistrer sous → PDF*, dépose le résultat dans `_ressources-cours/`, et on repart.
+> - Ton cours n'existe qu'à l'oral : dis-le-moi. On construira le programme en discutant, à partir de trois questions simples. C'est plus long, mais ça marche très bien.
+
+---
+
+### 6.2 — Découper ton cours en modules (`programme.md`)
+
+C'est le fichier le plus important du projet. Prenons le temps de comprendre ce qu'on y fait.
+
+#### Pourquoi on ne recopie pas ton cours tel quel
+
+Ton support de cours a été conçu pour être **lu de bout en bout**, ou projeté pendant que tu parles. Ton tuteur, lui, va tenir une **conversation** : il explique une notion, s'arrête, vérifie que c'est compris, puis continue — au rythme de l'apprenant, qui peut aussi sauter directement au module qui l'intéresse.
+
+Ce sont deux formats différents. Coller le PDF dans `programme.md` produirait un tuteur qui récite ; le découper en modules produit un tuteur qui enseigne.
+
+#### Ce qu'est un module
+
+Un module, c'est **une idée complète**, celle qu'on peut expliquer d'une traite avant de marquer une pause. Chacun contient :
+
+| Section | Ce qu'elle contient | Pourquoi elle compte |
+|---|---|---|
+| **Objectif** | Ce que l'apprenant saura à la fin, en une phrase | Donne un cap au tuteur |
+| **Idée principale** | L'explication, 5 à 10 lignes | C'est la matière qu'il reformulera |
+| **Analogie** | Une image tirée de la vie courante | C'est ce que l'apprenant retiendra |
+| **Points clés** | 2 à 4 puces | Le résumé qu'il peut redonner |
+| **Pièges fréquents** | Ce qu'on comprend de travers | Lui permet d'anticiper les erreurs |
+| **Question de vérification** | Une question ouverte | C'est sa pause avant de continuer |
+
+Les sections « Analogie » et « Pièges fréquents » sont facultatives, mais ce sont elles qui font la différence entre un tuteur correct et un bon tuteur.
+
+#### Comment on va procéder
+
+**1. Je te propose un plan.** Après avoir lu ton cours, je te présente une liste de modules avec leurs titres — rien d'autre. Tu regardes l'ossature avant qu'on remplisse quoi que ce soit.
+
+- **Action** : tu valides, tu fusionnes, tu découpes, tu réordonnes. C'est ton cours.
+
+> [!TIP]
+> **Combien de modules ?** Entre 4 et 8 pour la plupart des sujets. En dessous, chacun devient trop dense pour une conversation. Au-dessus, l'apprenant perd le fil du programme.
+> Un bon test : si tu ne peux pas résumer un module en une phrase, il en contient deux.
+
+**2. On remplit module par module.** Une fois le plan validé, je rédige chaque module à partir de ton support, et tu valides au fur et à mesure.
+
+> [!IMPORTANT]
+> **Je n'invente rien.** Si ton support ne dit rien sur un point, je te le signale au lieu de combler le trou. Un tuteur qui répond « je n'ai pas cette information dans le programme » est un tuteur fiable ; un tuteur qui improvise est un tuteur dangereux, surtout devant des apprenants qui ne peuvent pas vérifier.
+
+**3. On ajoute une table des matières.** Elle sert au tuteur à présenter le sommaire dès le premier message.
+
+> [!NOTE]
+> **Quelle longueur ?** Le cours de démonstration fait environ 15 000 caractères, soit 4 000 tokens. Tu peux monter bien plus haut. Garde juste en tête que **tout le programme est envoyé à l'IA à chaque message** : un programme très long rend chaque réponse un peu plus lente et un peu plus coûteuse. En pratique, tu as de la marge.
+
+<!-- [CHECKPOINT ÉTAPE 6.2]
+Ne passer à la suite qu'apres deux validations distinctes :
+1. Le PLAN (la liste des modules) valide par l'utilisateur.
+2. Le CONTENU de chaque module valide au fur et a mesure.
+
+Question a poser :
+"Ton programme est complet et il te ressemble ? 📚
+Dis-moi 'Le programme est bon !' et on donne un visage a ton tuteur."
+
+Si l'utilisateur valide trop vite sans avoir lu, insiste une fois : c'est le
+fichier dont depend toute la qualite du tuteur. Un module bacle ici produira
+des reponses vagues pendant toute la vie du projet.
+-->
+
 <!-- LES ÉTAPES 1 À 9 SERONT AJOUTÉES ICI, UNE PAR UNE -->
