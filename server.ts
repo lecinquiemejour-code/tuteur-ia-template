@@ -85,8 +85,8 @@ async function startServer() {
       contents.push({ role: 'user', parts: [{ text: message }] });
 
       // Lecture dynamique de la configuration du modèle
-      let aiModel = "gemini-3.1-flash-lite"; // Valeur par défaut
-      let aiTemperature = 0.7; // Valeur par défaut
+      let aiModel = "gemini-3.5-flash-lite"; // Valeur par défaut
+      let aiTemperature = 0.4; // Valeur par défaut alignée avec ai-config.json
       try {
         const configPath = path.resolve(__dirname, 'ai-config.json');
         if (fs.existsSync(configPath)) {

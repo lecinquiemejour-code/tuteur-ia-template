@@ -19,9 +19,9 @@ Trois services externes sont utilisés :
 
 ### Modèle utilisé
 
-Le modèle est configurable dans `ai-config.json`. Actuellement : **`gemini-3.1-flash-lite`** (le plus économique de la gamme Gemini).
+Le modèle est configurable dans `ai-config.json`. Actuellement : **`gemini-3.5-flash-lite`** (le plus économique de la gamme Gemini).
 
-### Limites du free tier (Gemini 3.1 Flash Lite)
+### Limites du free tier (Gemini 3.5 Flash Lite)
 
 | Métrique | Limite |
 |----------|--------|
