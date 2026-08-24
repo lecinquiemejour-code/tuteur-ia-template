@@ -37,7 +37,7 @@
 <circle cx="223.5" cy="108" r="7" fill="none" stroke="#9A978E" stroke-width=".8"/>
 <text class="tmp" x="244" y="90">20 °C</text>
 <text class="hd"  x="254" y="130" text-anchor="middle">Huile</text>
-<text class="ts"  x="254" y="146" text-anchor="middle">à température ambiante</text>
+<text class="ts"  x="254" y="146" text-anchor="middle">ambiante</text>
 
 <rect class="bad" x="34" y="176" width="276" height="58" rx="6"/>
 <text class="hd" x="172" y="200" text-anchor="middle">L'émulsion peine, ou ne prend pas</text>
@@ -62,7 +62,7 @@
 <circle cx="559.5" cy="108" r="7" fill="none" stroke="#9A978E" stroke-width=".8"/>
 <text class="tmp" x="580" y="90">20 °C</text>
 <text class="hd"  x="590" y="130" text-anchor="middle">Huile</text>
-<text class="ts"  x="590" y="146" text-anchor="middle">à température ambiante</text>
+<text class="ts"  x="590" y="146" text-anchor="middle">ambiante</text>
 
 <rect class="good" x="370" y="176" width="276" height="58" rx="6"/>
 <text class="hd" x="508" y="200" text-anchor="middle">L'émulsion prend</text>
