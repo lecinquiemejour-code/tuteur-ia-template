@@ -7,6 +7,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import ReactMarkdown from 'react-markdown';
 import { Send, User, Loader2, ExternalLink, X, Mail, Linkedin, Printer } from 'lucide-react';
 import { sendMessageToAI } from './services/ai';
+import { chargerHistorique, sauvegarderHistorique, type Message } from './services/historique';
 import tuteur from './content/tuteur.json';
 import accueilRaw from './content/accueil.md?raw';
 
@@ -25,24 +26,24 @@ const BotAvatar = () => (
 
 const APP_VERSION = "v1.0.13";
 
-type Message = {
-  id: string;
-  role: 'user' | 'ai';
-  content: string;
-};
-
 // Boutons de reponse rapide affiches sous le message d'accueil.
 // Ils se configurent dans tuteur.json ; liste vide = aucun bouton.
 const SUGGESTIONS: string[] = tuteur.suggestions ?? [];
 
 export default function App() {
-  const [messages, setMessages] = useState<Message[]>([
-    {
-      id: 'welcome',
-      role: 'ai',
-      content: accueilTexte
-    }
-  ]);
+  // La conversation est restaurée depuis le navigateur si elle existe (sessionStorage),
+  // ce qui permet de rafraîchir la page sans perdre le fil du cours.
+  // L'initialiseur est une fonction : il n'est évalué qu'au premier rendu.
+  const [messages, setMessages] = useState<Message[]>(() => {
+    const historiqueEnregistre = chargerHistorique(APP_VERSION);
+    return historiqueEnregistre ?? [
+      {
+        id: 'welcome',
+        role: 'ai',
+        content: accueilTexte
+      }
+    ];
+  });
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [fullscreenImage, setFullscreenImage] = useState<string | null>(null);
@@ -133,6 +134,17 @@ export default function App() {
   // Scroll automatique vers le bas à chaque nouveau message
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  }, [messages]);
+
+  // Enregistrement de la conversation dans le navigateur.
+  // POURQUOI le délai de 500 ms : pendant le streaming, la réponse du tuteur arrive
+  // mot par mot et « messages » change des dizaines de fois par seconde. Sans ce
+  // temps d'attente, on écrirait dans le stockage à chaque mot. Le minuteur est
+  // réarmé à chaque changement : la sauvegarde n'a donc lieu qu'une fois la réponse
+  // terminée (ou lors d'une pause dans le flux).
+  useEffect(() => {
+    const minuteur = setTimeout(() => sauvegarderHistorique(APP_VERSION, messages), 500);
+    return () => clearTimeout(minuteur);
   }, [messages]);
 
   const handleSend = async (text: string) => {
