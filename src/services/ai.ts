@@ -131,7 +131,11 @@ export async function verifierCleApi(apiKey: string): Promise<string | null> {
       // Reponse non JSON : on se rabat sur le code HTTP
     }
 
-    const message = MESSAGES_ERREUR[response.status] ?? detail ?? "Cette clé n'a pas été acceptée.";
+    // Le code HTTP est affiche ici comme dans le fil de conversation : c'est au
+    // moment de la saisie que le diagnostic compte le plus, et un apprenant qui
+    // signale « Code HTTP: 401 » se depanne bien plus vite qu'un « ca marche pas ».
+    const base = MESSAGES_ERREUR[response.status] ?? detail ?? "Cette clé n'a pas été acceptée.";
+    const message = `${base} (Code HTTP: ${response.status})`;
     console.error(`[CLE] Clé refusée (HTTP ${response.status}).`);
     return message;
   } catch (erreur) {

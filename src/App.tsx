@@ -31,7 +31,7 @@ const BotAvatar = () => (
   </div>
 );
 
-const APP_VERSION = "v1.0.13";
+const APP_VERSION = "v1.0.14";
 
 // Boutons de reponse rapide affiches sous le message d'accueil.
 // Ils se configurent dans tuteur.json ; liste vide = aucun bouton.

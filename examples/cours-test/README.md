@@ -46,7 +46,7 @@ Ouvre `http://localhost:3000` dans un vrai navigateur et déroule ce tableau. Ch
 
 | # | Ce que tu fais | Ce que tu dois voir | Ce que ça valide |
 |---|---|---|---|
-| 1 | Tu ouvres la page | Le nom « Marceline, tutrice… » en haut | `tuteur.json` est lu |
+| 1 | Tu ouvres la page | Le nom « Geppetto, tuteur… » en haut | `tuteur.json` est lu |
 | 2 | Tu regardes l'onglet du navigateur | Le même nom, pas « Tuteur interactif » | `document.title` dynamique |
 | 3 | Tu lis le message d'accueil | Le nom apparaît en gras dans la première phrase | La variable `{{TUTEUR_NOM}}` est substituée |
 | 4 | Tu regardes sous l'accueil | Trois boutons : « Je débute complètement », « J'ai déjà essayé, sans succès », « Ma mayonnaise a tranché ! » | `suggestions` vient de `tuteur.json` |
@@ -89,4 +89,6 @@ Les trois `.svg` copiés dans `public/assets/` ne sont pas suivis par Git : ils 
 
 ## Note sur l'avatar
 
-`tuteur.json` réutilise volontairement `Geppetto.jpg`, déjà présent dans `public/`. Le test fonctionne donc sans avoir à fournir d'image. Un tuteur nommé Marceline avec le visage de Geppetto, c'est incongru — et c'est justement une bonne démonstration : l'avatar est un simple réglage, indépendant du reste.
+`tuteur.json` réutilise `Geppetto.jpg`, déjà présent dans `public/`. Le test fonctionne donc sans avoir à fournir d'image.
+
+Retiens surtout que l'avatar est un **réglage indépendant du reste**. Le nom, la photo d'en-tête et l'avatar du chat se déclarent séparément dans `tuteur.json` : rien ne t'oblige à les faire correspondre. Tu peux donner à ton tuteur le nom que tu veux sans changer son visage, et l'inverse.

@@ -88,7 +88,7 @@ public/               ← ce que le visiteur voit (avatar, schémas)
   assets/             ← les illustrations du cours
 examples/
   tuteur-vierge/      ← les gabarits à copier pour ton propre sujet
-  cours-test/         ← le cours de test prêt à l'emploi (Marceline / mayonnaise)
+  cours-test/         ← le cours de test prêt à l'emploi (Geppetto / mayonnaise)
 src/App.tsx           ← l'interface
 server.ts             ← serveur de développement local
 netlify/functions/    ← la fonction serveur en production
