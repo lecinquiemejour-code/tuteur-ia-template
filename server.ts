@@ -66,12 +66,14 @@ async function startServer() {
   // API Route for Chat
   app.post('/api/chat', async (req, res) => {
     try {
-      const { message, history } = req.body;
-      
-      // Utilisation stricte de la clé API_KEY
-      const apiKey = process.env.API_KEY;
+      // La cle vient desormais de l'apprenant, transmise par le navigateur.
+      // POURQUOI plus de process.env.API_KEY : chaque visiteur apporte la sienne,
+      // ce qui protege le quota du site et rend chacun responsable de son usage.
+      const { message, history, apiKey } = req.body;
+
       if (!apiKey) {
-        return res.status(500).json({ error: "Clé API manquante sur le serveur. Veuillez configurer le secret API_KEY." });
+        // 401 et non 500 : ce n'est pas une panne du serveur, c'est une cle absente.
+        return res.status(401).json({ error: "Aucune clé Gemini fournie." });
       }
       
       const ai = new GoogleGenAI({ apiKey });
@@ -118,9 +120,32 @@ async function startServer() {
       }
       res.end();
     } catch (error) {
-      console.error("[Server] Erreur Gemini:", error);
+      // Classification alignee sur netlify/functions/chat.ts.
+      // POURQUOI c'est indispensable : sans elle, une cle refusee afficherait
+      // « erreur technique » en local et « cle refusee » en ligne — exactement
+      // la divergence dev/prod que ce projet cherche a eviter.
+      const detail = String(error).toLowerCase();
+      let statut = 500;
+      let messageClient = "Erreur lors de la communication avec l'IA.";
+
+      if (detail.includes("401") || detail.includes("403") || detail.includes("unauthorized") || detail.includes("api key")) {
+        statut = 401;
+        messageClient = "Clé refusée par Google.";
+        console.error("[Server] Cle refusee par Google.");
+      } else if (detail.includes("429") || detail.includes("resource_exhausted") || detail.includes("rate limit")) {
+        statut = 429;
+        messageClient = "Quota de la clé atteint.";
+        console.error("[Server] Quota atteint.");
+      } else if (detail.includes("503") || detail.includes("unavailable")) {
+        statut = 503;
+        messageClient = "Service Gemini indisponible.";
+        console.error("[Server] Service indisponible.");
+      } else {
+        console.error("[Server] Erreur Gemini:", error);
+      }
+
       if (!res.headersSent) {
-        res.status(500).json({ error: "Erreur lors de la communication avec l'IA." });
+        res.status(statut).json({ error: messageClient });
       } else {
         res.end();
       }

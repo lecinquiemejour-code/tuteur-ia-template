@@ -70,8 +70,9 @@ Le dossier **[`examples/tuteur-vierge/`](examples/tuteur-vierge/)** contient ces
 
 1. **Pousse** ton dépôt sur GitHub
 2. Sur [Netlify](https://www.netlify.com/) : *Add new site* → *Import an existing project* → choisis ton dépôt
-3. **Déclare ta clé** : *Site configuration* → *Environment variables* → `API_KEY`
-4. Déploie
+3. Déploie
+
+**Aucune variable d'environnement à configurer.** Chaque visiteur saisit sa propre clé Gemini dans l'interface du tuteur : ton quota reste intact, et tu n'as aucun secret à gérer.
 
 Le fichier `netlify.toml` contient déjà la configuration : commande de build, dossier publié, et l'inclusion de `src/content/` dans le bundle de la fonction serveur.
 

@@ -37,11 +37,14 @@ public/               ce que le visiteur voit : avatar, schémas
   assets/             les illustrations du cours
 src/App.tsx           l'interface de chat (React)
 src/services/ai.ts    appelle /api/chat, gère le streaming
+src/services/cle-api.ts  la clé Gemini du visiteur (sessionStorage)
 server.ts             serveur de DÉVELOPPEMENT local (Express + Vite)
 netlify/functions/    serveur de PRODUCTION (Netlify Function)
 ai-config.json        modèle Gemini et température
 examples/             gabarits vierges + skill de démonstration
 ```
+
+**La clé Gemini appartient au visiteur.** Le serveur n'en détient aucune : ni dans `.env`, ni dans les variables Netlify. Chaque visiteur saisit la sienne dans l'interface, elle est conservée dans le `sessionStorage` de son navigateur — donc effacée à la fermeture de l'onglet — et jointe au corps de chaque requête vers `/api/chat`. Sans clé, le portail de saisie remplace la zone de chat.
 
 **Le prompt système est assemblé à deux endroits** : `server.ts` pour le développement local, `netlify/functions/chat.ts` pour la production. Les deux lisent les mêmes fichiers de `src/content/` et produisent le même prompt. **Toute modification de l'assemblage doit être faite dans les deux fichiers**, sans quoi le comportement local et le comportement en ligne divergent.
 
@@ -69,7 +72,8 @@ Trois variables sont substituées à l'assemblage, depuis `tuteur.json` :
 |---|---|---|
 | **Serveur non redémarré** | Une modification de `src/content/` n'apparaît pas | Ces fichiers sont lus **au démarrage** du serveur, pas à chaud |
 | **Image non déclarée** | Un schéma déposé dans `public/assets/` ne s'affiche jamais | Il faut AUSSI l'ajouter au catalogue `illustrations.md` |
-| **Variable Netlify non injectée** | Erreur HTTP 504 / tuteur muet en ligne | La variable `API_KEY` a été ajoutée post-build sans relancer : `Deploys ➡️ Trigger deploy ➡️ Clear cache` |
+| **Portail au lieu du chat** | La zone de saisie demande une clé Gemini | Comportement normal : le visiteur n'a pas encore saisi sa clé. Il n'existe plus de clé côté serveur. |
+| **Classification d'erreur divergente** | Une clé refusée donne un message différent en local et en ligne | `server.ts` et `chat.ts` traduisent tous deux les codes 401/429/503. Toute modification de l'un doit être reportée dans l'autre. |
 | **Assemblage divergent** | Le tuteur se comporte différemment en local et en ligne | `server.ts` et `chat.ts` n'ont pas été modifiés tous les deux |
 | **Deux SDK Gemini** | — | `server.ts` utilise `@google/genai`, `chat.ts` utilise `@google/generative-ai`. C'est ainsi, ne pas unifier sans demande explicite. |
 | **Faux positifs du filtre** | Un message légitime est bloqué | `SUSPICIOUS_PATTERNS` filtre par sous-chaîne : `ACT AS` bloque « cont**act as**sistant » |
@@ -154,4 +158,4 @@ npm run build   # compiler pour la production
 npm run lint    # vérification TypeScript (tsc --noEmit)
 ```
 
-Une clé API Gemini doit être présente dans `.env` sous la forme `API_KEY="..."`. Ce fichier n'est jamais commité.
+**Aucune clé API n'est nécessaire pour lancer le projet.** Au premier lancement, le tuteur affiche un portail réclamant une clé Gemini : colle la tienne, elle reste dans l'onglet. Le fichier `.env` n'est plus lu par l'application.

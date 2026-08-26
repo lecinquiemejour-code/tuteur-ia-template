@@ -32,7 +32,9 @@
 ## ⭐ Évolution #1 — Modèle Gemini configurable via Netlify 🟢
 
 ### Problème
-Le modèle IA est défini dans `ai-config.json` (commité dans Git). Pour changer de modèle, il faut modifier le fichier, committer, pusher et attendre le redéploiement (~1-2 min). La clé API, elle, est déjà une variable d'environnement modifiable instantanément.
+Le modèle IA est défini dans `ai-config.json` (commité dans Git). Pour changer de modèle, il faut modifier le fichier, committer, pusher et attendre le redéploiement (~1-2 min).
+
+> ⚠️ **Attention si cette évolution est reprise** : le nom du modèle est aussi *affiché* au visiteur, et cet affichage lit `ai-config.json` **à la compilation**. Une variable d'environnement, invisible depuis le navigateur, ferait donc mentir l'affichage. Il faudrait en plus exposer le modèle réel au client (petite route `/api/config`).
 
 ### Solution
 Ajouter deux variables d'environnement Netlify **optionnelles** :
@@ -55,7 +57,7 @@ Quand le chatbot ne répond pas, l'utilisateur ne sait pas diagnostiquer la caus
 
 ### Solution
 Créer une Netlify Function `/api/health` qui vérifie :
-1. `API_KEY` est-elle définie ?
+1. La clé fournie par le visiteur est-elle acceptée ?
 2. Le modèle répond-il ? (micro-appel test)
 3. Le quota est-il ok ?
 

@@ -6,8 +6,15 @@
 import React, { useState, useRef, useEffect } from 'react';
 import ReactMarkdown from 'react-markdown';
 import { Send, User, Loader2, ExternalLink, X, Mail, Linkedin, Printer } from 'lucide-react';
-import { sendMessageToAI } from './services/ai';
+import { sendMessageToAI, verifierCleApi } from './services/ai';
 import { chargerHistorique, sauvegarderHistorique, type Message } from './services/historique';
+import {
+  lireCle, enregistrerCle, effacerCle,
+  nettoyerCle, cleEstBienFormee, masquerCle,
+} from './services/cle-api';
+// Le modele est affiche a l'apprenant mais reste NON modifiable : ai-config.json
+// demeure la source unique de verite, lue cote serveur pour l'appel reel.
+import aiConfig from '../ai-config.json';
 import tuteur from './content/tuteur.json';
 import accueilRaw from './content/accueil.md?raw';
 
@@ -48,6 +55,14 @@ export default function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [fullscreenImage, setFullscreenImage] = useState<string | null>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  // --- Cle API de l'apprenant -----------------------------------------------
+  // Elle est relue depuis sessionStorage au premier rendu : un simple F5 ne
+  // reclame donc pas de ressaisie, alors qu'une fermeture d'onglet, si.
+  const [cleApi, setCleApi] = useState<string | null>(() => lireCle());
+  const [saisieCle, setSaisieCle] = useState('');
+  const [erreurCle, setErreurCle] = useState<string | null>(null);
+  const [verificationEnCours, setVerificationEnCours] = useState(false);
 
   // --- Logique de redimensionnement de la sidebar d'illustration ---
   const [sidebarWidth, setSidebarWidth] = useState(() => window.innerWidth / 2);
@@ -147,8 +162,45 @@ export default function App() {
     return () => clearTimeout(minuteur);
   }, [messages]);
 
+  /**
+   * Valide la cle saisie : forme d'abord (gratuit, instantane), puis appel reel
+   * a Gemini. Ce n'est qu'une fois acceptee qu'elle est rangee et que le chat
+   * s'ouvre — l'apprenant ne decouvre donc jamais une cle morte en pleine
+   * conversation.
+   */
+  const handleValiderCle = async (e: React.FormEvent) => {
+    e.preventDefault();
+    const cle = nettoyerCle(saisieCle);
+
+    if (!cleEstBienFormee(cle)) {
+      setErreurCle("Une clé Gemini commence par « AIza » et compte 39 caractères.");
+      return;
+    }
+
+    setVerificationEnCours(true);
+    setErreurCle(null);
+    const probleme = await verifierCleApi(cle);
+    setVerificationEnCours(false);
+
+    if (probleme) { setErreurCle(probleme); return; }
+
+    enregistrerCle(cle);
+    setCleApi(cle);
+    setSaisieCle('');
+  };
+
+  /** Oublie la cle sur demande explicite (croix de la pastille). */
+  const handleOublierCle = () => {
+    effacerCle();
+    setCleApi(null);
+    setSaisieCle('');
+    setErreurCle(null);
+  };
+
   const handleSend = async (text: string) => {
     if (!text.trim() || isLoading) return;
+    // Sans cle, aucun appel possible : le portail est affiche a la place du chat.
+    if (!cleApi) return;
 
     // 1. Nettoyage et Validation (Chantier A - Sécurité)
     const cleanedText = sanitizeInput(text);
@@ -185,7 +237,7 @@ export default function App() {
       let isFirstChunk = true;
 
       // 4. Appel à l'API Gemini via notre service (en passant l'historique)
-      await sendMessageToAI(cleanedText, messages, (chunk) => {
+      await sendMessageToAI(cleanedText, messages, cleApi, (chunk) => {
         if (isFirstChunk) {
           isFirstChunk = false;
           setIsLoading(false); // Cache l'indicateur de chargement dès le premier mot
@@ -321,6 +373,23 @@ export default function App() {
           </div>
         </div>
         <div className="flex items-center gap-2">
+          {/* Pastille : cle masquee + modele en lecture seule.
+              La croix oublie la cle et ramene au portail. */}
+          {cleApi && (
+            <div className="flex flex-col items-end leading-tight print:hidden mr-2">
+              <button
+                onClick={handleOublierCle}
+                title="Oublier ma clé"
+                className="flex items-center gap-1.5 text-sm font-mono text-indigo-600 hover:text-red-600 transition-colors cursor-pointer"
+              >
+                {masquerCle(cleApi)}
+                <X className="w-3.5 h-3.5" />
+              </button>
+              <span className="text-[20px] text-gray-400">
+                {aiConfig.model}
+              </span>
+            </div>
+          )}
           <span className="text-xs text-gray-400 font-mono py-1 px-2 bg-gray-50 rounded-md border border-gray-100 print:hidden">
             {APP_VERSION}
           </span>
@@ -431,7 +500,69 @@ export default function App() {
                 </div>
               )}
 
-              {/* Formulaire de saisie */}
+              {/* ETAT A — Portail. Sans cle, la saisie du chat cede la place a la
+                  demande de cle : pas de menu cache, l'apprenant ne peut pas se
+                  tromper sur ce qu'on attend de lui.
+                  Le champ est annote comme un champ d'identifiants (type password
+                  + autoComplete) pour que le gestionnaire de mots de passe du
+                  navigateur propose de le retenir : c'est LUI qui assure la
+                  memorisation confortable, pas nous. */}
+              {!cleApi && (
+                <form onSubmit={handleValiderCle} className="flex flex-col gap-2">
+                  <label htmlFor="cle-gemini" className="text-sm text-gray-700">
+                    Pour discuter avec {tuteur.basics.name}, collez votre clé Gemini.
+                  </label>
+                  {/* Champ d'identifiant technique, place hors ecran.
+                      POURQUOI il existe : Chrome cherche un champ d'identifiant
+                      juste avant un champ mot de passe. Sans lui, il reclame une
+                      saisie a l'apprenant et enregistre une entree sans etiquette,
+                      impossible a reconnaitre plus tard dans son gestionnaire.
+                      POURQUOI hors ecran plutot que display:none : les navigateurs
+                      ignorent souvent les champs reellement masques pour cette
+                      heuristique. Un decalage de position, lui, est pris en compte. */}
+                  <input
+                    type="text"
+                    name="libelle-cle"
+                    autoComplete="username"
+                    value="Clé Gemini"
+                    readOnly
+                    tabIndex={-1}
+                    aria-hidden="true"
+                    className="absolute left-[-9999px] w-px h-px opacity-0"
+                  />
+                  <div className="flex gap-2">
+                    <input
+                      id="cle-gemini"
+                      name="cle-gemini"
+                      type="password"
+                      autoComplete="current-password"
+                      value={saisieCle}
+                      onChange={(e) => { setSaisieCle(nettoyerCle(e.target.value)); setErreurCle(null); }}
+                      placeholder="AIza…"
+                      className="flex-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-xl focus:ring-indigo-500 focus:border-indigo-500 block w-full p-3 sm:p-4 outline-none transition-all font-mono"
+                    />
+                    <button
+                      type="submit"
+                      disabled={!cleEstBienFormee(nettoyerCle(saisieCle)) || verificationEnCours}
+                      className="bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl px-4 sm:px-6 py-3 sm:py-4 flex items-center justify-center transition-colors disabled:opacity-50 disabled:cursor-not-allowed shadow-sm text-sm font-medium whitespace-nowrap"
+                    >
+                      {verificationEnCours ? <Loader2 className="w-5 h-5 animate-spin" /> : 'Vérifier'}
+                    </button>
+                  </div>
+                  {erreurCle && <p className="text-xs text-red-600">⚠️ {erreurCle}</p>}
+                  {!erreurCle && saisieCle.length > 0 && !cleEstBienFormee(nettoyerCle(saisieCle)) && (
+                    <p className="text-xs text-gray-500">
+                      Une clé Gemini commence par « AIza » et compte 39 caractères.
+                    </p>
+                  )}
+                  <p className="text-xs text-gray-400">
+                    Votre clé reste dans cet onglet : elle disparaît à sa fermeture et n'est jamais enregistrée par le site.
+                  </p>
+                </form>
+              )}
+
+              {/* ETAT B — Formulaire de saisie, une fois la cle validee */}
+              {cleApi && (
               <form onSubmit={handleSubmit} className="flex flex-col gap-0">
                 <div className="flex gap-2">
                   <input
@@ -460,6 +591,7 @@ export default function App() {
                   </span>
                 </div>
               </form>
+              )}
               <div className="text-center mt-0.5">
                 <p className="text-xs text-gray-400">
                   L'IA peut faire des erreurs. Vérifiez les informations importantes.

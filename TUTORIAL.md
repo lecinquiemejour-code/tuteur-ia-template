@@ -782,7 +782,8 @@ C'est l'étape la plus longue et la plus importante. Découpe-la :
 
 Règles propres à cette étape :
 - Quand l'utilisateur parle de son cours, propose l'extraction PDF EN PREMIER.
-- Si l'utilisateur donne sa clé API, installe-la directement dans .env.
+- L'utilisateur ne doit PAS te donner sa cle API : il la colle lui-meme dans
+  le tuteur au lancement de la previsualisation. Ne l'ecris dans aucun fichier.
 - Ne rédige JAMAIS le contenu d'un module sans avoir fait valider le plan
   d'ensemble (la liste des modules) au préalable.
 - N'invente jamais de contenu pédagogique que le support ne contient pas.
@@ -811,13 +812,17 @@ La clé API est un code secret qui permet à ton site de communiquer avec l'inte
 - **Action** : copie précieusement ce long code — c'est ta clé, garde-la secrète.
 
 > [!IMPORTANT]
-> **Ta clé API est secrète.** Ne la partage jamais publiquement : pas dans un message, pas sur GitHub. Le projet est configuré pour qu'elle ne parte jamais sur GitHub, mais la prudence commence par toi.
+> **Ta clé API est secrète.** Ne la partage jamais publiquement : pas dans un message, pas sur GitHub — **et ne me la donne pas non plus dans ce chat.** Tu la colleras toi-même dans ton tuteur, et elle ne quittera pas ton navigateur.
 
-**Installer la clé dans ton projet :**
+**Utiliser ta clé dans ton tuteur :**
 
-- **Action** : dans le chat, dis-moi :
-  > *« Voici ma clé API Google : [colle ta clé]. Peux-tu l'installer dans le projet ? »*
-- **Résultat** : j'ajoute ta clé dans le fichier `.env` du projet — ton tuteur sera actif dès la prévisualisation locale. 🤖
+Bonne nouvelle : il n'y a **rien à installer**. Ta clé ne se range dans aucun fichier du projet.
+
+- **Action** : garde-la sous la main. Tu la colleras directement dans ton tuteur à l'Étape 6.10, au lancement de la prévisualisation.
+- **Résultat** : au premier lancement, le tuteur affiche un champ réclamant ta clé. Tu la colles, il se réveille.
+
+> [!NOTE]
+> **Pourquoi ce fonctionnement ?** Ta clé reste dans ton navigateur, le temps de l'onglet — elle ne part ni sur GitHub, ni sur Netlify, ni dans un fichier de ton projet. Et surtout : quand tes apprenants utiliseront ton tuteur en ligne, **chacun apportera la sienne**. Ton quota reste intact et tu n'as aucun secret à gérer. 🤖
 
 > [!WARNING]
 > **🆓 Gratuit vs 💳 Payant — ce qu'il faut savoir sur ta clé API :**
@@ -830,7 +835,7 @@ La clé API est un code secret qui permet à ton site de communiquer avec l'inte
 > | **Fiabilité** | Lenteurs et erreurs possibles aux heures de pointe | Toujours rapide et fiable |
 > | **Coût** | 0 € | Quelques centimes à 1-2 €/mois max |
 >
-> **👉 En résumé** : reste en gratuit pour construire. Quand tu publieras ton tuteur devant de vrais apprenants, pense à activer la facturation dans [Google AI Studio](https://aistudio.google.com/). Le coût est dérisoire et la différence est notable.
+> **👉 En résumé** : le gratuit suffit très largement pour construire ton tuteur. Et comme chacun de tes apprenants utilisera **sa propre clé**, tu n'as pas à financer leur usage : ce choix ne concerne que ton confort personnel pendant la conception.
 > Les quotas précis sont détaillés dans `ABONNEMENTS_ET_LIMITES.md`.
 
 ---
@@ -1048,7 +1053,8 @@ C'est le moment idéal pour repérer une information oubliée ou mal interprét�
 
 - **Action** : dis-moi **« Lance la prévisualisation »** et je démarre le serveur local pour toi.
 - **Action** : ouvre ton navigateur (Chrome, Firefox…) et va sur 👉 **[http://localhost:3000](http://localhost:3000)**
-- **Résultat** : ton tuteur s'affiche dans ton vrai navigateur, et si tu m'as donné ta clé API, il répond déjà.
+- **Action** : au premier affichage, le tuteur réclame ta clé Gemini (celle de l'Étape 6.0). **Colle-la** et valide.
+- **Résultat** : ton tuteur s'affiche dans ton vrai navigateur et répond à tes questions. Si ton navigateur propose d'enregistrer la clé, accepte : il te la remplira tout seul les prochaines fois.
 
 **Ce qu'il faut vérifier :**
 
@@ -1216,23 +1222,37 @@ Avant de publier quoi que ce soit, on s'assure que ton ordinateur est autorisé 
 > [!NOTE]
 > C'est une étape unique. Une fois connecté, tu n'auras plus à le refaire.
 
-### 8.1 — Rappel : ta clé API pour Netlify
+### 8.1 — Bonne nouvelle : aucune clé à configurer
 
-Tu as créé ta clé API à l'Étape 6.0 et elle fonctionne déjà en local. Pour que ton tuteur réponde aussi **en ligne**, il faudra la renseigner dans Netlify (voir l'étape 8.3, point 4).
+Contrairement à ce qu'on pourrait croire, **tu n'as aucune clé à déclarer dans Netlify**. Ton site n'en détient aucune.
+
+Chaque personne qui ouvrira ton tuteur saisira **sa propre clé Gemini**, exactement comme tu l'as fait à l'Étape 6.10. Elle restera dans son navigateur, le temps de son onglet.
+
+Trois conséquences, toutes bonnes pour toi :
+
+| | |
+|---|---|
+| **Ton quota est intact** | Tes apprenants consomment le leur, pas le tien |
+| **Aucun secret à gérer** | Rien à stocker, rien à faire fuiter, rien à renouveler |
+| **Aucune facture possible** | Le coût de l'IA ne t'incombe jamais |
+
+> [!TIP]
+> **Prépare tes apprenants.** Puisque chacun doit apporter sa clé, prévois de leur expliquer comment en créer une : [Google AI Studio](https://aistudio.google.com/) → **Get API key** → **Create API key**. C'est gratuit et cela prend une minute. Beaucoup d'enseignants en font la première activité du cours.
 
 > [!TIP]
 > **Tu ne retrouves plus ta clé ?** Retourne sur [Google AI Studio](https://aistudio.google.com/) → **Get API key** pour la retrouver ou en créer une nouvelle.
 
 > [!WARNING]
-> **⚠️ Clé gratuite → clé payante : c'est le moment !**
+> **⚠️ Ce que tu dois dire à tes apprenants**
 >
-> Ton tuteur va être utilisé par de **vrais apprenants**. Rappelle-toi le tableau de l'Étape 6.0 :
-> - En **gratuit** : lenteurs possibles aux heures de pointe, et Google peut lire les conversations
-> - En **payant** (quelques centimes par mois) : rapide, fiable, données privées
+> Avec une clé **gratuite**, Google se réserve le droit d'utiliser les conversations pour entraîner ses modèles. Ce n'est plus ton quota qui est en jeu, mais **leurs échanges avec le tuteur**.
 >
-> Ce second point mérite réflexion si tes apprenants posent des questions qui les exposent — un élève en difficulté écrit parfois des choses personnelles à un tuteur.
+> Le point mérite d'être dit, car un apprenant en difficulté écrit parfois des choses personnelles à un tuteur qui ne le juge pas. Deux réponses possibles, à toi de choisir :
 >
-> **Comment faire ?** Va sur [Google AI Studio](https://aistudio.google.com/) → paramètres de facturation → associe une carte bancaire (Pay-as-you-go). Ta clé API reste la même, seul le mode de facturation change.
+> - **Les prévenir** : « ce tuteur passe par une IA de Google, évitez d'y écrire des informations personnelles »
+> - **Leur indiquer l'option payante** : dans [Google AI Studio](https://aistudio.google.com/) → paramètres de facturation → Pay-as-you-go, leurs données redeviennent privées pour quelques centimes par mois
+>
+> Dans les deux cas, la décision leur appartient — puisque la clé leur appartient.
 
 ### 8.2 — Publier ton code sur GitHub
 
@@ -1249,22 +1269,17 @@ C'est le moment magique : ton tuteur devient accessible au monde entier 🌍
 2. **Action** : clique sur **Add new site** → **Import an existing project** → **GitHub**.
 3. **Action** : Netlify te montre tes dépôts GitHub. **Sélectionne celui qu'on vient de créer** (ex : `tuteur-photosynthese`).
    - ⚠️ Si tu ne le vois pas, clique sur *« Configure the Netlify app on GitHub »* pour l'autoriser.
-4. **Action** : sur la page de configuration, ajoute la **variable d'environnement** :
-   - Clique sur **Add environment variables** → **New variable**
-   - **Key** : `API_KEY`
-   - **Value** : [colle ta clé API Google AI Studio]
-5. **Action** : clique sur **Deploy site**.
-6. **Résultat 🎉** : après 1 à 2 minutes, Netlify te donne une URL. **Ton tuteur est en ligne !**
+4. **Action** : ne renseigne **aucune variable d'environnement** — ton site n'a besoin d'aucun secret (voir l'Étape 8.1). Clique directement sur **Deploy site**.
+5. **Résultat 🎉** : après 1 à 2 minutes, Netlify te donne une URL. **Ton tuteur est en ligne !**
 
 > [!TIP]
-> **💡 Variable ajoutée après coup ou erreur 504 / tuteur muet ?**
-> Si tu as ajouté ou modifié la variable `API_KEY` après avoir cliqué sur Deploy, Netlify ne l'injecte pas automatiquement dans la version déjà compilée.
-> Il suffit de relancer la publication : va dans l'onglet **Deploys** → clique sur **Trigger deploy** ➡️ **Clear cache and deploy site**. En 30 secondes, la clé est prise en compte !
+> **💡 Une modification n'apparaît pas en ligne ?**
+> Netlify sert la dernière version compilée. Si ton changement reste invisible, relance la publication : onglet **Deploys** → **Trigger deploy** ➡️ **Clear cache and deploy site**.
 
 > [!TIP]
 > **Vérification post-déploiement :** ouvre ton site **dans un vrai navigateur** et vérifie ces 3 points :
 > 1. 📸 L'**image** de ton tuteur s'affiche
-> 2. 🤖 Il **répond** (pose-lui une question de ton cours !)
+> 2. 🤖 Il **réclame une clé**, puis **répond** une fois la tienne collée (pose-lui une question de ton cours !)
 > 3. 🖼️ Les **schémas** apparaissent (demande-lui une notion illustrée)
 
 > [!IMPORTANT]
@@ -1280,7 +1295,9 @@ Si la vérification post-déploiement échoue, diagnostique avec ce tableau :
 | Symptôme | Cause probable | Solution |
 |---|---|---|
 | 📸 Image cassée (icône brisée) | Fichier pas dans `public/` ou nom incorrect dans `tuteur.json` | Vérifier que le fichier est bien dans `public/` et que `photo` et `bot_avatar` correspondent exactement, extension comprise |
-| 🤖 Le tuteur ne répond pas (ou erreur 504 / timeout) | Variable `API_KEY` absente, mal nommée ou ajoutée après le build | (1) Vérifier dans Site configuration → Environment variables que la clé s'appelle exactement `API_KEY`. (2) Relancer : Deploys → Trigger deploy → Clear cache and deploy site. |
+| 🤖 Le tuteur réclame une clé Gemini au lieu de répondre | Comportement NORMAL | Ce n'est pas une panne : chaque visiteur apporte sa clé. Coller une clé valide suffit. |
+| 🤖 « Votre clé Gemini a été refusée » | Clé révoquée, incomplète, ou copiée avec ses guillemets | En recréer une : Google AI Studio → Get API key. Elle doit faire 39 caractères et commencer par `AIza`. |
+| 🤖 « Votre clé a atteint sa limite » | Quota gratuit épuisé (500 requêtes/jour) | Attendre 24 h, ou utiliser une autre clé. Ne concerne que ce visiteur, jamais les autres. |
 | 🖼️ Les schémas ne s'affichent pas | Fichiers absents de `public/assets/` ou non déclarés dans `illustrations.md` | Vérifier les DEUX : le fichier existe, ET il figure dans le catalogue |
 | Le tuteur récite l'ancien cours | Le déploiement date d'avant la dernière modification | Vérifier que le `git push` a bien eu lieu, puis Netlify → Deploys |
 | Le build Netlify échoue | Erreur dans les Netlify Functions ou dépendance manquante | Netlify → Deploys → cliquer sur le deploy en erreur → lire le log |
