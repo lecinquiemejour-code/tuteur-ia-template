@@ -14,6 +14,12 @@
   # Bundler recommandé pour TypeScript avec les Functions v2
   node_bundler = "esbuild"
 
+  # Le SDK @google/genai embarque google-auth-library et protobufjs, qui
+  # utilisent des require dynamiques qu'esbuild ne sait pas résoudre lors du
+  # bundling : la mécanique d'authentification est cassée et l'API renvoie
+  # un 401. On exclut donc ce paquet du bundle ; Netlify l'installe tel quel.
+  external_node_modules = ["@google/genai"]
+
   # IMPORTANT : inclut les fichiers Markdown et la config IA dans le bundle
   # de la Function, pour que chat.ts puisse les lire via fs.readFileSync.
   included_files = [
